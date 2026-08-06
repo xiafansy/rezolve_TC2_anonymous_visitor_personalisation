@@ -71,6 +71,30 @@ outcome the scorer never saw. Base purchase rate: **0.81%**.
 \* cart=100% by construction — Stage B *is* the add-to-cart trigger.
 Monotonicity Evaluator > Explorer > Low-intent: **PASS**.
 
+### Cross-dataset validation (REES46, thresholds frozen — zero re-tuning)
+
+The same scorer, with thresholds fitted on RetailRocket, applied to a second
+retailer's November 2019 traffic (Black Friday month — a deliberate
+promo-distortion robustness test; 2M-session sample). Base purchase: **5.6%**.
+
+| intent | coverage | purchase rate | cheap-flavor lift |
+|---|---|---|---|
+| Decisive (Stage B) | 4.5% | **42.3%** | +5.6pp |
+| Evaluator | 16.2% | **13.5%** | +3.0pp |
+| Explorer | 10.5% | 4.1% | +1.8pp |
+| Unclear → neutral | 6.6% | 6.6% | — |
+| Low-intent | 62.3% | 1.1% | +0.3pp |
+
+Monotonicity: **PASS**. The revisit-band pattern replicates across both
+retailers and both months (the <1.2 band converts at 3.4% on *each* site).
+
+**Price sensitivity is a flavor, not a fifth intent.** On real prices
+(REES46), cheap-leaning browsing (`price_rel_cat < 0.6`) adds conversion lift
+*within every* browse-pattern intent, so it modifies merchandising (value-first
+sorting, sale rails) while the browse pattern picks the layout. Price-trend
+features (`price_stepdown_share`, first→last drift) turned out to be
+contaminated by item re-views and are deliberately unused.
+
 ## Intent → homepage strategy
 
 | intent | signature (real signals) | homepage serves |
@@ -80,7 +104,7 @@ Monotonicity Evaluator > Explorer > Low-intent: **PASS**.
 | Explorer | ≥3 categories, high switch rate, no re-views | discovery: cross-category trending, curated collections |
 | Low-intent / micro-visit | ≤2 events, gone in seconds | neutral-light: fast page, top categories, one broad promo |
 | Unclear | conflicting evidence | neutral: balanced page; commit to nothing |
-| Price-sensitive | *(Track 1 only — needs search/sort/price signals the real log lacks)* | sale rail, price-low sort default |
+| *+ price-conscious flavor* | browsing the cheap end of categories (`price_rel_cat < 0.6`) | overlay on any layout above: value-first sorting, sale rail, budget picks |
 
 ## Files
 
@@ -93,10 +117,12 @@ Track 1 (synthetic, full signal set)
   demo.py                        end-to-end walkthrough; exports homepage_demo_data.json
   personalisation_demo.html      visual demo (open in browser)
 
-Track 2 (real, RetailRocket)
-  build_real_sessions.py         event log -> 1.76M sessions with sequence features
-  intent_inference_real.py       v2 two-stage scorer (browse-pattern + cart-trigger)
-  evaluate_real.py               temporal hold-out validation (tables above)
+Track 2 (real, RetailRocket + REES46)
+  build_real_sessions.py         RetailRocket event log -> 1.76M sessions
+  build_rees46_sessions.py       REES46 Oct+Nov -> 23M sessions incl. price features
+  intent_inference_real.py       v2 two-stage scorer + price-conscious flavor
+  evaluate_real.py               RetailRocket temporal hold-out validation
+  evaluate_rees46.py             REES46 cross-dataset + Black-Friday hold-out
 ```
 
 ### Data setup (Track 2)
@@ -133,8 +159,11 @@ product_id, category_id, category_code, brand, price, user_id, user_session`.
 
 - Real-data features are session-level aggregates — an offline approximation of
   the incremental real-time computation (the realtime variant is Track 1's demo).
-- Price-sensitivity is not observable in the RetailRocket log; it lives in the
-  synthetic track only.
+- Price-sensitivity is validated as a *flavor* on REES46 (real prices); the
+  RetailRocket log has no price signal, and no real log here carries
+  referrer/device/search — those context signals remain Track-1-only.
+- November REES46 is Black-Friday traffic: gradients hold but absolute rates
+  are promo-inflated; October is the calmer reference.
 - Track 1 accuracy overstates what production would see (label circularity);
   Track 2's held-out lift is the number to trust.
 - Hour-of-day timezone in the log is unknown; only relative differences used.

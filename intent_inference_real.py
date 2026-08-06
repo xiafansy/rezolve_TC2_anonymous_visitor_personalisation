@@ -50,6 +50,7 @@ THRESHOLDS = {
     "gap_slow": 120.0,       # median inter-event gap (s) -> deliberate pace
     "dur_micro": 90.0,       # sessions shorter than this barely happened
     "events_micro": 2,       # <=2 events = micro-visit
+    "cheap_rel": 0.6,        # median viewed price < 60% of category median
 }
 
 INTENTS = ["Evaluator", "Explorer", "Low-intent"]
@@ -126,6 +127,10 @@ class Inference:
     scores: dict
     reasons: list = field(default_factory=list)
     stage: str = "A"            # "A" browse-pattern | "B" commercial override
+    # Price sensitivity is a FLAVOR, not a competing intent: on REES46 (real
+    # prices) cheap-leaning browsing adds conversion lift *within every*
+    # browse-pattern band, so it modifies merchandising, not layout.
+    price_conscious: bool = False
 
     def explain(self):
         rank = ", ".join(f"{k} {v:.1f}" for k, v in
@@ -144,13 +149,18 @@ def infer_realtime(s, min_confidence=MIN_CONFIDENCE, t=THRESHOLDS):
     Otherwise Stage A scores browse patterns, with an Unclear gate.
     """
     n_views = s.get("n_views", 0) or 0
+
+    # Orthogonal price flavor (only when price signals exist, e.g. REES46).
+    rel = s.get("price_rel_cat")
+    cheap = rel is not None and not (rel != rel) and rel < t["cheap_rel"]
+
     if s.get("added_to_cart") and n_views <= 2:
         return Inference(
             intent="Decisive", confidence=0.95,
             scores={"Decisive": 1.0},
             reasons=["added to cart with almost no browsing first "
                      "(arrived already decided)"],
-            stage="B",
+            stage="B", price_conscious=cheap,
         )
 
     scores = {i: 0.0 for i in INTENTS}
@@ -163,12 +173,16 @@ def infer_realtime(s, min_confidence=MIN_CONFIDENCE, t=THRESHOLDS):
     winner = max(scores, key=scores.get)
     confidence = scores[winner] / total if total > 0 else 0.0
     reasons = [r for _, r in sorted(reasons_by[winner], reverse=True)]
+    if cheap:
+        reasons.append(f"browsing the cheap end of categories "
+                       f"(median {rel:.0%} of category median price)")
 
     if confidence < min_confidence:
         return Inference("Unclear", confidence, scores,
                          ["signals point in multiple directions -- decline to commit"],
-                         stage="A")
-    return Inference(winner, confidence, scores, reasons, stage="A")
+                         stage="A", price_conscious=cheap)
+    return Inference(winner, confidence, scores, reasons, stage="A",
+                     price_conscious=cheap)
 
 
 # ---------------------------------------------------------------------------

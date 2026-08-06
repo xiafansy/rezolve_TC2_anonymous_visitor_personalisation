@@ -2,8 +2,9 @@
 archive/
 archive_rees46/
 
-# Large generated artifact -- rebuild with: /usr/bin/python3 build_real_sessions.py
+# Large generated artifacts -- rebuild with the build_*_sessions.py scripts
 real_sessions.csv
+rees46_sessions.csv
 
 .DS_Store
 __pycache__/
