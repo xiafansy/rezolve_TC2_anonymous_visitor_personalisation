@@ -1,0 +1,809 @@
+[
+  {
+    "session_id": 1,
+    "true_intent": "Explorer",
+    "signals": {
+      "Referrer": "Instagram",
+      "Device": "Tablet",
+      "Category": "Electronics",
+      "Search_Used": false,
+      "Search_Query": "",
+      "Scroll_Depth": 89,
+      "Product_Views": 19,
+      "Filter_Used": false,
+      "Sort_Type": "Trending",
+      "Session_Duration_sec": 845,
+      "Add_to_Cart": false,
+      "Purchase": false
+    },
+    "inferred_intent": "Explorer",
+    "confidence": 0.846,
+    "personalised": true,
+    "reasons": [
+      "sorting by Trending (browsing, not seeking)",
+      "viewed many products (broad browsing)",
+      "very high scroll depth (grazing the whole page)"
+    ],
+    "homepage": {
+      "headline": "Discover what's trending",
+      "primary_goal": "Sustain browsing depth and inspire; capture an email",
+      "tone": "Visual, editorial, low-pressure",
+      "hero": "Full-bleed lifestyle imagery: 'Trending now' with a bold visual, no search box competing for attention",
+      "blocks": [
+        {
+          "title": "Trending & new arrivals carousel",
+          "rationale": "Fresh, changing content rewards the open-ended browser"
+        },
+        {
+          "title": "Curated collections / lookbook",
+          "rationale": "Themed inspiration keeps a grazing session moving"
+        },
+        {
+          "title": "Shop by category grid",
+          "rationale": "Visual entry points for someone with no fixed destination"
+        },
+        {
+          "title": "Newsletter / early-access sign-up",
+          "rationale": "Low intent to buy now -- convert the visit into a contactable lead"
+        }
+      ],
+      "suppress": [
+        "Prominent search bar",
+        "Hard-sell checkout CTAs"
+      ]
+    }
+  },
+  {
+    "session_id": 2,
+    "true_intent": "Explorer",
+    "signals": {
+      "Referrer": "Direct",
+      "Device": "Tablet",
+      "Category": "Beauty",
+      "Search_Used": false,
+      "Search_Query": "",
+      "Scroll_Depth": 90,
+      "Product_Views": 16,
+      "Filter_Used": false,
+      "Sort_Type": "Trending",
+      "Session_Duration_sec": 661,
+      "Add_to_Cart": false,
+      "Purchase": false
+    },
+    "inferred_intent": "Explorer",
+    "confidence": 0.826,
+    "personalised": true,
+    "reasons": [
+      "sorting by Trending (browsing, not seeking)",
+      "viewed many products (broad browsing)",
+      "very high scroll depth (grazing the whole page)"
+    ],
+    "homepage": {
+      "headline": "Discover what's trending",
+      "primary_goal": "Sustain browsing depth and inspire; capture an email",
+      "tone": "Visual, editorial, low-pressure",
+      "hero": "Full-bleed lifestyle imagery: 'Trending now' with a bold visual, no search box competing for attention",
+      "blocks": [
+        {
+          "title": "Trending & new arrivals carousel",
+          "rationale": "Fresh, changing content rewards the open-ended browser"
+        },
+        {
+          "title": "Curated collections / lookbook",
+          "rationale": "Themed inspiration keeps a grazing session moving"
+        },
+        {
+          "title": "Shop by category grid",
+          "rationale": "Visual entry points for someone with no fixed destination"
+        },
+        {
+          "title": "Newsletter / early-access sign-up",
+          "rationale": "Low intent to buy now -- convert the visit into a contactable lead"
+        }
+      ],
+      "suppress": [
+        "Prominent search bar",
+        "Hard-sell checkout CTAs"
+      ]
+    }
+  },
+  {
+    "session_id": 3,
+    "true_intent": "Research",
+    "signals": {
+      "Referrer": "Email",
+      "Device": "Desktop",
+      "Category": "Home",
+      "Search_Used": false,
+      "Search_Query": "",
+      "Scroll_Depth": 52,
+      "Product_Views": 10,
+      "Filter_Used": true,
+      "Sort_Type": "Price Low-High",
+      "Session_Duration_sec": 838,
+      "Add_to_Cart": false,
+      "Purchase": false
+    },
+    "inferred_intent": "Research",
+    "confidence": 0.492,
+    "personalised": true,
+    "reasons": [
+      "sorting by Price Low-High (comparing options)",
+      "long session (careful evaluation)",
+      "applied filters (narrowing deliberately)"
+    ],
+    "homepage": {
+      "headline": "Compare with confidence",
+      "primary_goal": "Support careful evaluation with proof and detail",
+      "tone": "Informative, trustworthy, detail-rich",
+      "hero": "Comparison-oriented hero for Home: 'Top rated', with filters (rating, price, features) surfaced immediately",
+      "blocks": [
+        {
+          "title": "Highest-rated in Home",
+          "rationale": "Social proof is the deciding factor for an evaluator"
+        },
+        {
+          "title": "Side-by-side comparison tool",
+          "rationale": "Lets a researcher weigh specs without leaving the page"
+        },
+        {
+          "title": "Buying guides & expert reviews",
+          "rationale": "Deep content matches a long, deliberate session"
+        },
+        {
+          "title": "Verified reviews & ratings spotlight",
+          "rationale": "Aggregated trust signals to de-risk the decision"
+        }
+      ],
+      "suppress": [
+        "Urgency countdown timers",
+        "Thin, image-only product tiles"
+      ]
+    }
+  },
+  {
+    "session_id": 4,
+    "true_intent": "Explorer",
+    "signals": {
+      "Referrer": "Facebook",
+      "Device": "Tablet",
+      "Category": "Electronics",
+      "Search_Used": false,
+      "Search_Query": "",
+      "Scroll_Depth": 89,
+      "Product_Views": 11,
+      "Filter_Used": false,
+      "Sort_Type": "Trending",
+      "Session_Duration_sec": 864,
+      "Add_to_Cart": false,
+      "Purchase": false
+    },
+    "inferred_intent": "Explorer",
+    "confidence": 0.75,
+    "personalised": true,
+    "reasons": [
+      "sorting by Trending (browsing, not seeking)",
+      "very high scroll depth (grazing the whole page)",
+      "did not search (open-ended browsing)"
+    ],
+    "homepage": {
+      "headline": "Discover what's trending",
+      "primary_goal": "Sustain browsing depth and inspire; capture an email",
+      "tone": "Visual, editorial, low-pressure",
+      "hero": "Full-bleed lifestyle imagery: 'Trending now' with a bold visual, no search box competing for attention",
+      "blocks": [
+        {
+          "title": "Trending & new arrivals carousel",
+          "rationale": "Fresh, changing content rewards the open-ended browser"
+        },
+        {
+          "title": "Curated collections / lookbook",
+          "rationale": "Themed inspiration keeps a grazing session moving"
+        },
+        {
+          "title": "Shop by category grid",
+          "rationale": "Visual entry points for someone with no fixed destination"
+        },
+        {
+          "title": "Newsletter / early-access sign-up",
+          "rationale": "Low intent to buy now -- convert the visit into a contactable lead"
+        }
+      ],
+      "suppress": [
+        "Prominent search bar",
+        "Hard-sell checkout CTAs"
+      ]
+    }
+  },
+  {
+    "session_id": 5,
+    "true_intent": "Research",
+    "signals": {
+      "Referrer": "Google",
+      "Device": "Desktop",
+      "Category": "Fashion",
+      "Search_Used": false,
+      "Search_Query": "",
+      "Scroll_Depth": 72,
+      "Product_Views": 8,
+      "Filter_Used": true,
+      "Sort_Type": "Highest Rated",
+      "Session_Duration_sec": 680,
+      "Add_to_Cart": false,
+      "Purchase": false
+    },
+    "inferred_intent": "Research",
+    "confidence": 0.563,
+    "personalised": true,
+    "reasons": [
+      "sorting by Highest Rated (quality comparison)",
+      "long session (careful evaluation)",
+      "applied filters (narrowing deliberately)"
+    ],
+    "homepage": {
+      "headline": "Compare with confidence",
+      "primary_goal": "Support careful evaluation with proof and detail",
+      "tone": "Informative, trustworthy, detail-rich",
+      "hero": "Comparison-oriented hero for Fashion: 'Top rated', with filters (rating, price, features) surfaced immediately",
+      "blocks": [
+        {
+          "title": "Highest-rated in Fashion",
+          "rationale": "Social proof is the deciding factor for an evaluator"
+        },
+        {
+          "title": "Side-by-side comparison tool",
+          "rationale": "Lets a researcher weigh specs without leaving the page"
+        },
+        {
+          "title": "Buying guides & expert reviews",
+          "rationale": "Deep content matches a long, deliberate session"
+        },
+        {
+          "title": "Verified reviews & ratings spotlight",
+          "rationale": "Aggregated trust signals to de-risk the decision"
+        }
+      ],
+      "suppress": [
+        "Urgency countdown timers",
+        "Thin, image-only product tiles"
+      ]
+    }
+  },
+  {
+    "session_id": 6,
+    "true_intent": "Research",
+    "signals": {
+      "Referrer": "Direct",
+      "Device": "Desktop",
+      "Category": "Beauty",
+      "Search_Used": false,
+      "Search_Query": "",
+      "Scroll_Depth": 73,
+      "Product_Views": 9,
+      "Filter_Used": true,
+      "Sort_Type": "Highest Rated",
+      "Session_Duration_sec": 908,
+      "Add_to_Cart": true,
+      "Purchase": false
+    },
+    "inferred_intent": "Research",
+    "confidence": 0.553,
+    "personalised": true,
+    "reasons": [
+      "sorting by Highest Rated (quality comparison)",
+      "long session (careful evaluation)",
+      "applied filters (narrowing deliberately)"
+    ],
+    "homepage": {
+      "headline": "Compare with confidence",
+      "primary_goal": "Support careful evaluation with proof and detail",
+      "tone": "Informative, trustworthy, detail-rich",
+      "hero": "Comparison-oriented hero for Beauty: 'Top rated', with filters (rating, price, features) surfaced immediately",
+      "blocks": [
+        {
+          "title": "Highest-rated in Beauty",
+          "rationale": "Social proof is the deciding factor for an evaluator"
+        },
+        {
+          "title": "Side-by-side comparison tool",
+          "rationale": "Lets a researcher weigh specs without leaving the page"
+        },
+        {
+          "title": "Buying guides & expert reviews",
+          "rationale": "Deep content matches a long, deliberate session"
+        },
+        {
+          "title": "Verified reviews & ratings spotlight",
+          "rationale": "Aggregated trust signals to de-risk the decision"
+        }
+      ],
+      "suppress": [
+        "Urgency countdown timers",
+        "Thin, image-only product tiles"
+      ]
+    }
+  },
+  {
+    "session_id": 9,
+    "true_intent": "Research",
+    "signals": {
+      "Referrer": "Direct",
+      "Device": "Desktop",
+      "Category": "Sale",
+      "Search_Used": true,
+      "Search_Query": "discount",
+      "Scroll_Depth": 80,
+      "Product_Views": 12,
+      "Filter_Used": true,
+      "Sort_Type": "Highest Rated",
+      "Session_Duration_sec": 526,
+      "Add_to_Cart": true,
+      "Purchase": false
+    },
+    "inferred_intent": "Price-sensitive",
+    "confidence": 0.439,
+    "personalised": true,
+    "reasons": [
+      "browsing the Sale category",
+      "searched for 'discount'",
+      "applied filters (narrowing deliberately)"
+    ],
+    "homepage": {
+      "headline": "Today's best deals",
+      "primary_goal": "Surface savings and create gentle urgency",
+      "tone": "Value-led, energetic, urgency-aware",
+      "hero": "Deals hero: 'Up to X% off', clearance banner, promo-code strip front and centre",
+      "blocks": [
+        {
+          "title": "Sale grid sorted by biggest discount",
+          "rationale": "A bargain-hunter scans by savings, not by product"
+        },
+        {
+          "title": "Price-drop & clearance highlights",
+          "rationale": "Reinforce that now is a good time to buy"
+        },
+        {
+          "title": "Coupon / promo-code panel",
+          "rationale": "Matches the promo-driven way they arrived"
+        },
+        {
+          "title": "Limited-time deals countdown",
+          "rationale": "Gentle urgency nudges a price-led shopper to commit"
+        }
+      ],
+      "suppress": [
+        "Full-price editorial",
+        "Premium/luxury positioning"
+      ]
+    }
+  },
+  {
+    "session_id": 11,
+    "true_intent": "Goal-driven",
+    "signals": {
+      "Referrer": "Google",
+      "Device": "Mobile",
+      "Category": "Electronics",
+      "Search_Used": true,
+      "Search_Query": "wireless headphones",
+      "Scroll_Depth": 40,
+      "Product_Views": 5,
+      "Filter_Used": false,
+      "Sort_Type": "Relevance",
+      "Session_Duration_sec": 102,
+      "Add_to_Cart": true,
+      "Purchase": false
+    },
+    "inferred_intent": "Goal-driven",
+    "confidence": 0.89,
+    "personalised": true,
+    "reasons": [
+      "sorting by Relevance (looking for a specific match)",
+      "viewed few products (focused)",
+      "short session (in and out)"
+    ],
+    "homepage": {
+      "headline": "Find it fast",
+      "primary_goal": "Strip friction between arrival and checkout",
+      "tone": "Efficient, minimal, conversion-focused",
+      "hero": "Search-first hero: a large search box pre-scoped to Electronics, with the visitor's likely query as placeholder text",
+      "blocks": [
+        {
+          "title": "Best sellers in Electronics",
+          "rationale": "A decisive buyer converts fastest on proven, popular products"
+        },
+        {
+          "title": "Free shipping & fast-checkout banner",
+          "rationale": "Reassure on cost and speed to remove last-mile hesitation"
+        },
+        {
+          "title": "Recently viewed / quick re-add",
+          "rationale": "One tap back to the exact product they came for"
+        },
+        {
+          "title": "Back-in-stock & top-rated in Electronics",
+          "rationale": "Narrow, high-signal shortlist -- no browsing detour"
+        }
+      ],
+      "suppress": [
+        "Editorial lookbooks",
+        "Broad cross-category discovery carousels"
+      ]
+    }
+  },
+  {
+    "session_id": 13,
+    "true_intent": "Price-sensitive",
+    "signals": {
+      "Referrer": "Google",
+      "Device": "Tablet",
+      "Category": "Sale",
+      "Search_Used": true,
+      "Search_Query": "discount",
+      "Scroll_Depth": 50,
+      "Product_Views": 5,
+      "Filter_Used": true,
+      "Sort_Type": "Price Low-High",
+      "Session_Duration_sec": 248,
+      "Add_to_Cart": false,
+      "Purchase": false
+    },
+    "inferred_intent": "Price-sensitive",
+    "confidence": 0.439,
+    "personalised": true,
+    "reasons": [
+      "browsing the Sale category",
+      "searched for 'discount'",
+      "applied filters (narrowing deliberately)"
+    ],
+    "homepage": {
+      "headline": "Today's best deals",
+      "primary_goal": "Surface savings and create gentle urgency",
+      "tone": "Value-led, energetic, urgency-aware",
+      "hero": "Deals hero: 'Up to X% off', clearance banner, promo-code strip front and centre",
+      "blocks": [
+        {
+          "title": "Sale grid sorted by biggest discount",
+          "rationale": "A bargain-hunter scans by savings, not by product"
+        },
+        {
+          "title": "Price-drop & clearance highlights",
+          "rationale": "Reinforce that now is a good time to buy"
+        },
+        {
+          "title": "Coupon / promo-code panel",
+          "rationale": "Matches the promo-driven way they arrived"
+        },
+        {
+          "title": "Limited-time deals countdown",
+          "rationale": "Gentle urgency nudges a price-led shopper to commit"
+        }
+      ],
+      "suppress": [
+        "Full-price editorial",
+        "Premium/luxury positioning"
+      ]
+    }
+  },
+  {
+    "session_id": 15,
+    "true_intent": "Price-sensitive",
+    "signals": {
+      "Referrer": "Direct",
+      "Device": "Desktop",
+      "Category": "Sale",
+      "Search_Used": false,
+      "Search_Query": "",
+      "Scroll_Depth": 58,
+      "Product_Views": 10,
+      "Filter_Used": true,
+      "Sort_Type": "Price Low-High",
+      "Session_Duration_sec": 512,
+      "Add_to_Cart": true,
+      "Purchase": false
+    },
+    "inferred_intent": "Price-sensitive",
+    "confidence": 0.488,
+    "personalised": true,
+    "reasons": [
+      "browsing the Sale category",
+      "applied filters (narrowing deliberately)",
+      "viewed a moderate number of products"
+    ],
+    "homepage": {
+      "headline": "Today's best deals",
+      "primary_goal": "Surface savings and create gentle urgency",
+      "tone": "Value-led, energetic, urgency-aware",
+      "hero": "Deals hero: 'Up to X% off', clearance banner, promo-code strip front and centre",
+      "blocks": [
+        {
+          "title": "Sale grid sorted by biggest discount",
+          "rationale": "A bargain-hunter scans by savings, not by product"
+        },
+        {
+          "title": "Price-drop & clearance highlights",
+          "rationale": "Reinforce that now is a good time to buy"
+        },
+        {
+          "title": "Coupon / promo-code panel",
+          "rationale": "Matches the promo-driven way they arrived"
+        },
+        {
+          "title": "Limited-time deals countdown",
+          "rationale": "Gentle urgency nudges a price-led shopper to commit"
+        }
+      ],
+      "suppress": [
+        "Full-price editorial",
+        "Premium/luxury positioning"
+      ]
+    }
+  },
+  {
+    "session_id": 16,
+    "true_intent": "Goal-driven",
+    "signals": {
+      "Referrer": "Google",
+      "Device": "Mobile",
+      "Category": "Beauty",
+      "Search_Used": true,
+      "Search_Query": "skincare",
+      "Scroll_Depth": 30,
+      "Product_Views": 6,
+      "Filter_Used": true,
+      "Sort_Type": "Relevance",
+      "Session_Duration_sec": 211,
+      "Add_to_Cart": true,
+      "Purchase": true
+    },
+    "inferred_intent": "Goal-driven",
+    "confidence": 0.797,
+    "personalised": true,
+    "reasons": [
+      "sorting by Relevance (looking for a specific match)",
+      "viewed few products (focused)",
+      "short session (in and out)"
+    ],
+    "homepage": {
+      "headline": "Find it fast",
+      "primary_goal": "Strip friction between arrival and checkout",
+      "tone": "Efficient, minimal, conversion-focused",
+      "hero": "Search-first hero: a large search box pre-scoped to Beauty, with the visitor's likely query as placeholder text",
+      "blocks": [
+        {
+          "title": "Best sellers in Beauty",
+          "rationale": "A decisive buyer converts fastest on proven, popular products"
+        },
+        {
+          "title": "Free shipping & fast-checkout banner",
+          "rationale": "Reassure on cost and speed to remove last-mile hesitation"
+        },
+        {
+          "title": "Recently viewed / quick re-add",
+          "rationale": "One tap back to the exact product they came for"
+        },
+        {
+          "title": "Back-in-stock & top-rated in Beauty",
+          "rationale": "Narrow, high-signal shortlist -- no browsing detour"
+        }
+      ],
+      "suppress": [
+        "Editorial lookbooks",
+        "Broad cross-category discovery carousels"
+      ]
+    }
+  },
+  {
+    "session_id": 17,
+    "true_intent": "Goal-driven",
+    "signals": {
+      "Referrer": "Google",
+      "Device": "Mobile",
+      "Category": "Beauty",
+      "Search_Used": true,
+      "Search_Query": "lipstick",
+      "Scroll_Depth": 45,
+      "Product_Views": 2,
+      "Filter_Used": false,
+      "Sort_Type": "Newest",
+      "Session_Duration_sec": 202,
+      "Add_to_Cart": true,
+      "Purchase": true
+    },
+    "inferred_intent": "Goal-driven",
+    "confidence": 0.781,
+    "personalised": true,
+    "reasons": [
+      "sorting by Newest (looking for a specific match)",
+      "viewed few products (focused)",
+      "short session (in and out)"
+    ],
+    "homepage": {
+      "headline": "Find it fast",
+      "primary_goal": "Strip friction between arrival and checkout",
+      "tone": "Efficient, minimal, conversion-focused",
+      "hero": "Search-first hero: a large search box pre-scoped to Beauty, with the visitor's likely query as placeholder text",
+      "blocks": [
+        {
+          "title": "Best sellers in Beauty",
+          "rationale": "A decisive buyer converts fastest on proven, popular products"
+        },
+        {
+          "title": "Free shipping & fast-checkout banner",
+          "rationale": "Reassure on cost and speed to remove last-mile hesitation"
+        },
+        {
+          "title": "Recently viewed / quick re-add",
+          "rationale": "One tap back to the exact product they came for"
+        },
+        {
+          "title": "Back-in-stock & top-rated in Beauty",
+          "rationale": "Narrow, high-signal shortlist -- no browsing detour"
+        }
+      ],
+      "suppress": [
+        "Editorial lookbooks",
+        "Broad cross-category discovery carousels"
+      ]
+    }
+  },
+  {
+    "session_id": 22,
+    "true_intent": "Price-sensitive",
+    "signals": {
+      "Referrer": "Email",
+      "Device": "Desktop",
+      "Category": "Sale",
+      "Search_Used": false,
+      "Search_Query": "",
+      "Scroll_Depth": 55,
+      "Product_Views": 6,
+      "Filter_Used": true,
+      "Sort_Type": "Price Low-High",
+      "Session_Duration_sec": 296,
+      "Add_to_Cart": true,
+      "Purchase": false
+    },
+    "inferred_intent": "Neutral",
+    "confidence": 0.392,
+    "personalised": false,
+    "reasons": [
+      "browsing the Sale category",
+      "arrived from Email (promo-driven)",
+      "applied filters (narrowing deliberately)"
+    ],
+    "homepage": {
+      "headline": "Welcome",
+      "primary_goal": "Cover all bases when intent is unclear -- do no harm",
+      "tone": "Balanced, broadly useful",
+      "hero": "Balanced hero: search box alongside a 'Trending now' visual, neither dominating",
+      "blocks": [
+        {
+          "title": "Search + top categories",
+          "rationale": "Serve goal-driven visitors without crowding out browsers"
+        },
+        {
+          "title": "Trending products",
+          "rationale": "Safe, broadly appealing entry point"
+        },
+        {
+          "title": "Featured deals strip",
+          "rationale": "A modest nod to value without going all-in on discounts"
+        },
+        {
+          "title": "New arrivals",
+          "rationale": "Fresh content for the undecided"
+        }
+      ],
+      "suppress": [
+        "Aggressive single-intent commitment"
+      ]
+    }
+  },
+  {
+    "session_id": 25,
+    "true_intent": "Price-sensitive",
+    "signals": {
+      "Referrer": "Direct",
+      "Device": "Desktop",
+      "Category": "Sale",
+      "Search_Used": false,
+      "Search_Query": "",
+      "Scroll_Depth": 48,
+      "Product_Views": 9,
+      "Filter_Used": true,
+      "Sort_Type": "Price Low-High",
+      "Session_Duration_sec": 273,
+      "Add_to_Cart": true,
+      "Purchase": true
+    },
+    "inferred_intent": "Neutral",
+    "confidence": 0.405,
+    "personalised": false,
+    "reasons": [
+      "browsing the Sale category",
+      "applied filters (narrowing deliberately)",
+      "viewed a moderate number of products"
+    ],
+    "homepage": {
+      "headline": "Welcome",
+      "primary_goal": "Cover all bases when intent is unclear -- do no harm",
+      "tone": "Balanced, broadly useful",
+      "hero": "Balanced hero: search box alongside a 'Trending now' visual, neither dominating",
+      "blocks": [
+        {
+          "title": "Search + top categories",
+          "rationale": "Serve goal-driven visitors without crowding out browsers"
+        },
+        {
+          "title": "Trending products",
+          "rationale": "Safe, broadly appealing entry point"
+        },
+        {
+          "title": "Featured deals strip",
+          "rationale": "A modest nod to value without going all-in on discounts"
+        },
+        {
+          "title": "New arrivals",
+          "rationale": "Fresh content for the undecided"
+        }
+      ],
+      "suppress": [
+        "Aggressive single-intent commitment"
+      ]
+    }
+  },
+  {
+    "session_id": 26,
+    "true_intent": "Price-sensitive",
+    "signals": {
+      "Referrer": "Direct",
+      "Device": "Mobile",
+      "Category": "Sale",
+      "Search_Used": false,
+      "Search_Query": "",
+      "Scroll_Depth": 42,
+      "Product_Views": 5,
+      "Filter_Used": true,
+      "Sort_Type": "Price Low-High",
+      "Session_Duration_sec": 485,
+      "Add_to_Cart": false,
+      "Purchase": false
+    },
+    "inferred_intent": "Neutral",
+    "confidence": 0.417,
+    "personalised": false,
+    "reasons": [
+      "browsing the Sale category",
+      "applied filters (narrowing deliberately)",
+      "sorting by Price Low-High"
+    ],
+    "homepage": {
+      "headline": "Welcome",
+      "primary_goal": "Cover all bases when intent is unclear -- do no harm",
+      "tone": "Balanced, broadly useful",
+      "hero": "Balanced hero: search box alongside a 'Trending now' visual, neither dominating",
+      "blocks": [
+        {
+          "title": "Search + top categories",
+          "rationale": "Serve goal-driven visitors without crowding out browsers"
+        },
+        {
+          "title": "Trending products",
+          "rationale": "Safe, broadly appealing entry point"
+        },
+        {
+          "title": "Featured deals strip",
+          "rationale": "A modest nod to value without going all-in on discounts"
+        },
+        {
+          "title": "New arrivals",
+          "rationale": "Fresh content for the undecided"
+        }
+      ],
+      "suppress": [
+        "Aggressive single-intent commitment"
+      ]
+    }
+  }
+]

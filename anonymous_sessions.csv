@@ -1,0 +1,1001 @@
+Session_ID,Intent,Referrer,Device,Time_of_Day,Category,Search_Used,Search_Query,Scroll_Depth,Product_Views,Filter_Used,Sort_Type,Session_Duration_sec,Add_to_Cart,Purchase
+1,Explorer,Instagram,Tablet,Evening,Electronics,False,,89,19,False,Trending,845,False,False
+2,Explorer,Direct,Tablet,Evening,Beauty,False,,90,16,False,Trending,661,False,False
+3,Research,Email,Desktop,Evening,Home,False,,52,10,True,Price Low-High,838,False,False
+4,Explorer,Facebook,Tablet,Evening,Electronics,False,,89,11,False,Trending,864,False,False
+5,Research,Google,Desktop,Morning,Fashion,False,,72,8,True,Highest Rated,680,False,False
+6,Research,Direct,Desktop,Afternoon,Beauty,False,,73,9,True,Highest Rated,908,True,False
+7,Explorer,Facebook,Mobile,Afternoon,Electronics,False,,83,15,False,Trending,789,False,False
+8,Explorer,Facebook,Mobile,Afternoon,Running,False,,82,10,False,Trending,312,False,False
+9,Research,Direct,Desktop,Morning,Sale,True,discount,80,12,True,Highest Rated,526,True,False
+10,Explorer,Instagram,Mobile,Morning,Running,False,,99,10,False,Trending,546,False,False
+11,Goal-driven,Google,Mobile,Morning,Electronics,True,wireless headphones,40,5,False,Relevance,102,True,False
+12,Research,Direct,Desktop,Evening,Fashion,False,,67,13,True,Highest Rated,855,False,False
+13,Price-sensitive,Google,Tablet,Evening,Sale,True,discount,50,5,True,Price Low-High,248,False,False
+14,Research,Email,Desktop,Evening,Running,True,running shoes,80,11,True,Highest Rated,918,True,True
+15,Price-sensitive,Direct,Desktop,Evening,Sale,False,,58,10,True,Price Low-High,512,True,False
+16,Goal-driven,Google,Mobile,Evening,Beauty,True,skincare,30,6,True,Relevance,211,True,True
+17,Goal-driven,Google,Mobile,Morning,Beauty,True,lipstick,45,2,False,Newest,202,True,True
+18,Price-sensitive,Google,Tablet,Afternoon,Sale,False,,56,7,True,Price Low-High,447,True,True
+19,Explorer,Facebook,Mobile,Evening,Running,False,,98,15,False,Trending,436,False,False
+20,Research,Direct,Desktop,Afternoon,Home,False,,69,12,True,Highest Rated,416,False,False
+21,Explorer,Direct,Tablet,Morning,Sale,False,,99,11,False,Trending,612,False,False
+22,Price-sensitive,Email,Desktop,Afternoon,Sale,False,,55,6,True,Price Low-High,296,True,False
+23,Price-sensitive,Direct,Mobile,Morning,Sale,False,,51,8,True,Price Low-High,472,True,False
+24,Goal-driven,Google,Desktop,Morning,Running,True,nike shoes,25,5,False,Newest,179,False,False
+25,Price-sensitive,Direct,Desktop,Morning,Sale,False,,48,9,True,Price Low-High,273,True,True
+26,Price-sensitive,Direct,Mobile,Morning,Sale,False,,42,5,True,Price Low-High,485,False,False
+27,Price-sensitive,Direct,Desktop,Morning,Sale,False,,48,10,True,Price Low-High,265,False,False
+28,Explorer,Instagram,Desktop,Afternoon,Fashion,False,,96,18,False,Trending,622,False,False
+29,Explorer,Instagram,Mobile,Morning,Electronics,False,,92,15,False,Trending,334,False,False
+30,Price-sensitive,Google,Mobile,Evening,Sale,True,discount,45,9,True,Price Low-High,309,False,False
+31,Price-sensitive,Direct,Mobile,Evening,Sale,False,,69,7,True,Price Low-High,585,False,False
+32,Research,Google,Desktop,Morning,Home,True,chair,80,9,True,Price Low-High,442,True,True
+33,Price-sensitive,Direct,Desktop,Evening,Sale,False,,68,8,True,Price Low-High,435,False,False
+34,Goal-driven,Google,Desktop,Morning,Beauty,True,perfume,36,3,True,Relevance,220,True,True
+35,Goal-driven,Google,Desktop,Afternoon,Beauty,True,lipstick,33,4,True,Relevance,134,True,False
+36,Price-sensitive,Email,Mobile,Afternoon,Sale,True,discount,68,6,True,Price Low-High,502,True,False
+37,Research,Direct,Desktop,Afternoon,Running,True,adidas trainers,79,8,True,Highest Rated,997,True,False
+38,Research,Email,Desktop,Evening,Fashion,False,,61,11,True,Highest Rated,940,False,False
+39,Goal-driven,Google,Mobile,Morning,Electronics,True,wireless headphones,39,6,True,Relevance,103,True,True
+40,Goal-driven,Google,Mobile,Evening,Electronics,True,monitor,22,2,False,Newest,242,False,False
+41,Price-sensitive,Direct,Tablet,Afternoon,Sale,True,discount,49,10,True,Price Low-High,350,True,True
+42,Explorer,Facebook,Tablet,Evening,Fashion,False,,88,15,False,Trending,638,False,False
+43,Research,Email,Desktop,Afternoon,Beauty,True,lipstick,72,12,True,Highest Rated,753,True,False
+44,Goal-driven,Google,Desktop,Evening,Running,True,adidas trainers,30,2,True,Relevance,244,False,False
+45,Research,Google,Desktop,Afternoon,Fashion,True,white trainers,59,10,True,Highest Rated,425,False,False
+46,Research,Email,Desktop,Evening,Beauty,True,lipstick,71,8,True,Price Low-High,591,False,False
+47,Explorer,Instagram,Tablet,Morning,Sale,False,,97,14,False,Trending,748,False,False
+48,Price-sensitive,Google,Mobile,Afternoon,Sale,True,discount,45,5,True,Price Low-High,443,True,True
+49,Price-sensitive,Direct,Desktop,Morning,Sale,False,,64,6,True,Price Low-High,361,True,False
+50,Goal-driven,Google,Desktop,Morning,Beauty,True,skincare,26,5,True,Newest,139,True,True
+51,Goal-driven,Google,Mobile,Morning,Electronics,True,gaming mouse,44,4,False,Relevance,218,True,False
+52,Explorer,Instagram,Tablet,Morning,Fashion,False,,82,12,False,Trending,846,False,False
+53,Research,Google,Desktop,Morning,Home,False,,72,14,True,Price Low-High,937,False,False
+54,Research,Email,Desktop,Afternoon,Home,True,coffee table,63,14,True,Price Low-High,750,False,False
+55,Explorer,Facebook,Tablet,Morning,Electronics,False,,93,16,False,Trending,576,True,False
+56,Price-sensitive,Direct,Tablet,Morning,Sale,True,discount,45,8,True,Price Low-High,443,True,False
+57,Explorer,Instagram,Desktop,Evening,Electronics,False,,100,15,False,Trending,796,False,False
+58,Price-sensitive,Email,Desktop,Morning,Sale,False,,51,10,True,Price Low-High,544,True,False
+59,Explorer,Instagram,Mobile,Evening,Beauty,False,,90,17,False,Trending,362,True,False
+60,Explorer,Instagram,Mobile,Afternoon,Running,False,,100,17,False,Trending,884,False,False
+61,Price-sensitive,Direct,Tablet,Morning,Sale,False,,43,10,True,Price Low-High,467,False,False
+62,Research,Google,Desktop,Evening,Running,True,nike shoes,79,15,True,Highest Rated,730,False,False
+63,Price-sensitive,Google,Desktop,Evening,Sale,False,,54,7,True,Price Low-High,227,False,False
+64,Price-sensitive,Direct,Mobile,Afternoon,Sale,True,discount,50,5,True,Price Low-High,586,False,False
+65,Research,Email,Desktop,Evening,Home,True,chair,80,10,True,Highest Rated,570,False,False
+66,Explorer,Direct,Mobile,Afternoon,Beauty,False,,89,18,False,Trending,497,False,False
+67,Explorer,Instagram,Mobile,Afternoon,Fashion,False,,82,18,False,Trending,839,False,False
+68,Goal-driven,Google,Mobile,Morning,Beauty,True,skincare,47,3,True,Newest,86,True,False
+69,Research,Direct,Desktop,Morning,Electronics,True,gaming mouse,60,8,True,Price Low-High,699,False,False
+70,Research,Google,Desktop,Afternoon,Running,True,nike shoes,78,8,True,Highest Rated,814,False,False
+71,Goal-driven,Google,Mobile,Morning,Beauty,True,skincare,21,3,True,Relevance,260,True,True
+72,Research,Email,Desktop,Morning,Sale,True,clearance,77,11,True,Highest Rated,765,False,False
+73,Explorer,Instagram,Mobile,Afternoon,Electronics,False,,91,18,False,Trending,704,False,False
+74,Research,Email,Desktop,Evening,Beauty,False,,69,13,True,Highest Rated,710,False,False
+75,Research,Direct,Desktop,Morning,Running,True,nike shoes,69,13,True,Highest Rated,971,False,False
+76,Goal-driven,Google,Mobile,Afternoon,Electronics,True,wireless headphones,21,2,False,Relevance,249,False,False
+77,Price-sensitive,Direct,Desktop,Morning,Sale,False,,48,10,True,Price Low-High,481,True,True
+78,Research,Google,Desktop,Morning,Sale,True,cheap deals,76,11,True,Price Low-High,713,True,False
+79,Goal-driven,Google,Desktop,Evening,Running,True,nike shoes,23,6,True,Newest,169,False,False
+80,Price-sensitive,Email,Mobile,Morning,Sale,True,discount,66,9,True,Price Low-High,392,False,False
+81,Goal-driven,Google,Desktop,Afternoon,Electronics,True,wireless headphones,33,2,True,Relevance,274,True,False
+82,Explorer,Facebook,Mobile,Morning,Fashion,False,,81,20,False,Trending,463,False,False
+83,Price-sensitive,Google,Desktop,Evening,Sale,False,,45,9,True,Price Low-High,521,False,False
+84,Research,Email,Desktop,Morning,Electronics,False,,50,10,True,Price Low-High,535,True,True
+85,Research,Email,Desktop,Evening,Running,False,,55,10,True,Highest Rated,492,False,False
+86,Price-sensitive,Google,Desktop,Evening,Sale,False,,54,8,True,Price Low-High,246,True,True
+87,Goal-driven,Google,Desktop,Evening,Beauty,True,skincare,25,2,False,Relevance,179,False,False
+88,Research,Direct,Desktop,Evening,Electronics,True,gaming mouse,60,13,True,Highest Rated,937,False,False
+89,Explorer,Facebook,Mobile,Afternoon,Running,False,,84,14,False,Trending,683,False,False
+90,Explorer,Instagram,Desktop,Afternoon,Electronics,False,,100,16,False,Trending,607,False,False
+91,Price-sensitive,Email,Mobile,Morning,Sale,True,discount,62,5,True,Price Low-High,291,True,False
+92,Explorer,Instagram,Desktop,Morning,Running,False,,97,16,False,Trending,419,False,False
+93,Research,Google,Desktop,Afternoon,Home,False,,69,12,True,Price Low-High,742,True,False
+94,Price-sensitive,Direct,Tablet,Afternoon,Sale,True,discount,47,8,True,Price Low-High,268,True,False
+95,Price-sensitive,Email,Mobile,Morning,Sale,True,discount,70,6,True,Price Low-High,570,True,True
+96,Research,Email,Desktop,Evening,Home,True,coffee table,51,8,True,Price Low-High,957,False,False
+97,Research,Email,Desktop,Morning,Beauty,True,skincare,63,12,True,Price Low-High,820,False,False
+98,Goal-driven,Google,Desktop,Morning,Running,True,running shoes,41,5,False,Newest,131,True,True
+99,Price-sensitive,Email,Mobile,Morning,Sale,True,discount,51,10,True,Price Low-High,572,False,False
+100,Explorer,Direct,Tablet,Morning,Electronics,False,,94,18,False,Trending,579,False,False
+101,Goal-driven,Google,Desktop,Morning,Beauty,True,perfume,25,4,True,Newest,181,True,True
+102,Goal-driven,Google,Desktop,Afternoon,Electronics,True,gaming mouse,45,2,False,Newest,284,True,True
+103,Price-sensitive,Email,Tablet,Evening,Sale,False,,61,8,True,Price Low-High,455,True,True
+104,Research,Email,Desktop,Morning,Sale,True,clearance,68,15,True,Price Low-High,528,False,False
+105,Explorer,Facebook,Desktop,Morning,Electronics,False,,91,18,False,Trending,448,False,False
+106,Explorer,Instagram,Mobile,Afternoon,Electronics,False,,92,19,False,Trending,658,True,False
+107,Price-sensitive,Email,Desktop,Evening,Sale,False,,68,5,True,Price Low-High,484,False,False
+108,Explorer,Instagram,Desktop,Afternoon,Electronics,False,,83,18,False,Trending,377,False,False
+109,Explorer,Facebook,Tablet,Afternoon,Fashion,False,,90,19,False,Trending,877,True,False
+110,Price-sensitive,Direct,Desktop,Evening,Sale,True,discount,52,7,True,Price Low-High,473,True,False
+111,Goal-driven,Google,Desktop,Evening,Running,True,adidas trainers,46,2,True,Newest,142,True,False
+112,Research,Email,Desktop,Evening,Beauty,True,skincare,79,12,True,Price Low-High,838,False,False
+113,Explorer,Instagram,Tablet,Evening,Electronics,False,,96,17,False,Trending,385,False,False
+114,Research,Direct,Desktop,Afternoon,Fashion,True,white trainers,58,10,True,Highest Rated,517,False,False
+115,Research,Direct,Desktop,Evening,Fashion,False,,62,15,True,Highest Rated,815,True,False
+116,Price-sensitive,Google,Desktop,Evening,Sale,True,discount,53,9,True,Price Low-High,348,True,False
+117,Goal-driven,Google,Mobile,Evening,Running,True,running shoes,36,5,False,Newest,249,True,False
+118,Price-sensitive,Direct,Tablet,Evening,Sale,False,,69,5,True,Price Low-High,391,True,False
+119,Explorer,Instagram,Tablet,Afternoon,Electronics,False,,100,16,False,Trending,824,False,False
+120,Explorer,Instagram,Mobile,Evening,Sale,False,,86,12,False,Trending,637,False,False
+121,Price-sensitive,Google,Tablet,Evening,Sale,False,,47,8,True,Price Low-High,242,True,False
+122,Research,Email,Desktop,Evening,Electronics,False,,56,15,True,Price Low-High,867,True,False
+123,Goal-driven,Google,Desktop,Morning,Beauty,True,skincare,48,2,False,Relevance,185,True,True
+124,Explorer,Instagram,Desktop,Morning,Fashion,False,,95,15,False,Trending,706,False,False
+125,Explorer,Instagram,Tablet,Evening,Running,False,,89,14,False,Trending,631,False,False
+126,Research,Google,Desktop,Evening,Fashion,True,black jacket,57,15,True,Highest Rated,750,False,False
+127,Price-sensitive,Direct,Mobile,Afternoon,Sale,False,,45,8,True,Price Low-High,575,True,True
+128,Price-sensitive,Google,Desktop,Evening,Sale,False,,48,8,True,Price Low-High,556,True,False
+129,Explorer,Facebook,Mobile,Afternoon,Home,False,,80,11,False,Trending,558,True,False
+130,Goal-driven,Google,Mobile,Morning,Electronics,True,wireless headphones,36,5,False,Relevance,235,True,False
+131,Explorer,Instagram,Mobile,Morning,Sale,False,,91,18,False,Trending,882,False,False
+132,Goal-driven,Google,Desktop,Morning,Beauty,True,perfume,38,3,True,Newest,85,True,False
+133,Price-sensitive,Email,Desktop,Afternoon,Sale,True,discount,69,9,True,Price Low-High,404,True,False
+134,Goal-driven,Google,Mobile,Evening,Running,True,nike shoes,37,6,False,Relevance,94,True,True
+135,Explorer,Instagram,Desktop,Morning,Running,False,,99,17,False,Trending,510,False,False
+136,Price-sensitive,Google,Desktop,Evening,Sale,False,,41,10,True,Price Low-High,272,False,False
+137,Price-sensitive,Google,Tablet,Morning,Sale,False,,50,10,True,Price Low-High,462,True,False
+138,Research,Direct,Desktop,Morning,Sale,True,cheap deals,57,13,True,Price Low-High,811,False,False
+139,Goal-driven,Direct,Mobile,Afternoon,Electronics,True,gaming mouse,31,3,False,Relevance,169,True,False
+140,Explorer,Instagram,Mobile,Morning,Fashion,False,,97,10,False,Trending,810,False,False
+141,Goal-driven,Google,Mobile,Evening,Running,True,nike shoes,35,5,False,Newest,103,True,True
+142,Research,Email,Desktop,Evening,Electronics,False,,65,9,True,Highest Rated,750,False,False
+143,Goal-driven,Google,Desktop,Evening,Beauty,True,skincare,37,3,False,Relevance,246,True,True
+144,Goal-driven,Google,Desktop,Morning,Electronics,True,wireless headphones,23,2,False,Newest,245,True,False
+145,Goal-driven,Google,Desktop,Evening,Electronics,True,monitor,48,4,False,Newest,244,False,False
+146,Goal-driven,Google,Desktop,Afternoon,Running,True,adidas trainers,32,5,True,Newest,222,True,True
+147,Explorer,Instagram,Desktop,Morning,Sale,False,,97,19,False,Trending,548,True,False
+148,Goal-driven,Google,Mobile,Morning,Electronics,True,monitor,30,3,False,Relevance,80,True,False
+149,Price-sensitive,Direct,Mobile,Afternoon,Sale,True,discount,52,8,True,Price Low-High,308,False,False
+150,Goal-driven,Google,Desktop,Afternoon,Beauty,True,lipstick,33,5,True,Newest,61,True,True
+151,Price-sensitive,Google,Mobile,Evening,Sale,False,,46,6,True,Price Low-High,431,True,False
+152,Explorer,Instagram,Tablet,Afternoon,Electronics,False,,85,18,False,Trending,353,False,False
+153,Research,Google,Desktop,Morning,Electronics,True,gaming mouse,79,13,True,Highest Rated,801,True,False
+154,Goal-driven,Direct,Desktop,Morning,Electronics,True,monitor,39,6,False,Newest,298,True,True
+155,Research,Direct,Desktop,Evening,Sale,False,,66,13,True,Price Low-High,581,True,False
+156,Explorer,Instagram,Desktop,Morning,Fashion,False,,80,14,False,Trending,460,False,False
+157,Goal-driven,Google,Mobile,Evening,Beauty,True,skincare,31,2,False,Newest,222,False,False
+158,Price-sensitive,Email,Tablet,Morning,Sale,True,discount,47,8,True,Price Low-High,423,True,False
+159,Price-sensitive,Google,Mobile,Evening,Sale,False,,67,10,True,Price Low-High,407,False,False
+160,Explorer,Facebook,Mobile,Morning,Fashion,False,,80,17,False,Trending,539,False,False
+161,Goal-driven,Google,Desktop,Morning,Electronics,True,wireless headphones,27,2,False,Relevance,103,False,False
+162,Price-sensitive,Direct,Tablet,Evening,Sale,False,,46,5,True,Price Low-High,408,True,True
+163,Price-sensitive,Google,Mobile,Afternoon,Sale,True,discount,43,9,True,Price Low-High,448,True,False
+164,Price-sensitive,Google,Desktop,Evening,Sale,False,,54,9,True,Price Low-High,430,True,False
+165,Explorer,Facebook,Mobile,Morning,Fashion,False,,85,19,False,Trending,429,False,False
+166,Research,Google,Desktop,Evening,Sale,True,cheap deals,61,14,True,Price Low-High,429,False,False
+167,Explorer,Facebook,Mobile,Morning,Electronics,False,,84,10,False,Trending,487,False,False
+168,Goal-driven,Google,Desktop,Afternoon,Running,True,running shoes,24,6,True,Relevance,209,True,False
+169,Goal-driven,Google,Desktop,Evening,Beauty,True,perfume,36,6,False,Newest,134,False,False
+170,Price-sensitive,Google,Tablet,Afternoon,Sale,False,,56,8,True,Price Low-High,432,True,True
+171,Explorer,Facebook,Tablet,Evening,Running,False,,92,14,False,Trending,838,False,False
+172,Price-sensitive,Email,Desktop,Afternoon,Sale,False,,41,10,True,Price Low-High,302,False,False
+173,Goal-driven,Google,Mobile,Afternoon,Electronics,True,gaming mouse,35,6,False,Newest,87,True,True
+174,Goal-driven,Google,Mobile,Evening,Running,True,nike shoes,26,5,False,Relevance,209,True,False
+175,Goal-driven,Google,Mobile,Evening,Electronics,True,monitor,47,4,False,Relevance,179,True,True
+176,Goal-driven,Direct,Desktop,Evening,Running,True,adidas trainers,24,3,True,Newest,128,True,False
+177,Explorer,Instagram,Mobile,Afternoon,Sale,False,,94,14,False,Trending,667,False,False
+178,Research,Direct,Desktop,Afternoon,Electronics,False,,51,10,True,Price Low-High,765,True,False
+179,Price-sensitive,Direct,Mobile,Morning,Sale,True,discount,49,7,True,Price Low-High,279,True,True
+180,Explorer,Instagram,Tablet,Evening,Fashion,False,,83,14,False,Trending,845,True,False
+181,Price-sensitive,Google,Mobile,Morning,Sale,False,,41,7,True,Price Low-High,236,False,False
+182,Research,Google,Desktop,Morning,Electronics,False,,71,10,True,Highest Rated,871,False,False
+183,Explorer,Instagram,Desktop,Evening,Sale,False,,86,11,False,Trending,787,False,False
+184,Price-sensitive,Google,Desktop,Evening,Sale,True,discount,57,9,True,Price Low-High,416,False,False
+185,Explorer,Instagram,Tablet,Morning,Fashion,False,,96,13,False,Trending,878,False,False
+186,Explorer,Instagram,Mobile,Evening,Running,False,,99,11,False,Trending,494,False,False
+187,Price-sensitive,Direct,Mobile,Morning,Sale,True,discount,50,8,True,Price Low-High,454,True,False
+188,Goal-driven,Google,Mobile,Morning,Beauty,True,perfume,36,2,False,Newest,88,True,False
+189,Research,Google,Desktop,Afternoon,Running,True,adidas trainers,51,13,True,Price Low-High,739,True,False
+190,Explorer,Instagram,Tablet,Afternoon,Home,False,,96,20,False,Trending,307,False,False
+191,Explorer,Instagram,Mobile,Morning,Electronics,False,,93,15,False,Trending,429,False,False
+192,Goal-driven,Google,Mobile,Afternoon,Beauty,True,perfume,47,2,True,Relevance,280,True,True
+193,Goal-driven,Google,Mobile,Afternoon,Electronics,True,gaming mouse,31,3,False,Relevance,240,True,False
+194,Explorer,Direct,Desktop,Evening,Beauty,False,,100,11,False,Trending,808,False,False
+195,Explorer,Direct,Mobile,Afternoon,Running,False,,86,15,False,Trending,724,False,False
+196,Explorer,Instagram,Desktop,Afternoon,Beauty,False,,91,16,False,Trending,492,False,False
+197,Goal-driven,Google,Mobile,Afternoon,Electronics,True,gaming mouse,29,2,False,Relevance,179,True,False
+198,Explorer,Instagram,Mobile,Evening,Home,False,,87,20,False,Trending,368,False,False
+199,Price-sensitive,Google,Tablet,Evening,Sale,True,discount,70,5,True,Price Low-High,556,False,False
+200,Research,Direct,Desktop,Morning,Sale,False,,50,13,True,Price Low-High,411,True,False
+201,Research,Direct,Desktop,Morning,Fashion,False,,51,11,True,Highest Rated,462,False,False
+202,Explorer,Instagram,Mobile,Evening,Home,False,,92,14,False,Trending,598,False,False
+203,Explorer,Instagram,Tablet,Evening,Home,False,,92,20,False,Trending,792,False,False
+204,Research,Google,Desktop,Evening,Electronics,False,,65,8,True,Highest Rated,666,False,False
+205,Goal-driven,Google,Desktop,Morning,Running,True,nike shoes,43,5,False,Relevance,300,False,False
+206,Goal-driven,Google,Desktop,Evening,Running,True,running shoes,22,4,False,Newest,64,True,True
+207,Price-sensitive,Google,Desktop,Evening,Sale,False,,52,8,True,Price Low-High,205,False,False
+208,Research,Direct,Desktop,Evening,Running,True,nike shoes,67,11,True,Highest Rated,956,True,False
+209,Goal-driven,Google,Mobile,Afternoon,Electronics,True,monitor,31,2,False,Newest,92,True,False
+210,Goal-driven,Google,Desktop,Evening,Beauty,True,perfume,23,4,False,Newest,203,False,False
+211,Research,Direct,Desktop,Afternoon,Fashion,True,white trainers,53,13,True,Price Low-High,652,False,False
+212,Price-sensitive,Direct,Tablet,Evening,Sale,False,,70,10,True,Price Low-High,484,False,False
+213,Research,Google,Desktop,Afternoon,Electronics,False,,62,8,True,Price Low-High,448,False,False
+214,Price-sensitive,Email,Tablet,Afternoon,Sale,False,,55,10,True,Price Low-High,201,False,False
+215,Goal-driven,Google,Desktop,Morning,Electronics,True,wireless headphones,39,2,False,Relevance,234,True,False
+216,Price-sensitive,Direct,Tablet,Evening,Sale,False,,54,8,True,Price Low-High,532,False,False
+217,Explorer,Instagram,Mobile,Morning,Fashion,False,,89,11,False,Trending,361,False,False
+218,Research,Email,Desktop,Afternoon,Fashion,True,white trainers,53,15,True,Highest Rated,625,True,True
+219,Explorer,Instagram,Tablet,Morning,Home,False,,91,16,False,Trending,771,False,False
+220,Explorer,Instagram,Mobile,Afternoon,Running,False,,92,14,False,Trending,344,False,False
+221,Goal-driven,Direct,Mobile,Afternoon,Electronics,True,monitor,43,6,False,Relevance,127,False,False
+222,Explorer,Instagram,Mobile,Afternoon,Fashion,False,,88,18,False,Trending,403,False,False
+223,Research,Email,Desktop,Evening,Running,True,adidas trainers,52,12,True,Price Low-High,651,True,False
+224,Goal-driven,Google,Mobile,Morning,Beauty,True,lipstick,24,2,True,Relevance,223,True,True
+225,Research,Direct,Desktop,Morning,Fashion,True,white trainers,80,14,True,Highest Rated,743,True,True
+226,Price-sensitive,Email,Mobile,Morning,Sale,True,discount,66,5,True,Price Low-High,431,False,False
+227,Explorer,Facebook,Desktop,Morning,Sale,False,,89,12,False,Trending,342,False,False
+228,Goal-driven,Google,Desktop,Afternoon,Beauty,True,skincare,20,4,False,Relevance,293,True,True
+229,Research,Direct,Desktop,Evening,Running,True,running shoes,76,9,True,Highest Rated,712,True,False
+230,Price-sensitive,Direct,Mobile,Afternoon,Sale,True,discount,64,8,True,Price Low-High,476,False,False
+231,Research,Google,Desktop,Evening,Sale,True,cheap deals,57,12,True,Price Low-High,630,False,False
+232,Price-sensitive,Direct,Mobile,Morning,Sale,False,,57,8,True,Price Low-High,314,True,True
+233,Goal-driven,Google,Mobile,Morning,Electronics,True,wireless headphones,47,5,True,Relevance,103,False,False
+234,Price-sensitive,Google,Mobile,Afternoon,Sale,True,discount,49,6,True,Price Low-High,537,True,False
+235,Explorer,Facebook,Tablet,Afternoon,Electronics,False,,83,20,False,Trending,854,True,False
+236,Goal-driven,Google,Desktop,Evening,Electronics,True,wireless headphones,38,3,False,Newest,138,True,True
+237,Goal-driven,Google,Desktop,Afternoon,Beauty,True,perfume,38,5,False,Relevance,264,True,False
+238,Goal-driven,Google,Mobile,Morning,Running,True,adidas trainers,27,2,False,Relevance,234,True,True
+239,Research,Direct,Desktop,Morning,Electronics,True,monitor,80,11,True,Price Low-High,410,False,False
+240,Goal-driven,Google,Mobile,Afternoon,Beauty,True,perfume,28,2,True,Relevance,177,True,False
+241,Price-sensitive,Direct,Tablet,Afternoon,Sale,False,,40,5,True,Price Low-High,332,True,True
+242,Explorer,Instagram,Mobile,Afternoon,Running,False,,85,11,False,Trending,850,False,False
+243,Explorer,Instagram,Tablet,Morning,Beauty,False,,89,18,False,Trending,387,True,False
+244,Goal-driven,Google,Desktop,Morning,Beauty,True,skincare,39,5,False,Newest,82,True,False
+245,Research,Google,Desktop,Evening,Home,True,desk lamp,63,12,True,Highest Rated,483,False,False
+246,Price-sensitive,Google,Desktop,Evening,Sale,True,discount,57,9,True,Price Low-High,514,False,False
+247,Price-sensitive,Google,Tablet,Afternoon,Sale,False,,46,10,True,Price Low-High,549,True,True
+248,Explorer,Direct,Mobile,Morning,Running,False,,85,17,False,Trending,895,True,False
+249,Price-sensitive,Direct,Desktop,Morning,Sale,False,,61,8,True,Price Low-High,493,True,False
+250,Research,Direct,Desktop,Evening,Fashion,True,black jacket,76,10,True,Price Low-High,813,True,False
+251,Goal-driven,Google,Mobile,Evening,Beauty,True,lipstick,20,4,True,Newest,156,True,True
+252,Goal-driven,Google,Desktop,Afternoon,Beauty,True,perfume,44,3,True,Newest,201,True,True
+253,Research,Direct,Desktop,Evening,Sale,False,,56,9,True,Highest Rated,870,True,True
+254,Research,Email,Desktop,Morning,Running,True,nike shoes,69,11,True,Highest Rated,490,True,False
+255,Goal-driven,Google,Desktop,Morning,Beauty,True,skincare,34,2,False,Newest,73,True,True
+256,Explorer,Instagram,Tablet,Evening,Fashion,False,,90,10,False,Trending,897,False,False
+257,Goal-driven,Google,Mobile,Morning,Beauty,True,lipstick,38,4,True,Newest,284,True,True
+258,Explorer,Instagram,Desktop,Afternoon,Sale,False,,87,13,False,Trending,561,False,False
+259,Explorer,Direct,Desktop,Evening,Beauty,False,,92,20,False,Trending,508,False,False
+260,Price-sensitive,Email,Tablet,Afternoon,Sale,False,,61,5,True,Price Low-High,399,True,False
+261,Goal-driven,Google,Desktop,Morning,Electronics,True,monitor,20,5,False,Relevance,96,True,False
+262,Goal-driven,Direct,Desktop,Morning,Running,True,nike shoes,44,2,True,Relevance,86,True,True
+263,Research,Email,Desktop,Afternoon,Electronics,True,gaming mouse,62,15,True,Highest Rated,714,True,False
+264,Price-sensitive,Direct,Tablet,Afternoon,Sale,True,discount,58,10,True,Price Low-High,291,True,True
+265,Goal-driven,Google,Mobile,Evening,Electronics,True,gaming mouse,48,4,False,Relevance,257,True,False
+266,Explorer,Direct,Desktop,Evening,Electronics,False,,88,11,False,Trending,890,False,False
+267,Price-sensitive,Google,Mobile,Morning,Sale,False,,54,10,True,Price Low-High,584,False,False
+268,Goal-driven,Google,Mobile,Morning,Running,True,adidas trainers,46,6,True,Newest,184,True,False
+269,Explorer,Direct,Tablet,Morning,Sale,False,,91,18,False,Trending,377,True,False
+270,Goal-driven,Google,Desktop,Morning,Running,True,running shoes,31,5,False,Newest,83,False,False
+271,Goal-driven,Google,Mobile,Evening,Electronics,True,monitor,21,2,True,Relevance,268,True,True
+272,Goal-driven,Google,Mobile,Afternoon,Running,True,adidas trainers,22,4,True,Relevance,110,True,True
+273,Explorer,Instagram,Desktop,Evening,Fashion,False,,82,16,False,Trending,773,False,False
+274,Research,Email,Desktop,Morning,Electronics,True,monitor,60,11,True,Highest Rated,442,True,False
+275,Explorer,Instagram,Desktop,Evening,Fashion,False,,87,20,False,Trending,693,False,False
+276,Research,Email,Desktop,Evening,Fashion,False,,61,12,True,Highest Rated,796,False,False
+277,Research,Email,Desktop,Morning,Sale,True,discount,74,14,True,Highest Rated,464,True,True
+278,Goal-driven,Direct,Desktop,Afternoon,Running,True,nike shoes,39,6,True,Relevance,244,True,True
+279,Research,Google,Desktop,Evening,Home,True,coffee table,63,15,True,Highest Rated,597,True,False
+280,Price-sensitive,Google,Tablet,Morning,Sale,False,,45,9,True,Price Low-High,272,True,False
+281,Price-sensitive,Email,Tablet,Evening,Sale,False,,58,7,True,Price Low-High,600,False,False
+282,Price-sensitive,Direct,Desktop,Morning,Sale,True,discount,43,7,True,Price Low-High,206,True,True
+283,Explorer,Direct,Desktop,Afternoon,Electronics,False,,88,15,False,Trending,674,False,False
+284,Explorer,Facebook,Mobile,Evening,Running,False,,82,14,False,Trending,763,False,False
+285,Price-sensitive,Direct,Tablet,Evening,Sale,False,,40,8,True,Price Low-High,394,True,False
+286,Explorer,Facebook,Mobile,Morning,Sale,False,,89,17,False,Trending,690,False,False
+287,Goal-driven,Google,Mobile,Morning,Electronics,True,monitor,49,4,False,Relevance,185,False,False
+288,Price-sensitive,Google,Tablet,Evening,Sale,False,,47,7,True,Price Low-High,312,False,False
+289,Research,Email,Desktop,Evening,Running,True,nike shoes,74,13,True,Price Low-High,439,True,False
+290,Price-sensitive,Direct,Desktop,Morning,Sale,False,,40,8,True,Price Low-High,595,True,True
+291,Research,Direct,Desktop,Afternoon,Beauty,True,skincare,57,9,True,Price Low-High,579,False,False
+292,Price-sensitive,Google,Desktop,Afternoon,Sale,True,discount,68,8,True,Price Low-High,227,False,False
+293,Price-sensitive,Google,Tablet,Morning,Sale,False,,63,5,True,Price Low-High,222,False,False
+294,Price-sensitive,Email,Desktop,Morning,Sale,True,discount,40,9,True,Price Low-High,292,True,True
+295,Research,Email,Desktop,Morning,Fashion,True,summer dress,77,13,True,Highest Rated,634,False,False
+296,Explorer,Instagram,Tablet,Morning,Sale,False,,90,15,False,Trending,420,True,False
+297,Goal-driven,Google,Mobile,Afternoon,Running,True,running shoes,33,6,False,Relevance,164,True,True
+298,Goal-driven,Google,Mobile,Morning,Running,True,running shoes,25,6,False,Relevance,249,False,False
+299,Price-sensitive,Email,Tablet,Afternoon,Sale,False,,49,10,True,Price Low-High,563,False,False
+300,Goal-driven,Google,Desktop,Evening,Electronics,True,wireless headphones,35,4,False,Newest,118,True,True
+301,Price-sensitive,Direct,Mobile,Morning,Sale,False,,70,10,True,Price Low-High,278,True,False
+302,Explorer,Facebook,Desktop,Morning,Beauty,False,,81,16,False,Trending,463,False,False
+303,Research,Direct,Desktop,Evening,Sale,False,,63,8,True,Highest Rated,814,False,False
+304,Goal-driven,Google,Mobile,Morning,Beauty,True,skincare,26,6,True,Newest,127,True,True
+305,Research,Google,Desktop,Afternoon,Fashion,False,,69,11,True,Price Low-High,796,False,False
+306,Goal-driven,Google,Desktop,Evening,Beauty,True,skincare,49,3,False,Relevance,115,True,False
+307,Goal-driven,Google,Desktop,Afternoon,Running,True,nike shoes,35,3,True,Newest,206,True,True
+308,Goal-driven,Direct,Desktop,Afternoon,Beauty,True,skincare,29,4,False,Relevance,144,True,False
+309,Price-sensitive,Google,Tablet,Afternoon,Sale,True,discount,67,9,True,Price Low-High,366,True,False
+310,Explorer,Instagram,Desktop,Morning,Fashion,False,,94,13,False,Trending,310,False,False
+311,Explorer,Instagram,Tablet,Afternoon,Running,False,,85,11,False,Trending,345,False,False
+312,Goal-driven,Direct,Mobile,Morning,Electronics,True,wireless headphones,31,3,False,Newest,139,False,False
+313,Goal-driven,Google,Desktop,Morning,Beauty,True,perfume,33,2,True,Relevance,120,True,False
+314,Research,Google,Desktop,Morning,Beauty,False,,50,11,True,Highest Rated,845,False,False
+315,Goal-driven,Google,Desktop,Evening,Beauty,True,skincare,29,6,True,Newest,82,True,True
+316,Goal-driven,Google,Mobile,Afternoon,Electronics,True,gaming mouse,44,5,False,Relevance,107,True,False
+317,Goal-driven,Google,Mobile,Morning,Running,True,nike shoes,42,6,True,Relevance,92,False,False
+318,Goal-driven,Google,Desktop,Afternoon,Electronics,True,gaming mouse,36,3,False,Newest,110,True,False
+319,Goal-driven,Google,Mobile,Afternoon,Running,True,running shoes,27,5,False,Newest,280,True,True
+320,Goal-driven,Google,Mobile,Morning,Beauty,True,lipstick,50,3,True,Relevance,69,True,False
+321,Goal-driven,Google,Mobile,Morning,Electronics,True,monitor,41,6,False,Relevance,230,True,False
+322,Price-sensitive,Google,Tablet,Evening,Sale,True,discount,58,9,True,Price Low-High,410,False,False
+323,Research,Email,Desktop,Evening,Beauty,True,lipstick,79,15,True,Highest Rated,978,True,False
+324,Price-sensitive,Direct,Desktop,Morning,Sale,False,,70,9,True,Price Low-High,273,False,False
+325,Goal-driven,Google,Mobile,Morning,Running,True,adidas trainers,27,3,True,Relevance,70,True,True
+326,Research,Email,Desktop,Evening,Sale,False,,58,8,True,Price Low-High,827,False,False
+327,Price-sensitive,Email,Desktop,Afternoon,Sale,True,discount,65,7,True,Price Low-High,432,True,False
+328,Price-sensitive,Direct,Tablet,Evening,Sale,False,,52,6,True,Price Low-High,215,True,True
+329,Research,Google,Desktop,Evening,Sale,True,discount,56,10,True,Price Low-High,968,False,False
+330,Research,Direct,Desktop,Evening,Electronics,False,,63,15,True,Highest Rated,766,False,False
+331,Explorer,Instagram,Tablet,Morning,Sale,False,,99,17,False,Trending,577,False,False
+332,Goal-driven,Google,Mobile,Morning,Electronics,True,gaming mouse,37,5,False,Newest,103,False,False
+333,Price-sensitive,Email,Tablet,Afternoon,Sale,False,,43,6,True,Price Low-High,506,False,False
+334,Goal-driven,Google,Mobile,Morning,Beauty,True,skincare,43,6,True,Relevance,121,True,True
+335,Explorer,Facebook,Mobile,Evening,Sale,False,,97,13,False,Trending,789,False,False
+336,Explorer,Instagram,Desktop,Evening,Beauty,False,,92,13,False,Trending,667,True,False
+337,Price-sensitive,Email,Tablet,Morning,Sale,False,,60,6,True,Price Low-High,564,False,False
+338,Goal-driven,Google,Desktop,Morning,Running,True,adidas trainers,42,5,True,Relevance,168,False,False
+339,Goal-driven,Google,Desktop,Afternoon,Electronics,True,wireless headphones,25,3,True,Newest,104,True,True
+340,Price-sensitive,Direct,Tablet,Afternoon,Sale,False,,69,5,True,Price Low-High,264,True,False
+341,Price-sensitive,Email,Tablet,Morning,Sale,False,,63,6,True,Price Low-High,249,True,False
+342,Goal-driven,Direct,Desktop,Evening,Electronics,True,gaming mouse,39,2,False,Newest,281,False,False
+343,Explorer,Instagram,Desktop,Evening,Sale,False,,86,16,False,Trending,384,False,False
+344,Goal-driven,Google,Mobile,Evening,Beauty,True,perfume,26,4,False,Relevance,163,True,True
+345,Explorer,Instagram,Tablet,Evening,Fashion,False,,90,11,False,Trending,850,False,False
+346,Research,Email,Desktop,Afternoon,Home,True,coffee table,62,13,True,Price Low-High,751,False,False
+347,Explorer,Instagram,Desktop,Evening,Fashion,False,,90,20,False,Trending,834,False,False
+348,Explorer,Instagram,Desktop,Afternoon,Sale,False,,99,12,False,Trending,435,False,False
+349,Price-sensitive,Direct,Desktop,Morning,Sale,False,,64,10,True,Price Low-High,445,False,False
+350,Price-sensitive,Email,Desktop,Afternoon,Sale,True,discount,66,6,True,Price Low-High,301,True,False
+351,Goal-driven,Google,Desktop,Evening,Beauty,True,lipstick,26,4,False,Newest,287,True,False
+352,Research,Google,Desktop,Afternoon,Home,True,chair,70,14,True,Highest Rated,893,False,False
+353,Explorer,Facebook,Mobile,Morning,Running,False,,90,12,False,Trending,518,False,False
+354,Goal-driven,Google,Desktop,Morning,Running,True,running shoes,49,5,True,Newest,151,False,False
+355,Research,Direct,Desktop,Evening,Electronics,True,monitor,69,15,True,Price Low-High,479,False,False
+356,Research,Email,Desktop,Morning,Beauty,False,,79,12,True,Price Low-High,936,False,False
+357,Research,Email,Desktop,Afternoon,Home,False,,72,11,True,Price Low-High,473,True,False
+358,Explorer,Facebook,Tablet,Morning,Home,False,,99,13,False,Trending,414,False,False
+359,Research,Google,Desktop,Afternoon,Fashion,True,black jacket,69,14,True,Price Low-High,775,False,False
+360,Explorer,Instagram,Mobile,Afternoon,Fashion,False,,98,12,False,Trending,593,True,False
+361,Price-sensitive,Email,Desktop,Morning,Sale,True,discount,65,7,True,Price Low-High,488,True,False
+362,Goal-driven,Google,Desktop,Morning,Running,True,running shoes,38,2,False,Relevance,219,True,True
+363,Explorer,Instagram,Mobile,Evening,Electronics,False,,90,13,False,Trending,356,False,False
+364,Goal-driven,Direct,Mobile,Evening,Running,True,adidas trainers,34,5,False,Relevance,67,True,True
+365,Explorer,Direct,Mobile,Morning,Sale,False,,93,14,False,Trending,853,False,False
+366,Explorer,Direct,Desktop,Morning,Beauty,False,,88,10,False,Trending,373,False,False
+367,Price-sensitive,Google,Mobile,Afternoon,Sale,True,discount,54,10,True,Price Low-High,423,False,False
+368,Research,Email,Desktop,Afternoon,Electronics,False,,64,8,True,Highest Rated,573,False,False
+369,Price-sensitive,Email,Desktop,Evening,Sale,False,,56,6,True,Price Low-High,507,True,True
+370,Explorer,Direct,Tablet,Evening,Sale,False,,95,12,False,Trending,640,False,False
+371,Goal-driven,Google,Desktop,Evening,Running,True,adidas trainers,39,3,False,Relevance,140,True,True
+372,Goal-driven,Google,Desktop,Evening,Electronics,True,monitor,43,2,False,Newest,123,True,True
+373,Goal-driven,Google,Mobile,Afternoon,Beauty,True,skincare,45,5,True,Newest,187,False,False
+374,Research,Email,Desktop,Evening,Running,True,running shoes,79,8,True,Price Low-High,469,False,False
+375,Price-sensitive,Direct,Desktop,Morning,Sale,True,discount,64,5,True,Price Low-High,569,True,False
+376,Research,Google,Desktop,Afternoon,Sale,True,discount,57,8,True,Price Low-High,978,False,False
+377,Goal-driven,Google,Desktop,Afternoon,Electronics,True,monitor,21,2,True,Relevance,149,False,False
+378,Explorer,Direct,Desktop,Morning,Home,False,,94,19,False,Trending,712,False,False
+379,Price-sensitive,Google,Tablet,Morning,Sale,False,,58,7,True,Price Low-High,427,True,True
+380,Price-sensitive,Email,Desktop,Evening,Sale,False,,59,8,True,Price Low-High,304,True,True
+381,Research,Direct,Desktop,Morning,Sale,True,clearance,51,9,True,Price Low-High,507,True,True
+382,Explorer,Instagram,Tablet,Morning,Electronics,False,,91,10,False,Trending,818,False,False
+383,Goal-driven,Google,Mobile,Morning,Beauty,True,skincare,50,2,False,Newest,175,True,False
+384,Price-sensitive,Email,Desktop,Afternoon,Sale,False,,41,7,True,Price Low-High,422,False,False
+385,Price-sensitive,Email,Tablet,Morning,Sale,False,,61,8,True,Price Low-High,507,False,False
+386,Price-sensitive,Google,Desktop,Evening,Sale,True,discount,64,9,True,Price Low-High,283,True,False
+387,Goal-driven,Google,Mobile,Afternoon,Electronics,True,monitor,46,4,True,Relevance,72,False,False
+388,Goal-driven,Google,Desktop,Afternoon,Electronics,True,wireless headphones,25,5,True,Newest,156,True,True
+389,Price-sensitive,Google,Tablet,Afternoon,Sale,False,,47,8,True,Price Low-High,341,False,False
+390,Explorer,Instagram,Mobile,Evening,Electronics,False,,83,19,False,Trending,665,False,False
+391,Research,Direct,Desktop,Afternoon,Electronics,True,monitor,54,11,True,Price Low-High,820,False,False
+392,Explorer,Instagram,Desktop,Afternoon,Home,False,,82,10,False,Trending,662,True,False
+393,Goal-driven,Google,Desktop,Morning,Running,True,adidas trainers,25,5,False,Relevance,263,True,True
+394,Goal-driven,Google,Mobile,Evening,Running,True,nike shoes,20,2,False,Relevance,181,False,False
+395,Goal-driven,Direct,Mobile,Afternoon,Running,True,adidas trainers,22,3,False,Relevance,181,True,True
+396,Goal-driven,Google,Mobile,Morning,Running,True,running shoes,35,5,False,Relevance,123,True,False
+397,Explorer,Direct,Mobile,Morning,Sale,False,,97,11,False,Trending,422,False,False
+398,Price-sensitive,Email,Desktop,Evening,Sale,False,,47,5,True,Price Low-High,228,False,False
+399,Research,Direct,Desktop,Afternoon,Sale,False,,76,10,True,Highest Rated,940,False,False
+400,Goal-driven,Google,Desktop,Evening,Electronics,True,wireless headphones,48,6,True,Relevance,148,True,True
+401,Research,Direct,Desktop,Evening,Sale,True,discount,57,10,True,Highest Rated,458,True,True
+402,Price-sensitive,Google,Mobile,Afternoon,Sale,False,,49,9,True,Price Low-High,448,True,False
+403,Goal-driven,Google,Desktop,Afternoon,Electronics,True,monitor,34,6,True,Relevance,269,True,True
+404,Price-sensitive,Google,Tablet,Morning,Sale,False,,66,6,True,Price Low-High,591,True,True
+405,Explorer,Direct,Desktop,Afternoon,Electronics,False,,87,10,False,Trending,855,False,False
+406,Explorer,Direct,Tablet,Afternoon,Fashion,False,,92,11,False,Trending,833,True,False
+407,Goal-driven,Google,Mobile,Afternoon,Electronics,True,monitor,25,3,False,Newest,214,True,True
+408,Price-sensitive,Google,Mobile,Morning,Sale,True,discount,60,10,True,Price Low-High,220,True,False
+409,Price-sensitive,Email,Tablet,Morning,Sale,False,,50,10,True,Price Low-High,435,False,False
+410,Research,Google,Desktop,Evening,Sale,True,discount,50,11,True,Highest Rated,561,True,False
+411,Price-sensitive,Google,Desktop,Afternoon,Sale,True,discount,59,6,True,Price Low-High,588,True,False
+412,Explorer,Direct,Mobile,Morning,Beauty,False,,82,15,False,Trending,828,True,False
+413,Explorer,Facebook,Desktop,Morning,Home,False,,80,20,False,Trending,495,False,False
+414,Research,Google,Desktop,Afternoon,Beauty,True,lipstick,58,15,True,Highest Rated,964,False,False
+415,Research,Direct,Desktop,Morning,Home,True,desk lamp,74,9,True,Highest Rated,805,False,False
+416,Price-sensitive,Direct,Mobile,Afternoon,Sale,False,,70,7,True,Price Low-High,565,False,False
+417,Goal-driven,Google,Desktop,Morning,Beauty,True,perfume,21,5,True,Relevance,168,False,False
+418,Explorer,Instagram,Tablet,Afternoon,Fashion,False,,90,15,False,Trending,712,False,False
+419,Price-sensitive,Google,Mobile,Afternoon,Sale,False,,58,8,True,Price Low-High,451,False,False
+420,Price-sensitive,Google,Desktop,Evening,Sale,True,discount,43,6,True,Price Low-High,271,True,True
+421,Goal-driven,Google,Desktop,Afternoon,Beauty,True,skincare,41,4,False,Newest,244,True,True
+422,Research,Email,Desktop,Morning,Electronics,True,gaming mouse,64,12,True,Highest Rated,723,True,False
+423,Goal-driven,Google,Mobile,Evening,Running,True,adidas trainers,27,3,False,Relevance,62,True,True
+424,Price-sensitive,Google,Tablet,Afternoon,Sale,True,discount,57,6,True,Price Low-High,462,True,False
+425,Goal-driven,Google,Mobile,Evening,Beauty,True,lipstick,46,3,False,Relevance,141,False,False
+426,Goal-driven,Google,Desktop,Evening,Running,True,running shoes,39,5,False,Relevance,108,False,False
+427,Research,Direct,Desktop,Afternoon,Electronics,True,gaming mouse,59,14,True,Highest Rated,970,False,False
+428,Explorer,Direct,Tablet,Morning,Fashion,False,,87,15,False,Trending,486,False,False
+429,Research,Email,Desktop,Evening,Home,True,desk lamp,65,15,True,Highest Rated,520,False,False
+430,Research,Email,Desktop,Afternoon,Running,True,adidas trainers,79,9,True,Highest Rated,821,False,False
+431,Price-sensitive,Google,Tablet,Morning,Sale,True,discount,68,6,True,Price Low-High,564,True,False
+432,Price-sensitive,Email,Mobile,Evening,Sale,False,,69,9,True,Price Low-High,300,True,False
+433,Goal-driven,Google,Desktop,Evening,Beauty,True,lipstick,30,5,True,Relevance,67,True,True
+434,Price-sensitive,Direct,Tablet,Morning,Sale,False,,67,6,True,Price Low-High,528,True,True
+435,Research,Email,Desktop,Evening,Beauty,True,perfume,66,10,True,Highest Rated,470,False,False
+436,Price-sensitive,Email,Desktop,Morning,Sale,False,,57,5,True,Price Low-High,212,False,False
+437,Research,Google,Desktop,Evening,Electronics,True,monitor,67,11,True,Price Low-High,632,False,False
+438,Goal-driven,Google,Desktop,Evening,Running,True,nike shoes,33,3,True,Relevance,240,True,True
+439,Goal-driven,Google,Mobile,Evening,Beauty,True,lipstick,48,3,False,Newest,204,False,False
+440,Goal-driven,Google,Desktop,Afternoon,Beauty,True,skincare,38,5,True,Relevance,257,False,False
+441,Research,Google,Desktop,Morning,Fashion,True,black jacket,77,10,True,Highest Rated,570,True,False
+442,Research,Google,Desktop,Morning,Electronics,True,gaming mouse,73,12,True,Price Low-High,839,False,False
+443,Price-sensitive,Direct,Mobile,Evening,Sale,False,,55,6,True,Price Low-High,449,True,True
+444,Explorer,Facebook,Mobile,Morning,Sale,False,,88,10,False,Trending,705,False,False
+445,Research,Google,Desktop,Morning,Fashion,False,,51,8,True,Highest Rated,542,False,False
+446,Price-sensitive,Google,Tablet,Evening,Sale,True,discount,54,5,True,Price Low-High,595,False,False
+447,Explorer,Direct,Tablet,Morning,Electronics,False,,98,16,False,Trending,685,False,False
+448,Goal-driven,Google,Desktop,Evening,Electronics,True,wireless headphones,20,5,False,Relevance,105,False,False
+449,Research,Direct,Desktop,Morning,Home,False,,70,15,True,Highest Rated,565,False,False
+450,Goal-driven,Google,Desktop,Afternoon,Running,True,adidas trainers,24,6,False,Relevance,143,False,False
+451,Explorer,Direct,Mobile,Afternoon,Electronics,False,,80,19,False,Trending,825,False,False
+452,Explorer,Instagram,Tablet,Evening,Running,False,,96,19,False,Trending,614,True,False
+453,Price-sensitive,Direct,Mobile,Morning,Sale,False,,59,10,True,Price Low-High,497,True,False
+454,Research,Direct,Desktop,Afternoon,Electronics,True,gaming mouse,50,14,True,Price Low-High,666,False,False
+455,Price-sensitive,Google,Mobile,Morning,Sale,True,discount,42,7,True,Price Low-High,413,False,False
+456,Goal-driven,Google,Mobile,Evening,Beauty,True,lipstick,44,5,True,Relevance,151,True,False
+457,Price-sensitive,Email,Tablet,Evening,Sale,False,,49,7,True,Price Low-High,478,True,False
+458,Goal-driven,Google,Mobile,Evening,Beauty,True,lipstick,47,6,False,Relevance,208,True,True
+459,Price-sensitive,Google,Mobile,Afternoon,Sale,True,discount,56,8,True,Price Low-High,455,False,False
+460,Explorer,Instagram,Tablet,Morning,Home,False,,100,19,False,Trending,810,False,False
+461,Goal-driven,Google,Mobile,Afternoon,Beauty,True,skincare,42,3,False,Relevance,80,True,True
+462,Goal-driven,Google,Desktop,Afternoon,Running,True,adidas trainers,44,2,False,Newest,220,True,True
+463,Price-sensitive,Email,Tablet,Evening,Sale,True,discount,48,10,True,Price Low-High,222,True,True
+464,Research,Email,Desktop,Evening,Electronics,True,gaming mouse,65,14,True,Price Low-High,709,True,False
+465,Goal-driven,Google,Desktop,Evening,Running,True,adidas trainers,25,6,False,Newest,89,True,True
+466,Goal-driven,Google,Mobile,Evening,Electronics,True,gaming mouse,25,6,True,Newest,192,False,False
+467,Explorer,Instagram,Desktop,Morning,Electronics,False,,97,13,False,Trending,354,False,False
+468,Research,Google,Desktop,Afternoon,Running,False,,72,15,True,Highest Rated,770,False,False
+469,Price-sensitive,Email,Desktop,Evening,Sale,True,discount,66,8,True,Price Low-High,513,True,False
+470,Explorer,Instagram,Mobile,Morning,Running,False,,87,15,False,Trending,388,False,False
+471,Research,Direct,Desktop,Morning,Home,False,,62,10,True,Highest Rated,603,False,False
+472,Price-sensitive,Google,Desktop,Morning,Sale,False,,43,5,True,Price Low-High,572,False,False
+473,Research,Direct,Desktop,Morning,Home,True,desk lamp,69,14,True,Highest Rated,781,False,False
+474,Research,Google,Desktop,Morning,Running,True,running shoes,62,9,True,Price Low-High,523,False,False
+475,Explorer,Instagram,Desktop,Afternoon,Beauty,False,,94,17,False,Trending,761,False,False
+476,Goal-driven,Google,Mobile,Evening,Beauty,True,skincare,47,2,False,Newest,259,False,False
+477,Research,Google,Desktop,Afternoon,Electronics,False,,53,13,True,Highest Rated,929,True,False
+478,Goal-driven,Google,Desktop,Evening,Beauty,True,skincare,30,2,False,Newest,202,False,False
+479,Goal-driven,Google,Desktop,Morning,Running,True,nike shoes,36,5,False,Newest,217,True,True
+480,Explorer,Facebook,Mobile,Evening,Sale,False,,81,16,False,Trending,580,True,False
+481,Research,Google,Desktop,Morning,Fashion,True,summer dress,77,11,True,Highest Rated,895,False,False
+482,Research,Direct,Desktop,Evening,Sale,True,cheap deals,67,14,True,Highest Rated,651,False,False
+483,Research,Email,Desktop,Morning,Electronics,False,,50,14,True,Price Low-High,759,True,False
+484,Price-sensitive,Google,Tablet,Morning,Sale,False,,45,5,True,Price Low-High,314,True,False
+485,Explorer,Direct,Tablet,Afternoon,Fashion,False,,85,15,False,Trending,772,False,False
+486,Goal-driven,Google,Desktop,Evening,Beauty,True,perfume,50,2,True,Newest,127,False,False
+487,Research,Email,Desktop,Morning,Beauty,True,perfume,52,10,True,Price Low-High,796,True,True
+488,Price-sensitive,Email,Desktop,Evening,Sale,False,,44,6,True,Price Low-High,348,True,True
+489,Research,Google,Desktop,Evening,Sale,True,clearance,51,9,True,Price Low-High,711,False,False
+490,Research,Google,Desktop,Afternoon,Fashion,True,black jacket,78,8,True,Highest Rated,510,False,False
+491,Goal-driven,Google,Mobile,Afternoon,Electronics,True,wireless headphones,24,5,False,Relevance,258,True,True
+492,Goal-driven,Google,Desktop,Afternoon,Electronics,True,gaming mouse,33,6,True,Newest,175,True,False
+493,Price-sensitive,Google,Mobile,Afternoon,Sale,True,discount,68,6,True,Price Low-High,574,True,False
+494,Price-sensitive,Direct,Desktop,Morning,Sale,True,discount,59,10,True,Price Low-High,544,False,False
+495,Explorer,Instagram,Desktop,Afternoon,Sale,False,,96,14,False,Trending,581,False,False
+496,Research,Google,Desktop,Evening,Home,True,chair,74,12,True,Highest Rated,983,False,False
+497,Research,Email,Desktop,Afternoon,Home,True,chair,54,10,True,Highest Rated,565,False,False
+498,Research,Google,Desktop,Morning,Home,True,chair,54,11,True,Highest Rated,574,False,False
+499,Goal-driven,Google,Desktop,Evening,Running,True,adidas trainers,44,4,False,Relevance,139,True,True
+500,Research,Email,Desktop,Evening,Electronics,False,,79,13,True,Price Low-High,680,False,False
+501,Research,Email,Desktop,Evening,Home,True,chair,65,12,True,Price Low-High,853,True,False
+502,Explorer,Instagram,Mobile,Afternoon,Electronics,False,,98,11,False,Trending,375,False,False
+503,Price-sensitive,Email,Tablet,Morning,Sale,True,discount,58,10,True,Price Low-High,584,True,True
+504,Goal-driven,Google,Desktop,Evening,Beauty,True,skincare,48,5,True,Newest,146,True,False
+505,Research,Email,Desktop,Evening,Sale,True,clearance,51,11,True,Price Low-High,512,False,False
+506,Research,Google,Desktop,Afternoon,Home,False,,75,15,True,Price Low-High,849,False,False
+507,Explorer,Direct,Mobile,Afternoon,Beauty,False,,94,12,False,Trending,505,False,False
+508,Research,Email,Desktop,Evening,Electronics,False,,71,13,True,Highest Rated,464,False,False
+509,Price-sensitive,Email,Mobile,Afternoon,Sale,True,discount,42,5,True,Price Low-High,515,True,True
+510,Explorer,Instagram,Tablet,Afternoon,Electronics,False,,92,19,False,Trending,399,False,False
+511,Goal-driven,Google,Mobile,Evening,Beauty,True,skincare,50,5,False,Relevance,225,True,True
+512,Explorer,Facebook,Mobile,Afternoon,Sale,False,,93,18,False,Trending,768,False,False
+513,Goal-driven,Direct,Mobile,Morning,Electronics,True,gaming mouse,43,6,True,Relevance,182,False,False
+514,Price-sensitive,Direct,Mobile,Evening,Sale,True,discount,59,9,True,Price Low-High,415,False,False
+515,Explorer,Direct,Mobile,Evening,Running,False,,87,13,False,Trending,772,False,False
+516,Goal-driven,Google,Mobile,Morning,Running,True,running shoes,32,3,False,Relevance,208,True,True
+517,Research,Direct,Desktop,Evening,Running,False,,64,12,True,Highest Rated,844,True,False
+518,Research,Google,Desktop,Afternoon,Sale,False,,79,13,True,Highest Rated,736,False,False
+519,Goal-driven,Google,Desktop,Morning,Electronics,True,monitor,41,5,False,Newest,73,True,True
+520,Goal-driven,Google,Desktop,Evening,Electronics,True,gaming mouse,49,6,True,Relevance,277,False,False
+521,Explorer,Direct,Tablet,Afternoon,Home,False,,90,17,False,Trending,608,False,False
+522,Explorer,Instagram,Tablet,Morning,Beauty,False,,90,10,False,Trending,368,False,False
+523,Explorer,Facebook,Mobile,Morning,Home,False,,82,10,False,Trending,766,False,False
+524,Research,Email,Desktop,Afternoon,Beauty,True,skincare,54,11,True,Price Low-High,888,False,False
+525,Explorer,Instagram,Tablet,Evening,Fashion,False,,89,11,False,Trending,797,True,False
+526,Research,Google,Desktop,Evening,Sale,True,cheap deals,75,11,True,Price Low-High,741,False,False
+527,Price-sensitive,Email,Tablet,Evening,Sale,False,,59,8,True,Price Low-High,308,True,True
+528,Research,Direct,Desktop,Evening,Sale,True,clearance,77,11,True,Highest Rated,438,True,False
+529,Research,Direct,Desktop,Morning,Electronics,True,wireless headphones,51,12,True,Price Low-High,786,False,False
+530,Goal-driven,Google,Mobile,Afternoon,Electronics,True,monitor,25,5,False,Newest,123,True,False
+531,Price-sensitive,Email,Tablet,Afternoon,Sale,False,,43,5,True,Price Low-High,477,True,False
+532,Research,Google,Desktop,Afternoon,Running,True,running shoes,59,9,True,Price Low-High,407,True,False
+533,Research,Email,Desktop,Afternoon,Electronics,True,gaming mouse,73,12,True,Highest Rated,952,False,False
+534,Research,Google,Desktop,Evening,Fashion,True,black jacket,74,12,True,Price Low-High,984,False,False
+535,Explorer,Instagram,Tablet,Afternoon,Sale,False,,98,20,False,Trending,882,False,False
+536,Goal-driven,Google,Desktop,Afternoon,Running,True,running shoes,26,3,True,Relevance,91,True,True
+537,Price-sensitive,Direct,Tablet,Evening,Sale,False,,66,10,True,Price Low-High,557,True,False
+538,Goal-driven,Google,Desktop,Afternoon,Running,True,adidas trainers,44,5,False,Relevance,165,True,True
+539,Price-sensitive,Email,Mobile,Afternoon,Sale,False,,42,10,True,Price Low-High,413,False,False
+540,Research,Direct,Desktop,Morning,Home,True,desk lamp,52,8,True,Highest Rated,763,True,False
+541,Goal-driven,Google,Mobile,Evening,Running,True,adidas trainers,31,3,True,Relevance,116,True,True
+542,Research,Email,Desktop,Afternoon,Beauty,True,skincare,73,15,True,Price Low-High,712,True,True
+543,Price-sensitive,Email,Mobile,Evening,Sale,False,,50,9,True,Price Low-High,208,True,True
+544,Goal-driven,Google,Mobile,Morning,Electronics,True,gaming mouse,20,2,False,Newest,171,True,False
+545,Explorer,Direct,Mobile,Evening,Electronics,False,,96,14,False,Trending,778,False,False
+546,Goal-driven,Google,Mobile,Evening,Running,True,nike shoes,23,6,False,Relevance,280,True,True
+547,Research,Google,Desktop,Afternoon,Beauty,False,,66,11,True,Price Low-High,539,True,False
+548,Goal-driven,Google,Desktop,Evening,Running,True,adidas trainers,40,5,False,Relevance,66,True,True
+549,Explorer,Instagram,Mobile,Morning,Running,False,,98,17,False,Trending,340,False,False
+550,Explorer,Instagram,Desktop,Morning,Fashion,False,,100,11,False,Trending,304,True,False
+551,Explorer,Instagram,Tablet,Afternoon,Fashion,False,,100,12,False,Trending,780,False,False
+552,Explorer,Instagram,Mobile,Afternoon,Sale,False,,88,19,False,Trending,555,True,False
+553,Price-sensitive,Email,Desktop,Afternoon,Sale,True,discount,62,10,True,Price Low-High,486,False,False
+554,Explorer,Instagram,Mobile,Evening,Sale,False,,97,12,False,Trending,319,True,False
+555,Explorer,Facebook,Desktop,Afternoon,Home,False,,91,18,False,Trending,900,False,False
+556,Price-sensitive,Google,Mobile,Afternoon,Sale,False,,46,5,True,Price Low-High,208,True,True
+557,Research,Direct,Desktop,Evening,Fashion,True,white trainers,78,15,True,Price Low-High,567,False,False
+558,Goal-driven,Google,Mobile,Afternoon,Electronics,True,gaming mouse,37,2,True,Relevance,159,True,True
+559,Price-sensitive,Direct,Mobile,Evening,Sale,False,,65,10,True,Price Low-High,251,False,False
+560,Goal-driven,Google,Desktop,Morning,Running,True,nike shoes,27,5,True,Relevance,155,True,True
+561,Goal-driven,Google,Mobile,Morning,Beauty,True,perfume,47,5,True,Relevance,265,True,False
+562,Goal-driven,Direct,Desktop,Afternoon,Electronics,True,gaming mouse,49,4,False,Relevance,130,False,False
+563,Research,Google,Desktop,Afternoon,Sale,False,,72,11,True,Highest Rated,966,True,False
+564,Goal-driven,Google,Mobile,Afternoon,Running,True,nike shoes,35,6,True,Newest,172,True,True
+565,Research,Google,Desktop,Morning,Beauty,True,lipstick,51,8,True,Price Low-High,661,True,False
+566,Research,Direct,Desktop,Morning,Fashion,True,white trainers,59,13,True,Price Low-High,513,False,False
+567,Research,Google,Desktop,Evening,Fashion,True,black jacket,63,11,True,Price Low-High,410,False,False
+568,Goal-driven,Google,Mobile,Evening,Electronics,True,monitor,25,2,False,Relevance,176,True,True
+569,Goal-driven,Google,Mobile,Evening,Running,True,adidas trainers,45,3,False,Relevance,65,False,False
+570,Explorer,Instagram,Desktop,Afternoon,Fashion,False,,90,12,False,Trending,416,False,False
+571,Research,Google,Desktop,Afternoon,Beauty,True,skincare,62,8,True,Price Low-High,999,True,True
+572,Price-sensitive,Google,Desktop,Morning,Sale,True,discount,65,9,True,Price Low-High,238,False,False
+573,Goal-driven,Google,Desktop,Afternoon,Electronics,True,monitor,26,3,True,Relevance,258,True,True
+574,Explorer,Instagram,Tablet,Morning,Beauty,False,,88,11,False,Trending,454,False,False
+575,Explorer,Instagram,Desktop,Evening,Sale,False,,100,12,False,Trending,782,False,False
+576,Explorer,Instagram,Desktop,Evening,Home,False,,84,11,False,Trending,847,False,False
+577,Goal-driven,Google,Mobile,Afternoon,Running,True,adidas trainers,43,5,False,Relevance,111,False,False
+578,Price-sensitive,Google,Tablet,Evening,Sale,True,discount,40,6,True,Price Low-High,494,True,False
+579,Price-sensitive,Google,Tablet,Evening,Sale,False,,56,10,True,Price Low-High,569,False,False
+580,Explorer,Instagram,Mobile,Afternoon,Running,False,,92,16,False,Trending,647,False,False
+581,Research,Direct,Desktop,Afternoon,Home,False,,69,8,True,Price Low-High,947,True,False
+582,Explorer,Instagram,Desktop,Afternoon,Home,False,,82,16,False,Trending,478,False,False
+583,Price-sensitive,Direct,Desktop,Afternoon,Sale,False,,57,7,True,Price Low-High,300,True,False
+584,Price-sensitive,Direct,Tablet,Afternoon,Sale,False,,53,10,True,Price Low-High,477,True,False
+585,Research,Google,Desktop,Morning,Beauty,True,skincare,80,11,True,Highest Rated,702,False,False
+586,Research,Email,Desktop,Evening,Home,True,coffee table,75,10,True,Highest Rated,985,False,False
+587,Research,Email,Desktop,Evening,Beauty,True,perfume,78,14,True,Highest Rated,838,False,False
+588,Explorer,Instagram,Tablet,Afternoon,Running,False,,92,12,False,Trending,414,False,False
+589,Price-sensitive,Google,Tablet,Morning,Sale,True,discount,47,8,True,Price Low-High,380,True,True
+590,Explorer,Direct,Mobile,Evening,Home,False,,92,12,False,Trending,722,False,False
+591,Explorer,Instagram,Mobile,Morning,Home,False,,81,16,False,Trending,641,False,False
+592,Goal-driven,Google,Mobile,Morning,Running,True,adidas trainers,21,3,False,Relevance,205,True,False
+593,Price-sensitive,Email,Mobile,Afternoon,Sale,True,discount,56,6,True,Price Low-High,581,True,True
+594,Price-sensitive,Email,Tablet,Morning,Sale,True,discount,56,5,True,Price Low-High,540,False,False
+595,Explorer,Instagram,Tablet,Afternoon,Running,False,,100,16,False,Trending,645,False,False
+596,Goal-driven,Google,Desktop,Evening,Running,True,nike shoes,32,6,False,Newest,251,True,True
+597,Goal-driven,Google,Desktop,Afternoon,Running,True,running shoes,20,2,False,Newest,239,False,False
+598,Research,Google,Desktop,Afternoon,Beauty,True,lipstick,52,15,True,Price Low-High,947,False,False
+599,Research,Google,Desktop,Afternoon,Home,True,coffee table,73,11,True,Highest Rated,435,True,False
+600,Research,Google,Desktop,Morning,Sale,True,cheap deals,50,9,True,Highest Rated,835,False,False
+601,Research,Google,Desktop,Afternoon,Electronics,True,gaming mouse,71,11,True,Price Low-High,609,False,False
+602,Goal-driven,Google,Mobile,Evening,Beauty,True,perfume,46,4,False,Relevance,230,False,False
+603,Goal-driven,Google,Mobile,Evening,Beauty,True,skincare,24,2,True,Relevance,73,True,True
+604,Price-sensitive,Direct,Desktop,Morning,Sale,False,,45,7,True,Price Low-High,378,False,False
+605,Goal-driven,Google,Mobile,Evening,Beauty,True,perfume,44,4,False,Relevance,78,True,False
+606,Research,Direct,Desktop,Morning,Sale,True,clearance,78,11,True,Price Low-High,691,True,False
+607,Goal-driven,Google,Desktop,Morning,Running,True,nike shoes,40,4,False,Newest,251,True,True
+608,Research,Google,Desktop,Afternoon,Home,True,chair,75,9,True,Price Low-High,559,False,False
+609,Explorer,Facebook,Mobile,Morning,Electronics,False,,80,17,False,Trending,813,False,False
+610,Explorer,Instagram,Desktop,Afternoon,Home,False,,90,17,False,Trending,324,False,False
+611,Price-sensitive,Direct,Tablet,Morning,Sale,True,discount,51,10,True,Price Low-High,440,False,False
+612,Explorer,Facebook,Mobile,Afternoon,Running,False,,85,10,False,Trending,642,False,False
+613,Research,Email,Desktop,Evening,Sale,True,clearance,77,12,True,Highest Rated,466,True,True
+614,Price-sensitive,Email,Mobile,Evening,Sale,True,discount,60,9,True,Price Low-High,420,True,False
+615,Research,Email,Desktop,Evening,Electronics,True,wireless headphones,68,15,True,Price Low-High,445,False,False
+616,Research,Google,Desktop,Evening,Running,True,running shoes,59,13,True,Highest Rated,536,False,False
+617,Research,Google,Desktop,Afternoon,Home,True,desk lamp,55,10,True,Price Low-High,654,False,False
+618,Explorer,Instagram,Tablet,Afternoon,Sale,False,,89,17,False,Trending,560,False,False
+619,Research,Google,Desktop,Morning,Beauty,False,,55,14,True,Price Low-High,674,False,False
+620,Price-sensitive,Google,Desktop,Afternoon,Sale,True,discount,55,10,True,Price Low-High,244,True,False
+621,Explorer,Instagram,Desktop,Evening,Home,False,,95,13,False,Trending,455,True,False
+622,Goal-driven,Google,Mobile,Evening,Electronics,True,wireless headphones,45,2,True,Newest,129,True,True
+623,Goal-driven,Google,Mobile,Morning,Electronics,True,monitor,48,4,True,Relevance,95,True,False
+624,Research,Google,Desktop,Evening,Fashion,True,summer dress,56,9,True,Price Low-High,579,False,False
+625,Explorer,Instagram,Tablet,Evening,Beauty,False,,84,20,False,Trending,627,True,False
+626,Price-sensitive,Email,Tablet,Morning,Sale,False,,46,10,True,Price Low-High,293,True,True
+627,Goal-driven,Google,Mobile,Afternoon,Beauty,True,skincare,35,3,False,Relevance,162,True,False
+628,Research,Email,Desktop,Morning,Beauty,True,skincare,74,14,True,Price Low-High,407,False,False
+629,Explorer,Direct,Tablet,Morning,Fashion,False,,96,14,False,Trending,648,False,False
+630,Research,Email,Desktop,Afternoon,Home,True,coffee table,66,15,True,Price Low-High,840,True,True
+631,Goal-driven,Google,Desktop,Morning,Beauty,True,skincare,43,5,False,Relevance,88,True,False
+632,Explorer,Instagram,Tablet,Evening,Beauty,False,,95,10,False,Trending,659,False,False
+633,Goal-driven,Google,Mobile,Morning,Beauty,True,skincare,46,3,True,Relevance,263,True,False
+634,Goal-driven,Direct,Desktop,Afternoon,Beauty,True,perfume,33,4,False,Newest,105,True,True
+635,Research,Direct,Desktop,Afternoon,Running,True,adidas trainers,77,10,True,Highest Rated,829,True,True
+636,Price-sensitive,Direct,Tablet,Evening,Sale,True,discount,46,8,True,Price Low-High,220,True,True
+637,Price-sensitive,Email,Tablet,Evening,Sale,True,discount,50,7,True,Price Low-High,217,True,False
+638,Goal-driven,Google,Desktop,Afternoon,Electronics,True,gaming mouse,24,2,False,Newest,281,True,True
+639,Goal-driven,Google,Desktop,Morning,Electronics,True,monitor,34,5,True,Newest,239,True,True
+640,Goal-driven,Google,Desktop,Afternoon,Electronics,True,wireless headphones,28,4,False,Relevance,200,False,False
+641,Explorer,Direct,Tablet,Morning,Beauty,False,,88,20,False,Trending,511,False,False
+642,Research,Email,Desktop,Morning,Home,True,desk lamp,64,14,True,Price Low-High,690,False,False
+643,Explorer,Facebook,Desktop,Evening,Beauty,False,,89,17,False,Trending,627,False,False
+644,Goal-driven,Google,Mobile,Evening,Running,True,nike shoes,36,3,True,Relevance,86,False,False
+645,Explorer,Instagram,Mobile,Morning,Fashion,False,,82,20,False,Trending,576,False,False
+646,Explorer,Instagram,Tablet,Afternoon,Running,False,,84,11,False,Trending,401,False,False
+647,Price-sensitive,Direct,Mobile,Afternoon,Sale,False,,49,6,True,Price Low-High,201,True,True
+648,Explorer,Instagram,Tablet,Morning,Beauty,False,,80,19,False,Trending,674,False,False
+649,Research,Email,Desktop,Morning,Electronics,False,,78,15,True,Highest Rated,862,False,False
+650,Goal-driven,Google,Desktop,Morning,Running,True,running shoes,27,6,True,Newest,194,True,True
+651,Goal-driven,Google,Desktop,Evening,Running,True,running shoes,44,4,False,Relevance,163,False,False
+652,Research,Google,Desktop,Afternoon,Sale,True,cheap deals,73,8,True,Price Low-High,890,False,False
+653,Research,Direct,Desktop,Afternoon,Sale,True,discount,50,13,True,Price Low-High,846,True,True
+654,Price-sensitive,Google,Tablet,Evening,Sale,False,,55,6,True,Price Low-High,371,False,False
+655,Explorer,Instagram,Tablet,Evening,Sale,False,,94,15,False,Trending,527,False,False
+656,Explorer,Facebook,Desktop,Afternoon,Sale,False,,89,15,False,Trending,490,False,False
+657,Explorer,Instagram,Mobile,Morning,Beauty,False,,88,20,False,Trending,857,False,False
+658,Explorer,Instagram,Tablet,Morning,Beauty,False,,80,11,False,Trending,735,False,False
+659,Explorer,Instagram,Mobile,Morning,Beauty,False,,99,19,False,Trending,774,False,False
+660,Price-sensitive,Email,Mobile,Evening,Sale,False,,41,5,True,Price Low-High,513,False,False
+661,Price-sensitive,Email,Tablet,Morning,Sale,True,discount,45,8,True,Price Low-High,492,True,False
+662,Goal-driven,Google,Mobile,Evening,Running,True,adidas trainers,33,2,False,Relevance,66,True,True
+663,Price-sensitive,Email,Tablet,Morning,Sale,False,,48,6,True,Price Low-High,226,False,False
+664,Explorer,Instagram,Tablet,Evening,Home,False,,84,19,False,Trending,467,False,False
+665,Price-sensitive,Google,Desktop,Evening,Sale,False,,41,7,True,Price Low-High,536,False,False
+666,Explorer,Instagram,Desktop,Morning,Fashion,False,,90,14,False,Trending,721,True,False
+667,Price-sensitive,Google,Desktop,Morning,Sale,False,,64,6,True,Price Low-High,423,False,False
+668,Explorer,Instagram,Desktop,Evening,Beauty,False,,92,11,False,Trending,795,False,False
+669,Research,Google,Desktop,Evening,Fashion,True,white trainers,56,12,True,Price Low-High,532,False,False
+670,Research,Google,Desktop,Evening,Running,False,,56,13,True,Price Low-High,597,True,True
+671,Goal-driven,Google,Desktop,Afternoon,Running,True,nike shoes,45,4,False,Relevance,60,True,False
+672,Explorer,Instagram,Tablet,Afternoon,Electronics,False,,92,14,False,Trending,674,False,False
+673,Explorer,Instagram,Tablet,Evening,Fashion,False,,95,10,False,Trending,493,False,False
+674,Research,Direct,Desktop,Evening,Fashion,True,black jacket,57,12,True,Price Low-High,752,False,False
+675,Price-sensitive,Google,Mobile,Afternoon,Sale,False,,66,8,True,Price Low-High,463,True,False
+676,Price-sensitive,Google,Desktop,Morning,Sale,False,,65,8,True,Price Low-High,218,False,False
+677,Explorer,Direct,Mobile,Evening,Electronics,False,,95,19,False,Trending,619,False,False
+678,Price-sensitive,Email,Tablet,Evening,Sale,False,,40,9,True,Price Low-High,568,False,False
+679,Price-sensitive,Email,Mobile,Morning,Sale,True,discount,63,10,True,Price Low-High,204,False,False
+680,Price-sensitive,Google,Tablet,Morning,Sale,False,,47,6,True,Price Low-High,537,True,True
+681,Research,Direct,Desktop,Morning,Electronics,True,gaming mouse,55,8,True,Price Low-High,752,False,False
+682,Price-sensitive,Direct,Desktop,Evening,Sale,False,,62,7,True,Price Low-High,442,True,False
+683,Goal-driven,Google,Mobile,Evening,Running,True,nike shoes,31,3,False,Relevance,238,True,False
+684,Explorer,Instagram,Desktop,Evening,Running,False,,97,15,False,Trending,342,False,False
+685,Explorer,Instagram,Mobile,Morning,Beauty,False,,84,19,False,Trending,811,False,False
+686,Price-sensitive,Email,Desktop,Afternoon,Sale,True,discount,46,9,True,Price Low-High,585,True,True
+687,Goal-driven,Google,Desktop,Morning,Beauty,True,lipstick,29,6,True,Newest,84,True,True
+688,Research,Email,Desktop,Evening,Beauty,False,,73,11,True,Highest Rated,838,True,False
+689,Explorer,Direct,Tablet,Morning,Electronics,False,,81,17,False,Trending,894,False,False
+690,Goal-driven,Google,Mobile,Afternoon,Beauty,True,perfume,32,5,False,Newest,208,False,False
+691,Price-sensitive,Email,Mobile,Morning,Sale,True,discount,42,6,True,Price Low-High,237,False,False
+692,Research,Direct,Desktop,Evening,Running,True,nike shoes,71,15,True,Price Low-High,994,True,False
+693,Price-sensitive,Google,Mobile,Morning,Sale,True,discount,60,7,True,Price Low-High,442,False,False
+694,Price-sensitive,Google,Mobile,Morning,Sale,False,,54,5,True,Price Low-High,328,True,True
+695,Explorer,Direct,Mobile,Evening,Electronics,False,,93,20,False,Trending,574,False,False
+696,Price-sensitive,Google,Tablet,Afternoon,Sale,False,,57,10,True,Price Low-High,351,True,False
+697,Research,Direct,Desktop,Morning,Running,True,adidas trainers,74,15,True,Highest Rated,761,False,False
+698,Price-sensitive,Google,Desktop,Afternoon,Sale,True,discount,47,10,True,Price Low-High,557,False,False
+699,Research,Google,Desktop,Afternoon,Electronics,True,wireless headphones,75,9,True,Highest Rated,999,False,False
+700,Price-sensitive,Email,Desktop,Afternoon,Sale,False,,65,7,True,Price Low-High,353,False,False
+701,Research,Email,Desktop,Afternoon,Beauty,True,skincare,55,15,True,Highest Rated,513,True,False
+702,Goal-driven,Google,Desktop,Afternoon,Running,True,adidas trainers,27,2,True,Newest,123,True,True
+703,Price-sensitive,Email,Tablet,Afternoon,Sale,True,discount,55,8,True,Price Low-High,222,False,False
+704,Explorer,Instagram,Desktop,Afternoon,Running,False,,93,19,False,Trending,363,False,False
+705,Price-sensitive,Email,Mobile,Afternoon,Sale,True,discount,50,7,True,Price Low-High,326,True,True
+706,Research,Google,Desktop,Evening,Fashion,False,,72,15,True,Price Low-High,625,True,True
+707,Explorer,Instagram,Tablet,Evening,Sale,False,,88,12,False,Trending,770,False,False
+708,Research,Direct,Desktop,Morning,Electronics,True,monitor,57,10,True,Price Low-High,764,False,False
+709,Goal-driven,Google,Desktop,Evening,Beauty,True,skincare,22,4,True,Newest,129,True,False
+710,Research,Direct,Desktop,Afternoon,Running,False,,69,12,True,Highest Rated,963,True,True
+711,Price-sensitive,Email,Desktop,Morning,Sale,True,discount,53,10,True,Price Low-High,380,True,True
+712,Goal-driven,Google,Mobile,Morning,Beauty,True,perfume,25,4,False,Relevance,280,True,False
+713,Explorer,Instagram,Desktop,Afternoon,Running,False,,80,12,False,Trending,538,False,False
+714,Goal-driven,Google,Mobile,Morning,Beauty,True,lipstick,45,2,False,Newest,264,True,True
+715,Price-sensitive,Direct,Tablet,Morning,Sale,True,discount,43,10,True,Price Low-High,530,True,False
+716,Goal-driven,Google,Desktop,Afternoon,Running,True,running shoes,31,6,False,Newest,246,False,False
+717,Research,Google,Desktop,Morning,Fashion,False,,78,9,True,Highest Rated,552,True,False
+718,Price-sensitive,Direct,Mobile,Morning,Sale,False,,70,5,True,Price Low-High,206,False,False
+719,Price-sensitive,Google,Desktop,Morning,Sale,False,,47,9,True,Price Low-High,279,False,False
+720,Goal-driven,Direct,Mobile,Morning,Beauty,True,skincare,40,2,False,Relevance,183,True,True
+721,Goal-driven,Google,Desktop,Morning,Electronics,True,monitor,41,2,False,Newest,116,False,False
+722,Explorer,Instagram,Desktop,Evening,Running,False,,93,16,False,Trending,480,False,False
+723,Explorer,Facebook,Mobile,Evening,Electronics,False,,90,17,False,Trending,417,False,False
+724,Price-sensitive,Email,Tablet,Afternoon,Sale,False,,57,9,True,Price Low-High,230,True,True
+725,Research,Direct,Desktop,Evening,Electronics,True,gaming mouse,80,8,True,Highest Rated,541,False,False
+726,Explorer,Instagram,Desktop,Evening,Running,False,,91,20,False,Trending,648,False,False
+727,Research,Email,Desktop,Evening,Running,True,adidas trainers,60,8,True,Price Low-High,508,False,False
+728,Explorer,Instagram,Desktop,Morning,Home,False,,97,16,False,Trending,737,False,False
+729,Goal-driven,Google,Desktop,Evening,Running,True,adidas trainers,49,2,False,Newest,162,True,False
+730,Explorer,Instagram,Desktop,Afternoon,Running,False,,95,12,False,Trending,604,False,False
+731,Research,Direct,Desktop,Morning,Home,True,chair,65,11,True,Highest Rated,541,True,False
+732,Goal-driven,Google,Mobile,Evening,Running,True,running shoes,23,6,True,Relevance,108,True,False
+733,Goal-driven,Google,Desktop,Morning,Running,True,adidas trainers,42,2,False,Newest,182,True,True
+734,Goal-driven,Google,Desktop,Afternoon,Beauty,True,perfume,38,2,False,Relevance,132,True,True
+735,Goal-driven,Google,Mobile,Morning,Electronics,True,monitor,40,6,False,Relevance,224,False,False
+736,Explorer,Direct,Mobile,Morning,Fashion,False,,84,18,False,Trending,796,False,False
+737,Explorer,Instagram,Tablet,Afternoon,Beauty,False,,82,14,False,Trending,399,False,False
+738,Price-sensitive,Email,Desktop,Afternoon,Sale,True,discount,54,9,True,Price Low-High,492,False,False
+739,Price-sensitive,Direct,Mobile,Afternoon,Sale,True,discount,55,7,True,Price Low-High,419,True,True
+740,Goal-driven,Google,Desktop,Morning,Electronics,True,gaming mouse,37,4,False,Newest,71,True,False
+741,Explorer,Instagram,Desktop,Evening,Electronics,False,,91,18,False,Trending,816,False,False
+742,Research,Google,Desktop,Morning,Running,False,,66,12,True,Highest Rated,878,False,False
+743,Goal-driven,Google,Desktop,Afternoon,Running,True,nike shoes,33,5,False,Relevance,212,True,True
+744,Explorer,Instagram,Mobile,Evening,Running,False,,95,10,False,Trending,873,False,False
+745,Explorer,Instagram,Desktop,Morning,Fashion,False,,98,13,False,Trending,543,False,False
+746,Goal-driven,Google,Desktop,Morning,Beauty,True,perfume,41,2,True,Relevance,67,True,True
+747,Goal-driven,Google,Mobile,Evening,Beauty,True,lipstick,27,5,True,Relevance,150,False,False
+748,Explorer,Facebook,Tablet,Afternoon,Beauty,False,,91,15,False,Trending,470,False,False
+749,Goal-driven,Google,Mobile,Morning,Running,True,running shoes,22,6,False,Relevance,115,True,True
+750,Research,Direct,Desktop,Morning,Beauty,True,lipstick,67,15,True,Highest Rated,621,True,False
+751,Price-sensitive,Email,Desktop,Evening,Sale,False,,64,7,True,Price Low-High,406,True,False
+752,Research,Direct,Desktop,Afternoon,Running,True,running shoes,55,15,True,Highest Rated,814,True,False
+753,Price-sensitive,Direct,Desktop,Afternoon,Sale,False,,65,5,True,Price Low-High,437,False,False
+754,Explorer,Instagram,Mobile,Evening,Home,False,,100,20,False,Trending,676,True,False
+755,Explorer,Facebook,Tablet,Afternoon,Electronics,False,,98,13,False,Trending,509,False,False
+756,Explorer,Facebook,Tablet,Afternoon,Running,False,,84,13,False,Trending,781,False,False
+757,Price-sensitive,Direct,Mobile,Afternoon,Sale,False,,53,8,True,Price Low-High,251,True,False
+758,Research,Google,Desktop,Evening,Running,True,running shoes,69,15,True,Price Low-High,975,False,False
+759,Price-sensitive,Google,Mobile,Afternoon,Sale,False,,52,10,True,Price Low-High,499,True,True
+760,Explorer,Facebook,Desktop,Afternoon,Home,False,,96,15,False,Trending,404,False,False
+761,Price-sensitive,Direct,Desktop,Evening,Sale,True,discount,51,10,True,Price Low-High,577,False,False
+762,Research,Email,Desktop,Morning,Home,False,,61,13,True,Price Low-High,733,False,False
+763,Price-sensitive,Email,Mobile,Afternoon,Sale,True,discount,67,8,True,Price Low-High,447,True,False
+764,Price-sensitive,Direct,Mobile,Evening,Sale,True,discount,68,9,True,Price Low-High,402,False,False
+765,Price-sensitive,Email,Mobile,Morning,Sale,True,discount,52,7,True,Price Low-High,243,True,True
+766,Explorer,Instagram,Tablet,Afternoon,Home,False,,98,14,False,Trending,556,False,False
+767,Research,Google,Desktop,Evening,Running,True,adidas trainers,51,15,True,Highest Rated,647,False,False
+768,Research,Google,Desktop,Morning,Fashion,True,summer dress,59,14,True,Price Low-High,588,False,False
+769,Goal-driven,Google,Mobile,Evening,Beauty,True,skincare,49,5,False,Relevance,147,True,True
+770,Explorer,Direct,Desktop,Morning,Running,False,,84,14,False,Trending,489,True,False
+771,Goal-driven,Direct,Desktop,Morning,Electronics,True,gaming mouse,27,3,False,Newest,200,True,True
+772,Explorer,Direct,Tablet,Afternoon,Running,False,,80,10,False,Trending,827,False,False
+773,Explorer,Instagram,Tablet,Evening,Running,False,,85,20,False,Trending,763,False,False
+774,Price-sensitive,Email,Desktop,Afternoon,Sale,False,,53,5,True,Price Low-High,382,False,False
+775,Explorer,Instagram,Mobile,Afternoon,Sale,False,,92,14,False,Trending,648,False,False
+776,Price-sensitive,Google,Mobile,Morning,Sale,False,,40,5,True,Price Low-High,272,True,True
+777,Research,Email,Desktop,Evening,Home,True,chair,59,14,True,Highest Rated,743,True,True
+778,Goal-driven,Direct,Desktop,Evening,Electronics,True,monitor,36,2,True,Newest,172,False,False
+779,Price-sensitive,Direct,Mobile,Evening,Sale,True,discount,57,10,True,Price Low-High,255,True,False
+780,Explorer,Facebook,Mobile,Afternoon,Electronics,False,,83,11,False,Trending,662,False,False
+781,Goal-driven,Google,Desktop,Morning,Electronics,True,monitor,50,2,False,Relevance,155,True,True
+782,Explorer,Direct,Mobile,Evening,Beauty,False,,92,16,False,Trending,685,True,False
+783,Explorer,Instagram,Mobile,Afternoon,Fashion,False,,100,10,False,Trending,387,False,False
+784,Goal-driven,Google,Mobile,Evening,Running,True,running shoes,40,4,True,Newest,135,True,True
+785,Goal-driven,Google,Desktop,Afternoon,Running,True,adidas trainers,36,4,True,Relevance,116,False,False
+786,Explorer,Instagram,Tablet,Evening,Beauty,False,,97,17,False,Trending,717,False,False
+787,Goal-driven,Google,Mobile,Evening,Beauty,True,lipstick,39,5,True,Relevance,88,True,False
+788,Explorer,Direct,Desktop,Morning,Fashion,False,,98,16,False,Trending,722,True,False
+789,Price-sensitive,Direct,Desktop,Evening,Sale,True,discount,44,6,True,Price Low-High,383,False,False
+790,Research,Email,Desktop,Morning,Beauty,True,skincare,65,14,True,Highest Rated,908,False,False
+791,Research,Google,Desktop,Evening,Fashion,True,black jacket,50,9,True,Highest Rated,738,False,False
+792,Goal-driven,Google,Desktop,Morning,Beauty,True,lipstick,36,4,True,Newest,271,True,True
+793,Goal-driven,Google,Desktop,Afternoon,Running,True,nike shoes,26,2,False,Relevance,246,True,True
+794,Price-sensitive,Email,Tablet,Morning,Sale,False,,48,9,True,Price Low-High,368,False,False
+795,Goal-driven,Google,Desktop,Morning,Running,True,running shoes,45,5,False,Relevance,97,True,True
+796,Research,Google,Desktop,Afternoon,Fashion,True,black jacket,71,8,True,Highest Rated,538,True,False
+797,Price-sensitive,Direct,Mobile,Afternoon,Sale,False,,63,6,True,Price Low-High,340,True,False
+798,Research,Email,Desktop,Afternoon,Home,True,coffee table,75,10,True,Price Low-High,968,True,False
+799,Research,Google,Desktop,Evening,Home,False,,77,11,True,Price Low-High,630,False,False
+800,Price-sensitive,Email,Desktop,Evening,Sale,True,discount,67,6,True,Price Low-High,428,True,True
+801,Explorer,Facebook,Desktop,Evening,Running,False,,88,15,False,Trending,415,False,False
+802,Goal-driven,Google,Mobile,Evening,Electronics,True,gaming mouse,28,2,False,Newest,150,True,True
+803,Price-sensitive,Google,Desktop,Morning,Sale,False,,60,6,True,Price Low-High,236,True,False
+804,Research,Google,Desktop,Evening,Fashion,False,,50,8,True,Highest Rated,466,False,False
+805,Price-sensitive,Email,Tablet,Evening,Sale,False,,61,9,True,Price Low-High,504,False,False
+806,Explorer,Instagram,Mobile,Afternoon,Beauty,False,,98,13,False,Trending,301,False,False
+807,Price-sensitive,Email,Tablet,Afternoon,Sale,True,discount,67,7,True,Price Low-High,384,False,False
+808,Goal-driven,Google,Desktop,Evening,Electronics,True,monitor,21,5,False,Relevance,115,True,True
+809,Price-sensitive,Google,Desktop,Afternoon,Sale,False,,47,7,True,Price Low-High,386,True,True
+810,Goal-driven,Google,Desktop,Afternoon,Electronics,True,wireless headphones,41,6,False,Newest,286,True,False
+811,Research,Email,Desktop,Afternoon,Electronics,True,gaming mouse,65,14,True,Price Low-High,746,False,False
+812,Research,Direct,Desktop,Evening,Running,True,adidas trainers,68,11,True,Highest Rated,756,False,False
+813,Explorer,Instagram,Tablet,Morning,Home,False,,89,18,False,Trending,398,False,False
+814,Research,Direct,Desktop,Evening,Running,True,running shoes,60,14,True,Price Low-High,736,False,False
+815,Explorer,Instagram,Mobile,Evening,Beauty,False,,94,19,False,Trending,757,False,False
+816,Price-sensitive,Google,Mobile,Afternoon,Sale,False,,59,5,True,Price Low-High,426,True,True
+817,Goal-driven,Google,Desktop,Evening,Running,True,running shoes,20,6,False,Newest,104,False,False
+818,Price-sensitive,Direct,Mobile,Morning,Sale,True,discount,40,7,True,Price Low-High,406,False,False
+819,Price-sensitive,Email,Desktop,Evening,Sale,True,discount,53,7,True,Price Low-High,260,False,False
+820,Explorer,Instagram,Tablet,Afternoon,Electronics,False,,98,11,False,Trending,428,False,False
+821,Price-sensitive,Direct,Tablet,Morning,Sale,False,,41,6,True,Price Low-High,266,True,True
+822,Price-sensitive,Direct,Tablet,Morning,Sale,True,discount,66,9,True,Price Low-High,211,False,False
+823,Research,Direct,Desktop,Evening,Sale,True,discount,51,8,True,Highest Rated,772,False,False
+824,Goal-driven,Google,Mobile,Morning,Running,True,adidas trainers,47,5,True,Relevance,126,True,False
+825,Goal-driven,Google,Desktop,Morning,Electronics,True,monitor,45,6,False,Newest,289,True,True
+826,Research,Google,Desktop,Afternoon,Home,False,,60,15,True,Highest Rated,615,False,False
+827,Price-sensitive,Google,Tablet,Afternoon,Sale,False,,48,7,True,Price Low-High,574,True,True
+828,Goal-driven,Google,Mobile,Afternoon,Electronics,True,gaming mouse,46,2,False,Relevance,221,False,False
+829,Price-sensitive,Email,Tablet,Afternoon,Sale,False,,53,9,True,Price Low-High,411,False,False
+830,Research,Google,Desktop,Evening,Running,True,running shoes,50,12,True,Price Low-High,704,False,False
+831,Explorer,Instagram,Desktop,Afternoon,Sale,False,,81,16,False,Trending,792,True,False
+832,Research,Direct,Desktop,Evening,Electronics,True,gaming mouse,70,8,True,Highest Rated,496,False,False
+833,Research,Direct,Desktop,Afternoon,Beauty,True,skincare,61,8,True,Price Low-High,959,True,False
+834,Goal-driven,Google,Desktop,Afternoon,Running,True,running shoes,21,2,False,Relevance,117,True,False
+835,Research,Direct,Desktop,Evening,Running,False,,54,13,True,Price Low-High,522,False,False
+836,Research,Google,Desktop,Morning,Beauty,False,,77,8,True,Price Low-High,488,False,False
+837,Explorer,Instagram,Desktop,Morning,Beauty,False,,86,16,False,Trending,679,False,False
+838,Research,Google,Desktop,Evening,Running,False,,76,14,True,Price Low-High,618,False,False
+839,Price-sensitive,Direct,Desktop,Evening,Sale,True,discount,63,10,True,Price Low-High,436,True,False
+840,Goal-driven,Google,Desktop,Evening,Running,True,running shoes,32,2,False,Relevance,64,True,False
+841,Price-sensitive,Google,Mobile,Evening,Sale,True,discount,47,10,True,Price Low-High,572,True,False
+842,Research,Direct,Desktop,Evening,Running,True,running shoes,72,14,True,Highest Rated,729,False,False
+843,Research,Direct,Desktop,Evening,Beauty,True,perfume,56,9,True,Highest Rated,521,False,False
+844,Explorer,Facebook,Tablet,Afternoon,Beauty,False,,93,10,False,Trending,518,False,False
+845,Research,Google,Desktop,Evening,Fashion,True,white trainers,66,13,True,Price Low-High,784,True,False
+846,Explorer,Instagram,Mobile,Morning,Beauty,False,,90,14,False,Trending,632,False,False
+847,Research,Email,Desktop,Afternoon,Electronics,True,wireless headphones,65,12,True,Price Low-High,883,False,False
+848,Goal-driven,Google,Desktop,Morning,Beauty,True,perfume,26,4,False,Relevance,128,True,False
+849,Research,Email,Desktop,Afternoon,Sale,False,,68,14,True,Highest Rated,646,False,False
+850,Goal-driven,Direct,Mobile,Morning,Running,True,adidas trainers,46,2,False,Newest,113,True,False
+851,Price-sensitive,Google,Desktop,Afternoon,Sale,False,,51,7,True,Price Low-High,455,True,False
+852,Research,Direct,Desktop,Morning,Electronics,True,monitor,70,8,True,Highest Rated,448,False,False
+853,Research,Email,Desktop,Afternoon,Running,True,running shoes,73,10,True,Price Low-High,511,True,False
+854,Price-sensitive,Email,Desktop,Evening,Sale,False,,65,7,True,Price Low-High,292,False,False
+855,Explorer,Direct,Tablet,Morning,Fashion,False,,87,16,False,Trending,411,False,False
+856,Goal-driven,Google,Desktop,Afternoon,Running,True,running shoes,44,3,False,Newest,200,True,True
+857,Research,Email,Desktop,Morning,Home,False,,61,8,True,Price Low-High,992,False,False
+858,Price-sensitive,Email,Mobile,Afternoon,Sale,True,discount,52,9,True,Price Low-High,522,True,False
+859,Goal-driven,Direct,Desktop,Afternoon,Running,True,nike shoes,42,4,False,Relevance,89,True,False
+860,Price-sensitive,Google,Mobile,Morning,Sale,False,,62,5,True,Price Low-High,407,False,False
+861,Price-sensitive,Google,Mobile,Evening,Sale,False,,49,7,True,Price Low-High,600,True,True
+862,Explorer,Facebook,Desktop,Afternoon,Home,False,,88,13,False,Trending,680,False,False
+863,Explorer,Facebook,Mobile,Morning,Running,False,,94,16,False,Trending,486,False,False
+864,Explorer,Facebook,Desktop,Morning,Fashion,False,,80,20,False,Trending,530,False,False
+865,Price-sensitive,Email,Mobile,Evening,Sale,True,discount,64,8,True,Price Low-High,226,True,False
+866,Goal-driven,Direct,Mobile,Evening,Running,True,nike shoes,47,3,True,Relevance,133,True,True
+867,Price-sensitive,Email,Desktop,Morning,Sale,True,discount,46,9,True,Price Low-High,296,False,False
+868,Price-sensitive,Email,Mobile,Evening,Sale,False,,40,5,True,Price Low-High,369,False,False
+869,Goal-driven,Google,Desktop,Afternoon,Running,True,running shoes,43,4,True,Newest,91,True,False
+870,Goal-driven,Google,Desktop,Afternoon,Beauty,True,lipstick,37,4,False,Newest,60,False,False
+871,Explorer,Facebook,Tablet,Evening,Sale,False,,98,19,False,Trending,882,False,False
+872,Price-sensitive,Google,Tablet,Evening,Sale,False,,61,9,True,Price Low-High,576,True,False
+873,Price-sensitive,Google,Desktop,Evening,Sale,False,,56,9,True,Price Low-High,557,True,False
+874,Price-sensitive,Google,Desktop,Evening,Sale,True,discount,44,5,True,Price Low-High,597,False,False
+875,Explorer,Instagram,Tablet,Evening,Sale,False,,89,17,False,Trending,355,False,False
+876,Explorer,Instagram,Tablet,Morning,Fashion,False,,93,13,False,Trending,449,False,False
+877,Research,Email,Desktop,Evening,Fashion,False,,71,12,True,Highest Rated,870,False,False
+878,Price-sensitive,Direct,Desktop,Evening,Sale,True,discount,66,5,True,Price Low-High,338,False,False
+879,Research,Email,Desktop,Evening,Electronics,True,gaming mouse,66,14,True,Price Low-High,583,False,False
+880,Price-sensitive,Direct,Tablet,Morning,Sale,False,,64,6,True,Price Low-High,478,False,False
+881,Explorer,Facebook,Mobile,Morning,Electronics,False,,81,16,False,Trending,439,False,False
+882,Price-sensitive,Google,Mobile,Evening,Sale,False,,54,6,True,Price Low-High,346,True,False
+883,Goal-driven,Google,Mobile,Morning,Running,True,nike shoes,36,5,False,Newest,153,True,True
+884,Goal-driven,Direct,Mobile,Evening,Beauty,True,perfume,41,5,True,Relevance,127,False,False
+885,Price-sensitive,Direct,Tablet,Evening,Sale,False,,67,6,True,Price Low-High,315,True,True
+886,Price-sensitive,Email,Desktop,Evening,Sale,False,,50,5,True,Price Low-High,389,False,False
+887,Price-sensitive,Direct,Tablet,Evening,Sale,False,,49,7,True,Price Low-High,215,False,False
+888,Goal-driven,Google,Mobile,Evening,Electronics,True,monitor,45,6,False,Relevance,247,False,False
+889,Price-sensitive,Email,Mobile,Morning,Sale,False,,46,9,True,Price Low-High,222,False,False
+890,Price-sensitive,Email,Mobile,Morning,Sale,True,discount,68,6,True,Price Low-High,382,True,False
+891,Explorer,Instagram,Desktop,Evening,Fashion,False,,90,11,False,Trending,599,False,False
+892,Price-sensitive,Email,Tablet,Afternoon,Sale,False,,63,9,True,Price Low-High,216,False,False
+893,Research,Google,Desktop,Evening,Home,True,chair,58,9,True,Highest Rated,435,False,False
+894,Research,Email,Desktop,Afternoon,Beauty,False,,69,13,True,Highest Rated,923,True,False
+895,Research,Google,Desktop,Morning,Beauty,False,,71,15,True,Price Low-High,710,True,False
+896,Price-sensitive,Email,Tablet,Evening,Sale,False,,43,8,True,Price Low-High,312,True,True
+897,Goal-driven,Google,Mobile,Evening,Beauty,True,skincare,20,4,False,Relevance,179,True,True
+898,Price-sensitive,Direct,Tablet,Evening,Sale,True,discount,70,7,True,Price Low-High,591,False,False
+899,Price-sensitive,Email,Tablet,Morning,Sale,True,discount,52,7,True,Price Low-High,280,True,True
+900,Goal-driven,Google,Mobile,Morning,Electronics,True,monitor,25,6,False,Newest,277,True,True
+901,Explorer,Instagram,Desktop,Afternoon,Fashion,False,,95,10,False,Trending,654,False,False
+902,Goal-driven,Google,Desktop,Morning,Beauty,True,lipstick,21,2,False,Newest,210,False,False
+903,Price-sensitive,Direct,Desktop,Evening,Sale,False,,45,10,True,Price Low-High,435,True,False
+904,Research,Email,Desktop,Evening,Running,True,nike shoes,59,11,True,Price Low-High,631,False,False
+905,Explorer,Direct,Mobile,Afternoon,Running,False,,92,14,False,Trending,667,True,False
+906,Explorer,Facebook,Mobile,Afternoon,Home,False,,81,18,False,Trending,428,False,False
+907,Explorer,Instagram,Mobile,Morning,Fashion,False,,89,20,False,Trending,372,False,False
+908,Goal-driven,Google,Mobile,Evening,Running,True,running shoes,30,5,False,Newest,277,False,False
+909,Price-sensitive,Direct,Desktop,Afternoon,Sale,False,,43,10,True,Price Low-High,270,True,False
+910,Explorer,Instagram,Tablet,Evening,Sale,False,,97,12,False,Trending,579,False,False
+911,Explorer,Instagram,Desktop,Afternoon,Beauty,False,,81,17,False,Trending,327,False,False
+912,Price-sensitive,Google,Tablet,Afternoon,Sale,True,discount,49,10,True,Price Low-High,438,True,True
+913,Goal-driven,Google,Mobile,Afternoon,Beauty,True,skincare,41,4,True,Newest,124,True,True
+914,Goal-driven,Google,Mobile,Morning,Running,True,adidas trainers,47,3,True,Newest,88,True,False
+915,Goal-driven,Google,Mobile,Evening,Electronics,True,gaming mouse,50,5,False,Newest,184,True,True
+916,Research,Google,Desktop,Evening,Sale,True,cheap deals,59,14,True,Price Low-High,857,False,False
+917,Research,Google,Desktop,Morning,Home,True,desk lamp,53,9,True,Price Low-High,951,True,False
+918,Price-sensitive,Direct,Tablet,Morning,Sale,False,,50,7,True,Price Low-High,211,True,True
+919,Goal-driven,Google,Mobile,Evening,Running,True,adidas trainers,43,3,False,Relevance,221,True,False
+920,Research,Email,Desktop,Evening,Home,True,coffee table,78,15,True,Price Low-High,490,False,False
+921,Goal-driven,Google,Desktop,Evening,Electronics,True,monitor,47,4,False,Relevance,120,True,False
+922,Explorer,Instagram,Tablet,Afternoon,Home,False,,88,10,False,Trending,770,False,False
+923,Goal-driven,Google,Mobile,Morning,Running,True,adidas trainers,35,5,False,Relevance,164,False,False
+924,Goal-driven,Google,Desktop,Evening,Running,True,nike shoes,20,5,False,Relevance,273,True,True
+925,Price-sensitive,Direct,Desktop,Afternoon,Sale,True,discount,40,9,True,Price Low-High,568,False,False
+926,Research,Email,Desktop,Morning,Beauty,False,,67,13,True,Price Low-High,688,True,False
+927,Goal-driven,Google,Desktop,Morning,Beauty,True,skincare,44,3,True,Newest,150,True,False
+928,Goal-driven,Google,Mobile,Afternoon,Beauty,True,skincare,40,2,True,Relevance,177,True,True
+929,Goal-driven,Google,Desktop,Evening,Electronics,True,wireless headphones,49,2,False,Newest,300,False,False
+930,Research,Direct,Desktop,Morning,Home,True,chair,50,10,True,Price Low-High,861,True,False
+931,Price-sensitive,Direct,Tablet,Afternoon,Sale,False,,53,9,True,Price Low-High,418,True,False
+932,Research,Direct,Desktop,Evening,Sale,True,discount,78,13,True,Highest Rated,781,False,False
+933,Price-sensitive,Direct,Tablet,Morning,Sale,False,,42,8,True,Price Low-High,598,True,False
+934,Price-sensitive,Direct,Desktop,Morning,Sale,False,,40,5,True,Price Low-High,308,True,True
+935,Goal-driven,Google,Desktop,Afternoon,Running,True,adidas trainers,33,5,True,Relevance,222,False,False
+936,Research,Google,Desktop,Afternoon,Electronics,True,gaming mouse,63,13,True,Price Low-High,437,True,False
+937,Explorer,Instagram,Tablet,Afternoon,Running,False,,94,11,False,Trending,730,False,False
+938,Goal-driven,Google,Mobile,Evening,Beauty,True,lipstick,32,5,False,Relevance,74,False,False
+939,Explorer,Instagram,Tablet,Evening,Electronics,False,,86,10,False,Trending,586,False,False
+940,Goal-driven,Google,Desktop,Evening,Beauty,True,lipstick,25,2,True,Newest,228,True,True
+941,Explorer,Facebook,Desktop,Morning,Fashion,False,,90,17,False,Trending,434,False,False
+942,Explorer,Instagram,Mobile,Evening,Electronics,False,,87,20,False,Trending,658,False,False
+943,Goal-driven,Google,Desktop,Afternoon,Running,True,adidas trainers,43,4,False,Relevance,71,True,True
+944,Goal-driven,Direct,Mobile,Afternoon,Electronics,True,wireless headphones,37,4,True,Newest,254,True,True
+945,Research,Google,Desktop,Evening,Fashion,False,,70,15,True,Highest Rated,823,False,False
+946,Research,Direct,Desktop,Afternoon,Running,True,running shoes,70,13,True,Highest Rated,805,False,False
+947,Price-sensitive,Google,Mobile,Morning,Sale,False,,69,5,True,Price Low-High,259,False,False
+948,Price-sensitive,Google,Mobile,Morning,Sale,False,,47,5,True,Price Low-High,519,False,False
+949,Research,Direct,Desktop,Morning,Running,False,,54,10,True,Highest Rated,987,False,False
+950,Goal-driven,Google,Mobile,Afternoon,Electronics,True,wireless headphones,33,2,True,Newest,189,False,False
+951,Goal-driven,Google,Desktop,Afternoon,Electronics,True,gaming mouse,48,2,False,Newest,116,True,True
+952,Explorer,Direct,Tablet,Evening,Fashion,False,,99,12,False,Trending,666,False,False
+953,Price-sensitive,Google,Mobile,Morning,Sale,False,,54,5,True,Price Low-High,365,True,False
+954,Price-sensitive,Direct,Desktop,Afternoon,Sale,False,,61,9,True,Price Low-High,463,True,True
+955,Price-sensitive,Direct,Desktop,Afternoon,Sale,False,,60,10,True,Price Low-High,263,False,False
+956,Price-sensitive,Google,Tablet,Afternoon,Sale,True,discount,70,7,True,Price Low-High,460,True,False
+957,Research,Direct,Desktop,Afternoon,Sale,False,,56,12,True,Highest Rated,807,True,True
+958,Research,Email,Desktop,Morning,Home,True,chair,58,12,True,Price Low-High,724,False,False
+959,Goal-driven,Google,Desktop,Evening,Beauty,True,lipstick,46,4,False,Newest,209,True,True
+960,Goal-driven,Google,Desktop,Afternoon,Electronics,True,gaming mouse,20,4,False,Newest,105,False,False
+961,Price-sensitive,Direct,Tablet,Morning,Sale,False,,69,7,True,Price Low-High,280,True,False
+962,Price-sensitive,Email,Mobile,Evening,Sale,False,,66,7,True,Price Low-High,218,True,False
+963,Explorer,Instagram,Desktop,Afternoon,Sale,False,,86,15,False,Trending,808,False,False
+964,Goal-driven,Google,Desktop,Morning,Electronics,True,wireless headphones,31,3,False,Newest,225,True,False
+965,Goal-driven,Google,Mobile,Evening,Running,True,adidas trainers,34,3,False,Relevance,183,True,True
+966,Price-sensitive,Google,Desktop,Evening,Sale,True,discount,44,7,True,Price Low-High,505,True,True
+967,Research,Google,Desktop,Evening,Home,True,desk lamp,71,11,True,Price Low-High,577,True,False
+968,Explorer,Instagram,Desktop,Evening,Beauty,False,,95,15,False,Trending,764,False,False
+969,Research,Google,Desktop,Afternoon,Sale,True,clearance,76,8,True,Price Low-High,551,False,False
+970,Goal-driven,Direct,Mobile,Evening,Beauty,True,skincare,49,5,False,Newest,177,True,True
+971,Goal-driven,Google,Mobile,Evening,Beauty,True,perfume,24,5,False,Newest,218,True,False
+972,Price-sensitive,Email,Desktop,Evening,Sale,False,,40,9,True,Price Low-High,289,True,False
+973,Price-sensitive,Google,Desktop,Afternoon,Sale,True,discount,46,6,True,Price Low-High,254,False,False
+974,Explorer,Facebook,Tablet,Afternoon,Sale,False,,98,16,False,Trending,670,False,False
+975,Research,Direct,Desktop,Afternoon,Fashion,False,,52,15,True,Price Low-High,429,False,False
+976,Explorer,Instagram,Mobile,Evening,Running,False,,100,20,False,Trending,797,False,False
+977,Goal-driven,Google,Desktop,Afternoon,Running,True,adidas trainers,48,5,True,Relevance,68,True,False
+978,Price-sensitive,Google,Tablet,Afternoon,Sale,False,,50,8,True,Price Low-High,587,False,False
+979,Price-sensitive,Google,Tablet,Afternoon,Sale,True,discount,52,10,True,Price Low-High,364,True,False
+980,Goal-driven,Google,Mobile,Morning,Running,True,running shoes,50,3,False,Newest,269,True,False
+981,Explorer,Instagram,Mobile,Afternoon,Fashion,False,,98,20,False,Trending,786,False,False
+982,Explorer,Facebook,Tablet,Evening,Sale,False,,96,10,False,Trending,386,False,False
+983,Price-sensitive,Google,Tablet,Morning,Sale,False,,47,6,True,Price Low-High,555,True,False
+984,Goal-driven,Google,Desktop,Evening,Electronics,True,monitor,25,2,False,Newest,271,False,False
+985,Price-sensitive,Google,Tablet,Morning,Sale,False,,54,8,True,Price Low-High,262,True,False
+986,Explorer,Direct,Mobile,Evening,Fashion,False,,82,19,False,Trending,321,False,False
+987,Goal-driven,Direct,Desktop,Evening,Beauty,True,perfume,40,6,False,Newest,118,True,False
+988,Research,Email,Desktop,Morning,Electronics,False,,75,11,True,Highest Rated,642,True,False
+989,Price-sensitive,Email,Tablet,Afternoon,Sale,True,discount,59,10,True,Price Low-High,246,True,False
+990,Price-sensitive,Google,Mobile,Morning,Sale,True,discount,53,10,True,Price Low-High,315,True,False
+991,Research,Email,Desktop,Morning,Electronics,True,gaming mouse,73,12,True,Price Low-High,918,True,False
+992,Research,Google,Desktop,Evening,Electronics,True,gaming mouse,73,13,True,Highest Rated,732,False,False
+993,Goal-driven,Google,Mobile,Morning,Electronics,True,monitor,35,3,False,Relevance,69,True,False
+994,Research,Direct,Desktop,Morning,Home,False,,80,14,True,Highest Rated,721,False,False
+995,Price-sensitive,Google,Desktop,Morning,Sale,True,discount,65,5,True,Price Low-High,571,True,False
+996,Research,Email,Desktop,Evening,Home,True,coffee table,74,10,True,Highest Rated,664,False,False
+997,Price-sensitive,Email,Mobile,Evening,Sale,True,discount,61,10,True,Price Low-High,402,False,False
+998,Explorer,Instagram,Mobile,Morning,Running,False,,93,17,False,Trending,687,False,False
+999,Explorer,Instagram,Mobile,Evening,Beauty,False,,85,17,False,Trending,586,False,False
+1000,Research,Direct,Desktop,Afternoon,Sale,True,discount,62,15,True,Highest Rated,439,True,False

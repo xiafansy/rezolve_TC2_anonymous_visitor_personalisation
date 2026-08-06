@@ -1,0 +1,8 @@
+# Raw Kaggle dataset (RetailRocket, ~900MB) -- see README for setup
+archive/
+
+# Large generated artifact -- rebuild with: /usr/bin/python3 build_real_sessions.py
+real_sessions.csv
+
+.DS_Store
+__pycache__/
