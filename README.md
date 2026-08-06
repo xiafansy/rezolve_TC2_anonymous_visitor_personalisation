@@ -101,14 +101,33 @@ Track 2 (real, RetailRocket)
 
 ### Data setup (Track 2)
 
-Download the [RetailRocket dataset](https://www.kaggle.com/datasets/retailrocket/ecommerce-dataset)
-from Kaggle and unzip into `archive/` (git-ignored, ~900MB):
+Raw datasets are git-ignored (GitHub's 100MB/file limit; the sources below are
+the canonical hosts). The repo carries the recipe, not the data.
+
+**RetailRocket** — download from
+[Kaggle](https://www.kaggle.com/datasets/retailrocket/ecommerce-dataset)
+and unzip into `archive/` (~900MB):
 `events.csv`, `item_properties_part1/2.csv`, `category_tree.csv`. Then:
 
 ```
 /usr/bin/python3 build_real_sessions.py    # writes real_sessions.csv (~134MB)
 /usr/bin/python3 evaluate_real.py          # temporal hold-out validation
 ```
+
+**REES46 multi-category store** — richer signals the RetailRocket log lacks:
+real prices (unlocks the Price-sensitive archetype), readable category codes,
+brands, and built-in session ids. Direct download from the publisher
+([also on Kaggle](https://www.kaggle.com/datasets/mkechinov/ecommerce-behavior-data-from-multi-category-store))
+into `archive_rees46/`:
+
+```
+mkdir -p archive_rees46 && cd archive_rees46
+curl -LO https://data.rees46.com/datasets/marketplace/2019-Oct.csv.gz   # 1.7GB
+curl -LO https://data.rees46.com/datasets/marketplace/2019-Nov.csv.gz   # 2.9GB
+```
+
+Columns: `event_time, event_type(view|cart|remove_from_cart|purchase),
+product_id, category_id, category_code, brand, price, user_id, user_session`.
 
 ## Honest limitations
 

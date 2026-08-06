@@ -1,5 +1,6 @@
-# Raw Kaggle dataset (RetailRocket, ~900MB) -- see README for setup
+# Raw public datasets (RetailRocket ~900MB, REES46 ~4.3GB) -- see README for setup
 archive/
+archive_rees46/
 
 # Large generated artifact -- rebuild with: /usr/bin/python3 build_real_sessions.py
 real_sessions.csv
