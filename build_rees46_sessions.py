@@ -1,24 +1,29 @@
 """
-Aggregate the REES46 event stream (archive_rees46/) into per-session features.
+Aggregate the REES46 event stream (archive_rees46/) into per-session features,
+CENSORED at the first commercial event (v3 leakage fix).
 
-Unlike RetailRocket, REES46 needs no sessionization -- events carry a
-`user_session` id. What it adds over RetailRocket:
+Why censoring (the v3 lesson, quantified on RetailRocket)
+---------------------------------------------------------
+Whole-session features let post-cart behaviour leak into "predictors": buyers
+re-open product pages around checkout, inflating revisit_ratio for exactly the
+sessions that convert (Evaluator purchase 6.9% leaky -> 2.8% censored; the
+revisit-band gradient 3.4->24% collapses to 2.1->3.0%). All behavioural and
+price features below are therefore computed on events STRICTLY BEFORE each
+session's first cart/purchase. Outcome columns still describe the full session.
 
-  * real PRICES            -> price-behaviour features (Price-sensitive archetype)
-  * remove_from_cart       -> a hesitation signal RetailRocket lacks
-  * readable category codes + brands
+REES46 needs no sessionization (events carry `user_session`). What it adds
+over RetailRocket: real prices -> the price-conscious flavor.
 
-Memory strategy: 42M (Oct) + 67M (Nov) rows won't fit comfortably as raw
-strings, so each chunk is compressed to tight dtypes on arrival (uuid session
--> uint64 hash, event_type -> int8, timestamps -> int32 epoch seconds).
-
-Output: rees46_sessions.csv, one row per session, observable signals only.
-Price features (views only):
-  price_median_viewed   median price of viewed items
-  price_rel_cat         median of (view price / that category's month-median)
-                        <1 = leaning cheap within category, >1 = premium
-  price_first_to_last   last viewed price / first viewed price (drift down <1)
-  price_stepdown_share  fraction of consecutive view steps where price dropped
+Outputs (rees46_sessions.csv), per session:
+  outcomes (full session): added_to_cart, purchased, n_events_total
+  censored behavioural:    n_events, n_views, n_unique_items, revisit_ratio,
+                           n_categories, top_category_share,
+                           category_switch_rate, duration_sec, median_gap_sec,
+                           views_before_first_commercial
+  censored price:          price_median_viewed, price_rel_cat
+                           (vs month-level category median -- a catalog index,
+                           not session behaviour, so computed on all views)
+  prefix-3 (*_p3):         the same censored features on the first 3 events
 """
 
 import numpy as np
@@ -31,6 +36,7 @@ FILES = {
 OUT = "rees46_sessions.csv"
 CHUNK = 4_000_000
 EVENT_CODE = {"view": 0, "cart": 1, "remove_from_cart": 2, "purchase": 3}
+COMMERCIAL = (1, 3)  # cart, purchase (remove implies a prior cart anyway)
 USECOLS = ["event_time", "event_type", "product_id", "category_id",
            "price", "user_session"]
 
@@ -52,63 +58,79 @@ def load_month(path):
         print(f"  chunk {i+1}: {len(ch):,} rows", flush=True)
     ev = pd.concat(parts, ignore_index=True)
     del parts
+    # Stable sort keeps the file's chronological order within equal timestamps
+    # (REES46 has 1s resolution), so positional censoring is exact.
     ev = ev.sort_values(["sess", "ts"], kind="mergesort").reset_index(drop=True)
     print(f"  month total: {len(ev):,} events, "
           f"{ev['sess'].nunique():,} sessions", flush=True)
     return ev
 
 
-def month_features(ev, month):
+def behavioural_features(ev, cat_median, suffix=""):
+    """Feature block for an (already censored) event frame."""
     is_view = ev["etype"].eq(0)
-
     g = ev.groupby("sess")
     f = pd.DataFrame({
-        "start_ts": g["ts"].first(),
-        "n_events": g.size().astype("int32"),
-        "n_views": is_view.groupby(ev["sess"]).sum().astype("int32"),
-        "n_carts": ev["etype"].eq(1).groupby(ev["sess"]).sum().astype("int32"),
-        "n_removes": ev["etype"].eq(2).groupby(ev["sess"]).sum().astype("int32"),
-        "purchased": ev["etype"].eq(3).groupby(ev["sess"]).any(),
-        "duration_sec": (g["ts"].last() - g["ts"].first()).astype("int32"),
+        f"n_events{suffix}": g.size().astype("int32"),
+        f"n_views{suffix}": is_view.groupby(ev["sess"]).sum().astype("int32"),
+        f"duration_sec{suffix}": (g["ts"].last() - g["ts"].first()).astype("int32"),
     })
-    f["added_to_cart"] = f["n_carts"] > 0
 
-    # tempo: median inter-event gap within session
     gaps = ev["ts"].diff()
     same = ev["sess"].eq(ev["sess"].shift())
-    f["median_gap_sec"] = gaps.where(same).groupby(ev["sess"]).median()
+    f[f"median_gap_sec{suffix}"] = gaps.where(same).groupby(ev["sess"]).median()
 
-    # ---- view-pattern features (breadth / focus / revisit) -----------------
     v = ev[is_view]
     vg = v.groupby("sess")
-    f["n_unique_items"] = vg["item"].nunique()
-    f["revisit_ratio"] = (vg.size() / vg["item"].nunique()).astype("float32")
-    f["n_categories"] = vg["cat"].nunique()
-    f["top_category_share"] = (
+    f[f"n_unique_items{suffix}"] = vg["item"].nunique()
+    f[f"revisit_ratio{suffix}"] = (vg.size() / vg["item"].nunique()).astype("float32")
+    f[f"n_categories{suffix}"] = vg["cat"].nunique()
+    f[f"top_category_share{suffix}"] = (
         v.groupby(["sess", "cat"]).size().groupby("sess").max() / vg.size()
     ).astype("float32")
     vsame = v["sess"].eq(v["sess"].shift())
     switched = v["cat"].ne(v["cat"].shift()) & vsame
-    f["category_switch_rate"] = (
+    f[f"category_switch_rate{suffix}"] = (
         switched.groupby(v["sess"]).sum() / (vg.size() - 1).clip(lower=1)
     ).astype("float32")
 
-    # ---- price features (views only) ----------------------------------------
-    f["price_median_viewed"] = vg["price"].median().astype("float32")
-    cat_median = v.groupby("cat")["price"].transform("median")
-    rel = (v["price"] / cat_median).astype("float32")
-    f["price_rel_cat"] = rel.groupby(v["sess"]).median()
-    first_p = vg["price"].first()
-    last_p = vg["price"].last()
-    f["price_first_to_last"] = (last_p / first_p.replace(0, np.nan)).astype("float32")
-    stepdown = (v["price"] < v["price"].shift()) & vsame
-    f["price_stepdown_share"] = (
-        stepdown.groupby(v["sess"]).sum() / (vg.size() - 1).clip(lower=1)
-    ).astype("float32")
+    f[f"price_median_viewed{suffix}"] = vg["price"].median().astype("float32")
+    rel = (v["price"] / v["cat"].map(cat_median)).astype("float32")
+    f[f"price_rel_cat{suffix}"] = rel.groupby(v["sess"]).median()
+    return f
 
-    f["hour_of_day"] = (pd.to_datetime(f["start_ts"], unit="s", utc=True)
-                        .dt.hour.astype("int8"))
-    f["month"] = month
+
+def month_features(ev, month):
+    # ---- outcomes + context: FULL session -----------------------------------
+    g = ev.groupby("sess")
+    base = pd.DataFrame({
+        "start_ts": g["ts"].first(),
+        "n_events_total": g.size().astype("int32"),
+        "added_to_cart": ev["etype"].eq(1).groupby(ev["sess"]).any(),
+        "purchased": ev["etype"].eq(3).groupby(ev["sess"]).any(),
+    })
+    base["hour_of_day"] = (pd.to_datetime(base["start_ts"], unit="s", utc=True)
+                           .dt.hour.astype("int8"))
+    base["month"] = month
+
+    # Catalog price index: month-level category medians (not session behaviour).
+    cat_median = ev[ev["etype"].eq(0)].groupby("cat")["price"].median()
+
+    # ---- THE CENSORING STEP: strictly before the first cart/purchase --------
+    is_comm = ev["etype"].isin(COMMERCIAL)
+    comm_seen = is_comm.groupby(ev["sess"]).cumsum()
+    pre = ev[comm_seen.eq(0)]
+    print(f"  censored events (pre-commercial): {len(pre):,} / {len(ev):,} "
+          f"({len(pre)/len(ev):.1%})", flush=True)
+
+    f = base.join(behavioural_features(pre, cat_median), how="left")
+    f["views_before_first_commercial"] = f["n_views"].fillna(0).astype("int32")
+
+    # ---- prefix-3: what a realtime system knows after 3 censored events -----
+    pre = pre.copy()
+    pre["rank"] = pre.groupby("sess").cumcount()
+    f = f.join(behavioural_features(pre[pre["rank"] < 3], cat_median,
+                                    suffix="_p3"), how="left")
     return f.reset_index()
 
 
@@ -119,7 +141,7 @@ def main():
         ev = load_month(path)
         f = month_features(ev, month)
         del ev
-        eng = f[f["n_events"] >= 3]
+        eng = f[f["n_events_total"] >= 3]
         print(f"  sessions: {len(f):,} | >=3 events: {len(eng):,} "
               f"({len(eng)/len(f):.1%}) | cart {f['added_to_cart'].mean():.2%} "
               f"| buy {f['purchased'].mean():.2%}", flush=True)

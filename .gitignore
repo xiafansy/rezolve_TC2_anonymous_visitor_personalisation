@@ -6,5 +6,14 @@ archive_rees46/
 real_sessions.csv
 rees46_sessions.csv
 
+# Regenerable synthetic data (seeded) -- make_event_dataset.py
+synthetic_sessions.csv
+synthetic_events.csv
+
+# Source drop of the v3 refactor (promoted to repo root) + smoke-test leftovers
+coe-project5a-v3/
+_smoke_archive/
+_smoke_sessions.csv
+
 .DS_Store
 __pycache__/

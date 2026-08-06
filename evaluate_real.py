@@ -1,109 +1,135 @@
 """
-Honest validation of the v2 (real-signal) intent inferer on RetailRocket.
+evaluate_real.py (v3) -- temporal hold-out validation on RetailRocket,
+run through the SAME unified engine as the synthetic track, on CENSORED
+(leakage-free) features.
 
-There are NO intent labels in real traffic, so "accuracy" is meaningless here.
-Instead we test what a production system would actually care about:
+What changed vs v2
+------------------
+* Features are censored at the first commercial event (see
+  build_real_sessions.py), so "Evaluator converts more" can no longer be an
+  artifact of buyers re-opening the product page during checkout.
+* Stage-B Decisive fires on `views_before_first_commercial <= 2` -- the
+  honest version of "cart with minimal prior browsing".
+* NEW: the same validity table computed on PREFIX-3 features -- does the
+  intent called after just the first 3 clicks already separate conversion?
+  That is the number a realtime homepage actually banks on.
+* Same temporal split: fit on the first ~3.5 months, report the final month.
 
-  1. PREDICTIVE VALIDITY -- do Stage-A intents, inferred from view-patterns
-     alone, separate sessions by conversion outcomes they never saw?
-     (Evaluator should out-convert Explorer should out-convert Low-intent.)
-  2. COVERAGE -- how much of real traffic does each mode serve, and how often
-     does the Unclear gate decline to personalise?
-  3. TEMPORAL HONESTY -- thresholds are fitted on the first ~3.5 months;
-     everything reported below comes from the held-out FINAL MONTH only.
-
-Limitation (stated, not hidden): features are session-level aggregates, an
-offline approximation of the incremental realtime computation.
+Usage
+-----
+  python3 evaluate_real.py --data real_sessions.csv [--split-ms 1439856000000]
 """
 
+import argparse
 import pandas as pd
 
-from intent_inference_real import (THRESHOLDS, infer_realtime)
+from intent_engine import REAL_INTENTS, TwoStageEngine
 
-SPLIT_MS = 1439856000000  # 2015-08-18 00:00 UTC -> last month is held out
+DEFAULT_SPLIT_MS = 1439856000000  # 2015-08-18 UTC -> last month held out
 
-FEATURES = ["n_events", "n_views", "revisit_ratio", "n_categories",
-            "top_category_share", "category_switch_rate", "median_gap_sec",
-            "duration_sec", "added_to_cart"]
-
-
-def fit_thresholds(train):
-    """Quantile-fit the behavioural cutoffs on TRAIN engaged sessions."""
-    eng = train[(train["n_events"] >= 3) & (train["n_views"] >= 2)]
-    fitted = {
-        "revisit_hi": round(eng["revisit_ratio"].quantile(.75), 2),
-        "revisit_lo": round(eng["revisit_ratio"].quantile(.25), 2),
-        "gap_slow": round(eng["median_gap_sec"].quantile(.60), 1),
-        "dur_micro": round(eng["duration_sec"].quantile(.25), 1),
-    }
-    print("fitted on train window:", fitted)
-    print("in use (THRESHOLDS):   ",
-          {k: THRESHOLDS[k] for k in fitted})
-    return fitted
+BASE_FEATS = ["n_events", "n_views", "revisit_ratio", "n_categories",
+              "top_category_share", "category_switch_rate", "median_gap_sec",
+              "duration_sec"]
 
 
-def main():
-    df = pd.read_csv("real_sessions.csv")
-    train = df[df["start_ms"] < SPLIT_MS]
-    test = df[df["start_ms"] >= SPLIT_MS].copy()
-    print(f"train sessions: {len(train):,}   test (final month): {len(test):,}\n")
+def row_features(row, suffix=""):
+    f = {k: row.get(k + suffix) for k in BASE_FEATS}
+    f["added_to_cart"] = row.get("added_to_cart")
+    f["views_before_first_commercial"] = row.get("views_before_first_commercial")
+    return f
 
-    fit_thresholds(train)
 
-    # ---- run inference on the held-out month ------------------------------
-    rows = test[FEATURES].to_dict("records")
-    res = [infer_realtime(r) for r in rows]
-    test["intent"] = [r.intent for r in res]
-    test["stage"] = [r.stage for r in res]
-    test["confidence"] = [r.confidence for r in res]
-
-    # ---- 1. coverage -------------------------------------------------------
-    print("\nCOVERAGE (all held-out sessions)")
-    cov = (test["intent"].value_counts(normalize=True) * 100).round(1)
-    for k, v in cov.items():
-        print(f"  {k:<11} {v:>5}%")
-
-    # ---- 2. predictive validity -------------------------------------------
-    print("\nPREDICTIVE VALIDITY (held-out month)")
-    print("Stage-A intents are inferred from view-patterns only; cart/purchase")
-    print("below are outcomes the scorer never saw.\n")
-    tab = test.groupby("intent").agg(
+def validity_table(df, intent_col):
+    tab = df.groupby(intent_col).agg(
         sessions=("purchased", "size"),
+        coverage=("purchased", lambda s: len(s) / len(df)),
         cart_rate=("added_to_cart", "mean"),
         purchase_rate=("purchased", "mean"),
-        mean_conf=("confidence", "mean"),
     )
     order = ["Decisive", "Evaluator", "Explorer", "Unclear", "Low-intent"]
     tab = tab.reindex([i for i in order if i in tab.index])
+    tab["coverage"] = (tab["coverage"] * 100).round(1)
     tab["cart_rate"] = (tab["cart_rate"] * 100).round(1)
     tab["purchase_rate"] = (tab["purchase_rate"] * 100).round(2)
-    tab["mean_conf"] = tab["mean_conf"].round(2)
-    print(tab.to_string())
+    return tab
 
+
+def monotonicity(df, intent_col):
+    p = df.groupby(intent_col)["purchased"].mean()
+    try:
+        ok = p["Evaluator"] > p["Explorer"] > p["Low-intent"]
+        return (f"monotonicity Evaluator > Explorer > Low-intent : "
+                f"{'PASS' if ok else 'FAIL'} "
+                f"({p['Evaluator']:.2%} > {p['Explorer']:.2%} > {p['Low-intent']:.2%})")
+    except KeyError:
+        return "monotonicity: some intents missing in this slice"
+
+
+def fit_report(train):
+    """Report train-window quantiles next to the thresholds the engine uses,
+    so drift is visible. (Engine thresholds live in intent_engine.py.)"""
+    eng = train[(train["n_events"] >= 3) & (train["n_views"] >= 2)]
+    q = {
+        "revisit_ratio p75 (engine uses 1.8)": round(eng["revisit_ratio"].quantile(.75), 2),
+        "revisit_ratio p25 (engine uses 1.1)": round(eng["revisit_ratio"].quantile(.25), 2),
+        "median_gap p60  (engine uses 120s)": round(eng["median_gap_sec"].quantile(.60), 1),
+        "duration p25    (engine uses 90s)": round(eng["duration_sec"].quantile(.25), 1),
+    }
+    print("train-window quantiles vs engine thresholds:")
+    for k, v in q.items():
+        print(f"  {k}: {v}")
+
+
+def main(data, split_ms):
+    df = pd.read_csv(data)
+    train = df[df["start_ms"] < split_ms]
+    test = df[df["start_ms"] >= split_ms].copy()
+    print(f"train sessions: {len(train):,}   test (final month): {len(test):,}\n")
+    if len(train):
+        fit_report(train)
+
+    eng = TwoStageEngine(intents=REAL_INTENTS)
+
+    # ---- full censored features ------------------------------------------------
+    res = [eng.score_aggregates(row_features(r)) for r in test.to_dict("records")]
+    test["intent"] = [x.intent for x in res]
+    test["mode"] = [x.mode for x in res]
+
+    print("\n" + "=" * 70)
+    print("VALIDITY -- CENSORED full-session features (leakage-free)")
+    print("Stage-A intents see NO commercial signals; conversion is unseen outcome")
+    print("=" * 70)
+    print(validity_table(test, "intent").to_string())
     base = test["purchased"].mean() * 100
-    print(f"\n  base purchase rate (all test sessions): {base:.2f}%")
+    print(f"\nbase purchase rate: {base:.2f}%")
+    print(monotonicity(test[test["mode"] != "override"], "intent"))
 
-    a = test[test["stage"] == "A"]
-    ev_p = a.loc[a["intent"] == "Evaluator", "purchased"].mean()
-    ex_p = a.loc[a["intent"] == "Explorer", "purchased"].mean()
-    lo_p = a.loc[a["intent"] == "Low-intent", "purchased"].mean()
-    mono = ev_p > ex_p > lo_p
-    print(f"  monotonicity Evaluator > Explorer > Low-intent : "
-          f"{'PASS' if mono else 'FAIL'} "
-          f"({ev_p:.1%} > {ex_p:.1%} > {lo_p:.1%})")
+    # ---- prefix-3 features -------------------------------------------------------
+    has_p3 = test["n_events_p3"].notna()
+    t3 = test[has_p3].copy()
+    res3 = [eng.score_aggregates(row_features(r, "_p3"))
+            for r in t3.to_dict("records")]
+    t3["intent_p3"] = [x.intent for x in res3]
+    t3["mode_p3"] = [x.mode for x in res3]
 
-    # ---- 3. sample explanations -------------------------------------------
-    print("\nSAMPLE EXPLANATIONS (held-out sessions)")
-    for intent in ["Decisive", "Evaluator", "Explorer", "Unclear"]:
-        pool = test[test["intent"] == intent]
-        if not len(pool):
-            continue
-        row = pool.iloc[0]
-        r = infer_realtime({f: row[f] for f in FEATURES})
-        print(f"\n[{intent}] session of visitor {int(row['visitorid'])}, "
-              f"purchased={bool(row['purchased'])}")
-        print("    " + r.explain().replace("\n", "\n    "))
+    print("\n" + "=" * 70)
+    print("VALIDITY -- PREFIX-3 features (decision after the first 3 clicks)")
+    print("=" * 70)
+    print(validity_table(t3, "intent_p3").to_string())
+    print(f"\nbase purchase rate (prefix-eligible): {t3['purchased'].mean()*100:.2f}%")
+    print(monotonicity(t3[t3["mode_p3"] != "override"], "intent_p3"))
+
+    # ---- agreement: does the 3-click call survive the full session? --------------
+    both = t3[(t3["intent_p3"] != "Unclear") & (t3["intent"] != "Unclear")]
+    if len(both):
+        agree = (both["intent_p3"] == both["intent"]).mean()
+        print(f"\nprefix-3 vs full-session intent agreement: {agree:.0%} "
+              f"(n={len(both):,})")
 
 
 if __name__ == "__main__":
-    main()
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--data", default="real_sessions.csv")
+    ap.add_argument("--split-ms", type=int, default=DEFAULT_SPLIT_MS)
+    a = ap.parse_args()
+    main(a.data, a.split_ms)

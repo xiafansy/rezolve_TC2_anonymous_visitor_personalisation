@@ -1,206 +1,122 @@
 """
-Homepage personalisation layer.
+personalisation.py (v3) -- turn an Inference into a homepage, stage-aware.
 
-Turns an inferred intent (+ confidence) into a concrete home-page layout: an
-ordered list of content blocks, a hero treatment, blocks to suppress, and the
-UX rationale behind each choice.
+Serving modes
+-------------
+  cold-accent   arrival (Stage 1 only): NEUTRAL base layout, with ONE accent
+                block tilted by the prior's argmax. A prior may tilt; it may
+                not commit.
+  personalised  behavioural confidence cleared the gate: full intent layout.
+  checkout      Decisive override: get out of the visitor's way.
+  neutral       Unclear: balanced page, commit to nothing.
 
-Design principles
------------------
-1. Intent drives layout, not identity. We never use who the visitor "is like"
-   (no lookalike) -- only what this session's signals imply they want *now*.
-2. Confidence gates commitment. When the inferer isn't sure (confidence below a
-   threshold), we serve a balanced NEUTRAL home page rather than confidently
-   showing the wrong thing. Getting personalisation wrong is worse than not
-   personalising at all.
-3. Every block carries a rationale, so the experience is auditable end-to-end:
-   session signal -> intent -> layout decision.
+Every block carries a rationale -> the whole chain (signal -> intent ->
+layout) stays auditable.
 """
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
-from intent_inference import infer
-
-# Below this winner-confidence we decline to personalise and serve NEUTRAL.
-# Rationale: with 4 intents, a confident call sits well above the 0.25 floor;
-# offline, wrong predictions cluster around ~0.43 confidence, so a threshold in
-# the low-0.40s screens out most mistakes while keeping most correct calls.
-MIN_CONFIDENCE = 0.42
-
-
-@dataclass
-class Block:
-    title: str
-    rationale: str
+from intent_engine import Inference
 
 
 @dataclass
 class Homepage:
-    intent: str            # the intent this layout serves ("Neutral" if fallback)
+    mode: str                 # cold-accent | personalised | checkout | neutral
+    intent: str
     confidence: float
-    personalised: bool     # False when we fell back to Neutral
-    headline: str
-    primary_goal: str
     hero: str
-    blocks: list           # list[Block], in display order
-    suppress: list         # things we deliberately de-emphasise
-    tone: str
-    reasons: list          # why we inferred this intent (from the inferer)
+    blocks: list              # [(title, rationale)]
+    suppress: list = field(default_factory=list)
+    reasons: list = field(default_factory=list)
 
 
-# ---------------------------------------------------------------------------
-# Per-intent home-page strategies.
-#
-# {category} is filled from the session so the layout points at what the visitor
-# is actually engaging with. Explorer/Neutral stay category-light on purpose.
-# ---------------------------------------------------------------------------
-STRATEGIES = {
-    "Goal-driven": {
-        "headline": "Find it fast",
-        "primary_goal": "Strip friction between arrival and checkout",
-        "hero": "Search-first hero: a large search box pre-scoped to {category}, "
-                "with the visitor's likely query as placeholder text",
-        "tone": "Efficient, minimal, conversion-focused",
-        "blocks": [
-            ("Best sellers in {category}",
-             "A decisive buyer converts fastest on proven, popular products"),
-            ("Free shipping & fast-checkout banner",
-             "Reassure on cost and speed to remove last-mile hesitation"),
-            ("Recently viewed / quick re-add",
-             "One tap back to the exact product they came for"),
-            ("Back-in-stock & top-rated in {category}",
-             "Narrow, high-signal shortlist -- no browsing detour"),
+LAYOUTS = {
+    "Goal-driven": dict(
+        hero="Search-first hero, pre-scoped to the visitor's category",
+        blocks=[
+            ("Best sellers in their category", "decisive buyers convert on proven items"),
+            ("Free shipping / fast checkout banner", "remove last-mile hesitation"),
+            ("Recently viewed rail", "one tap back to the exact product"),
         ],
-        "suppress": ["Editorial lookbooks", "Broad cross-category discovery carousels"],
-    },
-    "Explorer": {
-        "headline": "Discover what's trending",
-        "primary_goal": "Sustain browsing depth and inspire; capture an email",
-        "hero": "Full-bleed lifestyle imagery: 'Trending now' with a bold visual, "
-                "no search box competing for attention",
-        "tone": "Visual, editorial, low-pressure",
-        "blocks": [
-            ("Trending & new arrivals carousel",
-             "Fresh, changing content rewards the open-ended browser"),
-            ("Curated collections / lookbook",
-             "Themed inspiration keeps a grazing session moving"),
-            ("Shop by category grid",
-             "Visual entry points for someone with no fixed destination"),
-            ("Newsletter / early-access sign-up",
-             "Low intent to buy now -- convert the visit into a contactable lead"),
+        suppress=["editorial lookbooks", "cross-category discovery"]),
+    "Evaluator": dict(
+        hero="Comparison hero: the re-viewed items side-by-side",
+        blocks=[
+            ("Spec / price comparison table", "they are actively comparing -- do the work for them"),
+            ("Reviews up front", "quality evidence closes evaluators"),
+            ("Recently viewed rail + clear add-to-cart", "hottest browsing segment; make committing easy"),
         ],
-        "suppress": ["Prominent search bar", "Hard-sell checkout CTAs"],
-    },
-    "Research": {
-        "headline": "Compare with confidence",
-        "primary_goal": "Support careful evaluation with proof and detail",
-        "hero": "Comparison-oriented hero for {category}: 'Top rated', with "
-                "filters (rating, price, features) surfaced immediately",
-        "tone": "Informative, trustworthy, detail-rich",
-        "blocks": [
-            ("Highest-rated in {category}",
-             "Social proof is the deciding factor for an evaluator"),
-            ("Side-by-side comparison tool",
-             "Lets a researcher weigh specs without leaving the page"),
-            ("Buying guides & expert reviews",
-             "Deep content matches a long, deliberate session"),
-            ("Verified reviews & ratings spotlight",
-             "Aggregated trust signals to de-risk the decision"),
+        suppress=["broad promos", "unrelated trending"]),
+    "Explorer": dict(
+        hero="Full-bleed 'Trending now' visual, no search box competing",
+        blocks=[
+            ("Cross-category trending", "sustain the browse"),
+            ("Curated collections", "give the wandering a spine"),
+            ("Newsletter / save-for-later", "capture the visit even without a sale"),
         ],
-        "suppress": ["Urgency countdown timers", "Thin, image-only product tiles"],
-    },
-    "Price-sensitive": {
-        "headline": "Today's best deals",
-        "primary_goal": "Surface savings and create gentle urgency",
-        "hero": "Deals hero: 'Up to X% off', clearance banner, promo-code strip "
-                "front and centre",
-        "tone": "Value-led, energetic, urgency-aware",
-        "blocks": [
-            ("Sale grid sorted by biggest discount",
-             "A bargain-hunter scans by savings, not by product"),
-            ("Price-drop & clearance highlights",
-             "Reinforce that now is a good time to buy"),
-            ("Coupon / promo-code panel",
-             "Matches the promo-driven way they arrived"),
-            ("Limited-time deals countdown",
-             "Gentle urgency nudges a price-led shopper to commit"),
+        suppress=["aggressive checkout prompts"]),
+    "Price-sensitive": dict(
+        hero="Sale hero with countdown + biggest % off",
+        blocks=[
+            ("Deals rail sorted price-low", "mirror their own sort behaviour"),
+            ("Price-drop alerts signup", "deal hunters return for drops"),
+            ("Bundle offers", "raise basket without raising price resistance"),
         ],
-        "suppress": ["Full-price editorial", "Premium/luxury positioning"],
-    },
-    # Served when confidence is too low to commit to any single intent.
-    "Neutral": {
-        "headline": "Welcome",
-        "primary_goal": "Cover all bases when intent is unclear -- do no harm",
-        "hero": "Balanced hero: search box alongside a 'Trending now' visual, "
-                "neither dominating",
-        "tone": "Balanced, broadly useful",
-        "blocks": [
-            ("Search + top categories",
-             "Serve goal-driven visitors without crowding out browsers"),
-            ("Trending products",
-             "Safe, broadly appealing entry point"),
-            ("Featured deals strip",
-             "A modest nod to value without going all-in on discounts"),
-            ("New arrivals",
-             "Fresh content for the undecided"),
+        suppress=["full-price new arrivals"]),
+    "Low-intent": dict(
+        hero="Fast, light hero: top categories only",
+        blocks=[
+            ("Top categories grid", "orient in one glance"),
+            ("One broad promo", "single low-pressure hook"),
         ],
-        "suppress": ["Aggressive single-intent commitment"],
-    },
+        suppress=["heavy media", "modals", "anything slow"]),
 }
 
+NEUTRAL = dict(
+    hero="Balanced hero: search + trending side by side",
+    blocks=[
+        ("Search bar", "serve the mission if there is one"),
+        ("Trending now", "serve the browse if there is one"),
+        ("Top categories", "orient everyone"),
+    ],
+    suppress=[])
 
-def _fill(text, category):
-    return text.replace("{category}", str(category) if category else "your category")
-
-
-def build_homepage(session, min_confidence=MIN_CONFIDENCE):
-    """Full pipeline for one session: signals -> intent -> home-page layout."""
-    result = infer(session)
-    personalised = result.confidence >= min_confidence
-    key = result.intent if personalised else "Neutral"
-    strat = STRATEGIES[key]
-    category = session.get("Category", "")
-
-    blocks = [Block(_fill(t, category), _fill(r, category))
-              for (t, r) in strat["blocks"]]
-
-    return Homepage(
-        intent=key,
-        confidence=result.confidence,
-        personalised=personalised,
-        headline=strat["headline"],
-        primary_goal=strat["primary_goal"],
-        hero=_fill(strat["hero"], category),
-        blocks=blocks,
-        suppress=strat["suppress"],
-        tone=strat["tone"],
-        reasons=result.reasons[:3],
-    )
+CHECKOUT = dict(
+    hero="Sticky cart summary with one-tap checkout",
+    blocks=[
+        ("Shipping / returns reassurance", "the one doubt that kills a decided sale"),
+        ("'Complete your order' CTA", "they decided; get out of the way"),
+    ],
+    suppress=["all discovery content", "promos that add doubt"])
 
 
-def render_text(hp, session=None):
-    """Human-readable render of a Homepage for the CLI demo."""
-    lines = []
-    tag = "PERSONALISED" if hp.personalised else "NEUTRAL (low confidence)"
-    lines.append(f"HOME PAGE -> {hp.intent}  [{tag}]  confidence {hp.confidence:.0%}")
-    if hp.reasons:
-        lines.append(f"  inferred because: {'; '.join(hp.reasons)}")
-    lines.append(f"  goal : {hp.primary_goal}")
-    lines.append(f"  tone : {hp.tone}")
-    lines.append(f"  HERO : {hp.hero}")
-    lines.append("  BLOCKS:")
-    for i, b in enumerate(hp.blocks, 1):
-        lines.append(f"    {i}. {b.title}")
-        lines.append(f"       -> {b.rationale}")
-    lines.append(f"  SUPPRESS: {', '.join(hp.suppress)}")
-    return "\n".join(lines)
+def render(inf: Inference) -> Homepage:
+    if inf.mode == "override":
+        L = CHECKOUT
+        return Homepage("checkout", "Decisive", inf.confidence, L["hero"],
+                        L["blocks"], L["suppress"], inf.reasons)
 
+    if inf.mode == "cold":
+        # Accent = the most likely SUBSTANTIVE intent. Low-intent winning the
+        # cold prior just means "probably a drive-by"; the interesting tilt is
+        # "if they turn out to be someone, who?" -- the runner-up.
+        ranked = sorted(inf.probs, key=inf.probs.get, reverse=True)
+        accent = next((i for i in ranked if i != "Low-intent"), ranked[0])
+        L = dict(NEUTRAL)
+        blocks = list(L["blocks"])
+        if inf.probs.get(accent, 0) >= 0.10 and accent in LAYOUTS:
+            blocks = [LAYOUTS[accent]["blocks"][0]] + blocks  # one tilted block
+        return Homepage("cold-accent", accent, inf.confidence, L["hero"],
+                        blocks, L["suppress"],
+                        [f"prior tilt toward {accent} -- no behaviour observed yet"]
+                        + inf.reasons)
 
-if __name__ == "__main__":
-    demo = {
-        "Referrer": "Instagram", "Device": "Mobile", "Category": "Fashion",
-        "Search_Used": False, "Search_Query": "", "Scroll_Depth": 92,
-        "Product_Views": 16, "Filter_Used": False, "Sort_Type": "Trending",
-        "Session_Duration_sec": 700, "Add_to_Cart": False, "Purchase": False,
-    }
-    print(render_text(build_homepage(demo), demo))
+    if inf.intent == "Unclear":
+        L = NEUTRAL
+        return Homepage("neutral", "Unclear", inf.confidence, L["hero"],
+                        L["blocks"], L["suppress"], inf.reasons)
+
+    L = LAYOUTS[inf.intent]
+    mode = "neutral-light" if inf.intent == "Low-intent" else "personalised"
+    return Homepage(mode, inf.intent, inf.confidence, L["hero"],
+                    L["blocks"], L["suppress"], inf.reasons)

@@ -1,169 +1,192 @@
 # TC2 · Anonymous-Visitor Personalisation
 
 **Can we personalise the home page for an anonymous, first-time visitor — without
-lookalike modelling?** This prototype infers *genuine, real-time intent* from the
-signals a single session actually emits (referral, device, on-page behaviour,
-browsing sequence) instead of asking "which known cohort does this stranger
-resemble?".
+lookalike modelling?** This prototype infers real-time intent from the signals a
+single session emits (arrival context, on-page behaviour, browsing sequence) and
+maps it to a homepage — with a calibrated option to *decline* and stay neutral.
 
-## Approach
+## Architecture — one two-stage engine (`intent_engine.py`)
 
 ```
-session signals ──> evidence-weighted intent scorer ──> homepage strategy ──> demo
- (observable        (transparent rules + confidence      (one layout per        (HTML)
-  only)              gate -> NEUTRAL when unsure)         intent)
+STAGE 1 · COLD START (event 0)           STAGE 2 · BEHAVIOURAL (every click)
+referrer / device / landing / hour   +   newest actions (decayed window, last
+        = soft PRIOR                     2-3 dominate) + session shape (state)
+                     \                  /
+                      posterior = softmax((prior + window + state) / T)
+                                   |
+              +--------------------+--------------------------+
+              | conf >= gate : PERSONALISED intent layout      |
+              | conf <  gate : NEUTRAL (declining is a choice) |
+              | cart with <=2 prior views : DECISIVE override  |
+              +-----------------------------------------------+
 ```
 
-Design choices that define the project:
+- A prior may *tilt* the neutral page (one accented block); it may not commit.
+- Temperature and gate are **fitted** (NLL grid / target-precision search) on a
+  fit split — never hand-picked, never tuned on reported test data.
+- The Decisive override is a mode switch on a commercial trigger, not a
+  prediction.
+- Intents: Goal-driven · Evaluator · Explorer · Price-sensitive · Low-intent
+  (+ `Unclear` from the gate, + `Decisive` override). Real logs without
+  search/referrer signals can observe only Evaluator / Explorer / Low-intent,
+  through the same engine (`score_aggregates()`).
+- **Price sensitivity is a flavor, not a fifth real-data intent**: on real
+  prices, cheap-leaning browsing (`price_rel_cat < 0.6`) lifts conversion
+  *within every* intent, so it tilts merchandising while browse shape picks
+  the layout.
 
-- **Rule-based scorer as the shipping logic, not ML.** A real cold-start has no
-  labels to train on. A weighted-evidence scorer needs zero history, runs
-  per-event in real time, and can *explain every verdict* — each inference
-  carries its human-readable reasons.
-- **A confidence gate that declines to personalise.** When evidence conflicts,
-  the system says "Unclear" and serves a neutral page. Not personalising is a
-  deliberate output, not a failure mode.
-- **Honest evaluation.** The scorer never sees ground-truth labels or
-  conversion outcomes; those are used only to validate it afterwards.
+## Three datasets, one honesty rule
 
-## Two tracks, two datasets
+The scorer never sees labels or outcomes; they are used only to validate.
 
-| | Track 1 · Synthetic | Track 2 · Real (RetailRocket) |
+| track | data | what it establishes |
 |---|---|---|
-| data | `reasonable_random_dataset.py` → `anonymous_sessions.csv` (1,000 sessions, intent-labelled by construction) | Kaggle RetailRocket event log → `build_real_sessions.py` → 1.76M sessionized visits |
-| what it proves | the full-signal pipeline end-to-end (referrer / device / search / sort / behaviour) | that intent archetypes exist in real traffic and are *predictive* |
-| evaluation | accuracy vs known labels (`evaluate.py`) — with the caveat that the generator's rules are being partially inverted | temporal hold-out: thresholds fitted on months 1–3.5, validated on the final month (`evaluate_real.py`) |
-| limit | circularity: synthetic labels came from rules we wrote | no referrer / device / search / price signals in the log |
+| synthetic | `make_event_dataset.py` — 3k event-level sessions, 45% Low-intent, noisy archetypes | full-signal engine end-to-end; decision-time accuracy |
+| real #1 | RetailRocket (Kaggle), 2.76M events → 1.76M sessions | behavioural intents separate real conversion; temporal hold-out |
+| real #2 | REES46 (4.6GB, real prices), 110M events → 23M sessions | cross-retailer transfer with zero re-tuning; price flavor; Black-Friday robustness |
 
-The tracks are complementary: Track 1 demonstrates the architecture with every
-signal the brief names; Track 2 replaces trust-me with evidence.
+## How the numbers were corrected (read this before quoting any)
 
-## What the real data taught us (findings)
+This project's evaluation was falsified and rebuilt twice — the audit trail is
+the methodology story:
 
-1. **~75% of real sessions contain a single event; only ~10% have ≥3.**
-   Behavioural inference can only ever serve the engaged tail — the neutral
-   fallback plus acquisition context must carry the rest. (The engaged tail is
-   worth it: it converts 9× the base rate.)
-2. **Re-viewing the same item is the golden intent signal.** Sessions that
-   re-view items ≥1.8× buy at ~10% vs ~4% below — and "focused on one category
-   but never re-viewed an item" collapses to **1.0%** (a drive-by scan, not
-   research). Our synthetic assumption "fast + focused = decisive buyer" was
-   **wrong** on real traffic (those sessions buy at 1.2%).
-3. **True decisive buyers are commercial-event-led**, not fast browsers: cart
-   with ≤2 prior views → 75% purchase in-session. That's an event-triggered
-   *mode switch* (Stage B), not a prediction.
-4. **Time-of-day carries weak real signal** (evening ≈ 2× morning purchase
-   rate) — usable as a soft prior, never as evidence of intent.
+1. **v1 (circular):** 97.5% accuracy on synthetic data whose labels came from
+   the same hand-written rules. Retired.
+2. **v2 (leaky):** session-level features included behaviour *after* the first
+   add-to-cart. Buyers re-open product pages during checkout, so re-viewing
+   "predicted" buying partly because buying caused re-viewing. Quantified on
+   RetailRocket's held-out month: Evaluator purchase 6.9% → **2.8%** once
+   censored; the revisit-band gradient 3.4→24% collapsed to ≈2→3%; the claim
+   "Evaluator out-converts Explorer" flipped to FAIL on this site.
+3. **v3 (current):** all behavioural features are **censored at the first
+   commercial event** (`build_real_sessions.py`, `build_rees46_sessions.py`;
+   asserted by `smoke_test_real_pipeline.py`), the Decisive trigger uses
+   `views_before_first_commercial`, and every table below is decision-time
+   honest. Superseded code and the exact wrong numbers live in
+   [`legacy/`](legacy/README.md).
 
-### Held-out validation (final month, never seen during tuning)
+## Results (all censored, all held-out)
 
-Stage-A intents are inferred from view-patterns only; conversion below is an
-outcome the scorer never saw. Base purchase rate: **0.81%**.
+### Synthetic track — decision-time accuracy (test split; fitted T=1.0, gate=0.43)
 
-| intent | coverage | cart rate | purchase rate |
-|---|---|---|---|
-| Decisive (Stage B) | 1.6% | 100%* | **22.8%** |
-| Evaluator | 2.0% | 15.2% | **6.9%** |
-| Explorer | 3.0% | 12.8% | **5.8%** |
-| Unclear → neutral | 0.6% | 14.6% | 4.1% |
-| Low-intent | 92.8% | 0.1% | 0.1% |
+| after event | decided | acc (decided) | acc (all) | override |
+|---|---|---|---|---|
+| 0 (arrival) | 89% | 49% | 44% | 0% |
+| 2 | 99% | 58% | 57% | 1.1% |
+| 3 | 90% | **83%** | 73% | 2.0% |
+| end | 95% | **86%** | 81% | 2.0% |
 
-\* cart=100% by construction — Stage B *is* the add-to-cart trigger.
-Monotonicity Evaluator > Explorer > Low-intent: **PASS**.
+Confidence is calibrated (ECE 0.12; mean 84% when correct vs 71% when wrong).
+Remaining Price-sensitive ↔ Evaluator confusion is genuine overlap — tuning it
+away would recreate v1's circularity. Decisive override: 2% of sessions, 66%
+purchase vs 11% base.
 
-### Cross-dataset validation (REES46, thresholds frozen — zero re-tuning)
+### RetailRocket — held-out final month, censored features (base 0.81%)
 
-The same scorer, with thresholds fitted on RetailRocket, applied to a second
-retailer's November 2019 traffic (Black Friday month — a deliberate
-promo-distortion robustness test; 2M-session sample). Base purchase: **5.6%**.
+| intent | coverage | purchase rate |
+|---|---|---|
+| Decisive (override) | 1.5% | **28.5%** |
+| Evaluator | 1.8% | 2.8% |
+| Explorer | 2.0% | 3.5% |
+| Unclear → neutral | 1.8% | 1.5% |
+| Low-intent | 92.9% | 0.24% |
+
+What survives censoring here: the engaged-vs-micro split (~10×) and the
+Decisive trigger. Within engaged browse patterns the differences are modest
+and their ordering is **not stable on this site** — an honest negative result.
+Prefix-3 agrees with full-session calls 99% of the time.
+
+### REES46 — November (Black Friday) hold-out, censored, zero re-tuning (base 5.64%)
 
 | intent | coverage | purchase rate | cheap-flavor lift |
 |---|---|---|---|
-| Decisive (Stage B) | 4.5% | **42.3%** | +5.6pp |
-| Evaluator | 16.2% | **13.5%** | +3.0pp |
-| Explorer | 10.5% | 4.1% | +1.8pp |
-| Unclear → neutral | 6.6% | 6.6% | — |
-| Low-intent | 62.3% | 1.1% | +0.3pp |
+| Decisive (override) | 7.7% | **40.2%** | +4.5pp |
+| Evaluator | 12.3% | **6.2%** | +1.6pp |
+| Explorer | 8.6% | 2.2% | +1.1pp |
+| Unclear → neutral | 10.6% | 4.1% | +1.0pp |
+| Low-intent | 60.8% | 1.9% | +0.3pp |
 
-Monotonicity: **PASS**. The revisit-band pattern replicates across both
-retailers and both months (the <1.2 band converts at 3.4% on *each* site).
+Monotonicity Evaluator > Explorer > Low-intent: **PASS** (also on prefix-3).
+Censored revisit bands rise 3.0% → 10.0% (Oct) — re-viewing is a real but
+site-dependent signal (~2-3× here, flat on RetailRocket; the leaky 8× was an
+artifact). The price flavor lifts conversion within every intent on clean
+features. Prefix-3 vs full-session agreement: 89%.
 
-**Price sensitivity is a flavor, not a fifth intent.** On real prices
-(REES46), cheap-leaning browsing (`price_rel_cat < 0.6`) adds conversion lift
-*within every* browse-pattern intent, so it modifies merchandising (value-first
-sorting, sale rails) while the browse pattern picks the layout. Price-trend
-features (`price_stepdown_share`, first→last drift) turned out to be
-contaminated by item re-views and are deliberately unused.
+### What a stakeholder should take away
 
-## Intent → homepage strategy
+- Behavioural separation from **3 clicks**, no identity, no lookalikes:
+  0.2–1.9% (low-intent floor) vs 2–6% (engaged intents) vs 28–40% (Decisive).
+- The engine **knows when not to personalise** (fitted gate; Unclear → neutral).
+- Every decision ships with its reasons (auditable evidence lists).
+- Proving personalisation *lifts* conversion (vs merely separating it) needs
+  an online A/B — outside this repo's reach.
 
-| intent | signature (real signals) | homepage serves |
+## Intent → homepage (`personalisation.py`)
+
+| serve mode | when | page |
 |---|---|---|
-| Decisive | cart with minimal prior browsing | checkout support: sticky cart, one-tap pay, shipping reassurance |
-| Evaluator | re-views same items, single category, deliberate pace | comparison: specs side-by-side, reviews, recently-viewed rail, clear CTA |
-| Explorer | ≥3 categories, high switch rate, no re-views | discovery: cross-category trending, curated collections |
-| Low-intent / micro-visit | ≤2 events, gone in seconds | neutral-light: fast page, top categories, one broad promo |
-| Unclear | conflicting evidence | neutral: balanced page; commit to nothing |
-| *+ price-conscious flavor* | browsing the cheap end of categories (`price_rel_cat < 0.6`) | overlay on any layout above: value-first sorting, sale rail, budget picks |
+| cold-accent | arrival, prior only | neutral base + ONE block tilted to the likely substantive intent |
+| personalised | gate cleared | full intent layout (comparison / discovery / mission / value) |
+| checkout | Decisive override | sticky cart, one-tap checkout, reassurance; suppress discovery |
+| neutral / neutral-light | Unclear / Low-intent | balanced fast page, commit to nothing |
+| *+ price-conscious flavor* | `price_rel_cat < 0.6` | value-first sorting, sale rail, budget picks on any layout |
 
 ## Files
 
 ```
-Track 1 (synthetic, full signal set)
-  reasonable_random_dataset.py   generator: intent -> plausible signals
-  intent_inference.py            v1 evidence scorer (referrer/device/search/behaviour)
-  personalisation.py             intent -> homepage layout decision
-  evaluate.py                    accuracy / confusion / per-class PR vs labels
-  demo.py                        end-to-end walkthrough; exports homepage_demo_data.json
-  personalisation_demo.html      visual demo (open in browser)
-
-Track 2 (real, RetailRocket + REES46)
-  build_real_sessions.py         RetailRocket event log -> 1.76M sessions
-  build_rees46_sessions.py       REES46 Oct+Nov -> 23M sessions incl. price features
-  intent_inference_real.py       v2 two-stage scorer + price-conscious flavor
-  evaluate_real.py               RetailRocket temporal hold-out validation
-  evaluate_rees46.py             REES46 cross-dataset + Black-Friday hold-out
+intent_engine.py             two-stage engine + calibration (fit_temperature,
+                             fit_gate, ECE) + score_aggregates() for real logs
+personalisation.py           Inference -> stage-aware homepage (auditable)
+make_event_dataset.py        event-level synthetic generator (seeded)
+evaluate_synthetic.py        prefix accuracy, confusion, calibration, gate fit
+build_real_sessions.py       RetailRocket sessionizer, CENSORED + prefix-3
+build_rees46_sessions.py     REES46 aggregator, CENSORED + prices + prefix-3
+evaluate_real.py             RetailRocket temporal hold-out (censored + p3)
+evaluate_rees46.py           REES46 cross-dataset hold-out + price flavor
+smoke_test_real_pipeline.py  end-to-end test on fabricated data; asserts censoring
+demo.py -> demo.html         3 journeys, click-by-click homepage evolution
+personalisation_demo.html    interactive full-signal mockup (open directly)
+legacy/                      v1/v2 + the retired numbers (see its README)
 ```
 
-### Data setup (Track 2)
+## Run it
 
-Raw datasets are git-ignored (GitHub's 100MB/file limit; the sources below are
-the canonical hosts). The repo carries the recipe, not the data.
-
-**RetailRocket** — download from
-[Kaggle](https://www.kaggle.com/datasets/retailrocket/ecommerce-dataset)
-and unzip into `archive/` (~900MB):
-`events.csv`, `item_properties_part1/2.csv`, `category_tree.csv`. Then:
-
-```
-/usr/bin/python3 build_real_sessions.py    # writes real_sessions.csv (~134MB)
-/usr/bin/python3 evaluate_real.py          # temporal hold-out validation
+```bash
+/usr/bin/python3 smoke_test_real_pipeline.py   # no data needed; asserts censoring
+/usr/bin/python3 make_event_dataset.py && /usr/bin/python3 evaluate_synthetic.py
+/usr/bin/python3 demo.py                       # writes demo.html
 ```
 
-**REES46 multi-category store** — richer signals the RetailRocket log lacks:
-real prices (unlocks the Price-sensitive archetype), readable category codes,
-brands, and built-in session ids. Direct download from the publisher
-([also on Kaggle](https://www.kaggle.com/datasets/mkechinov/ecommerce-behavior-data-from-multi-category-store))
-into `archive_rees46/`:
+### Real datasets (git-ignored; repo ships the recipe, not the data)
 
+**RetailRocket** — [Kaggle](https://www.kaggle.com/datasets/retailrocket/ecommerce-dataset)
+→ unzip into `archive/` (~900MB), then:
+
+```bash
+/usr/bin/python3 build_real_sessions.py --archive archive --out real_sessions.csv
+/usr/bin/python3 evaluate_real.py --data real_sessions.csv
 ```
+
+**REES46** — direct from the publisher
+([also on Kaggle](https://www.kaggle.com/datasets/mkechinov/ecommerce-behavior-data-from-multi-category-store)):
+
+```bash
 mkdir -p archive_rees46 && cd archive_rees46
 curl -LO https://data.rees46.com/datasets/marketplace/2019-Oct.csv.gz   # 1.7GB
 curl -LO https://data.rees46.com/datasets/marketplace/2019-Nov.csv.gz   # 2.9GB
+cd .. && /usr/bin/python3 build_rees46_sessions.py && /usr/bin/python3 evaluate_rees46.py
 ```
-
-Columns: `event_time, event_type(view|cart|remove_from_cart|purchase),
-product_id, category_id, category_code, brand, price, user_id, user_session`.
 
 ## Honest limitations
 
-- Real-data features are session-level aggregates — an offline approximation of
-  the incremental real-time computation (the realtime variant is Track 1's demo).
-- Price-sensitivity is validated as a *flavor* on REES46 (real prices); the
-  RetailRocket log has no price signal, and no real log here carries
-  referrer/device/search — those context signals remain Track-1-only.
-- November REES46 is Black-Friday traffic: gradients hold but absolute rates
-  are promo-inflated; October is the calmer reference.
-- Track 1 accuracy overstates what production would see (label circularity);
-  Track 2's held-out lift is the number to trust.
-- Hour-of-day timezone in the log is unknown; only relative differences used.
+- Synthetic accuracy still partially reflects generator design (mitigated by
+  noise + Low-intent-heavy mix, not eliminated). Trust the censored real-data
+  validity numbers.
+- Real logs lack search/referrer/device, so Goal-driven and the full cold-start
+  prior are exercised only on the synthetic track until first-party
+  instrumentation exists.
+- Offline aggregates approximate the incremental engine; prefix-3 tables are
+  the closest offline stand-in for decision-time behaviour.
+- November REES46 is Black-Friday traffic: gradients hold, absolute rates are
+  promo-inflated; October is the calmer reference.
+- Intent separation ≠ proven conversion lift; that requires an online A/B.
