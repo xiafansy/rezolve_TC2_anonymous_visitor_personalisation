@@ -190,10 +190,16 @@ def window_evidence(event, state, prev_event):
             if cat is not None and prev_event.get("category") not in (None, cat):
                 add("Explorer", 1.0, "hopped category between consecutive views")
             gap = (event.get("ts", 0) or 0) - (prev_event.get("ts", 0) or 0)
-            if gap >= 60:
-                add("Evaluator", 0.8, f"dwelled {gap:.0f}s on the previous item")
+            # PDP dwell bands, measured on censored train windows
+            # (measure_dwell.py): buy-rate peaks at 120-300s and falls off a
+            # cliff past ~600s -- that long is a parked tab, not reading.
+            if 60 <= gap < 120:
+                add("Evaluator", 0.8, f"dwelled {gap:.0f}s on the previous item (read the page)")
+            elif 120 <= gap < 600:
+                add("Evaluator", 1.0, f"dwelled {gap:.0f}s on the previous item (deliberate consideration)")
             elif 0 < gap < 5:
                 add("Explorer", 0.4, "rapid-fire flicking between items")
+            # gap >= 600s: idle cap -- no dwell credit for a left-open tab.
         if str(cat).strip().lower() == "sale":
             add("Price-sensitive", 1.0, "viewing items in the Sale section")
 
@@ -245,6 +251,13 @@ def state_evidence(state):
         add("Low-intent", 1.6, f"only {state.n_events} event(s) so far -- barely any signal")
         if state.duration_sec < 60:
             add("Low-intent", 0.6, "under a minute on site")
+        elif state.duration_sec < 600:
+            # Sauvik's 60-120s dwell band, extended to the measured idle cap.
+            # Site-dependent (RetailRocket: micro buy-rate rises with dwell;
+            # REES46: falls), so the tilt is deliberately small -- enough to
+            # combine with a prior and reach Unclear/neutral, never enough
+            # to out-vote behavioural evidence.
+            add("Evaluator", 0.3, f"lingered {state.duration_sec:.0f}s rather than bouncing")
         return ev
 
     rr = state.revisit_ratio
@@ -395,7 +408,8 @@ class TwoStageEngine:
         if self.prev_event is not None and ts is not None:
             prev_ts = self.prev_event.get("ts")
             if prev_ts is not None and ts >= prev_ts:
-                st.gap_sum += ts - prev_ts
+                # Idle cap: one overnight tab-park must not dominate the pace.
+                st.gap_sum += min(ts - prev_ts, 600.0)
                 st.gap_n += 1
         st.n_events += 1
         etype = event.get("type")
@@ -497,12 +511,16 @@ class TwoStageEngine:
             add("Low-intent", 2.5, f"micro-visit ({n_events:.0f} events)")
             if dur < 90:
                 add("Low-intent", 1.0, f"gone in {dur:.0f}s")
+            elif dur < 600:
+                add("Evaluator", 0.3, f"lingered {dur:.0f}s rather than bouncing")
         else:
             if rr >= 1.8:
                 add("Evaluator", 3.0, f"re-viewed items {rr:.1f}x (comparison)")
                 if focus >= 0.75:
                     add("Evaluator", 1.5, f"{focus:.0%} of views in one category")
-                if gap >= 120:
+                # Dwell credit widened to the measured band (60s reading
+                # threshold) and idle-capped at 600s (parked tab).
+                if 60 <= gap < 600:
                     add("Evaluator", 0.5, "deliberate pace")
             elif rr <= 1.1:
                 add("Explorer", 1.0, "almost never returned to an item")
