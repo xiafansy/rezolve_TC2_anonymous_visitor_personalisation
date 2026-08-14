@@ -349,12 +349,17 @@ class TwoStageEngine:
     DEFAULTS = dict(temperature=2.0, gate=0.45, cold_gate=0.55, decay=0.80)
 
     def __init__(self, intents=None, temperature=None, gate=None,
-                 cold_gate=None, decay=None):
+                 cold_gate=None, decay=None, disabled_rules=None,
+                 weight_scale=None):
         self.intents = list(intents or ALL_INTENTS)
         self.temperature = temperature or self.DEFAULTS["temperature"]
         self.gate = gate or self.DEFAULTS["gate"]
         self.cold_gate = cold_gate or self.DEFAULTS["cold_gate"]
         self.decay = decay or self.DEFAULTS["decay"]
+        # Ablation hooks (offline score_aggregates path): rule ids to silence
+        # entirely, and per-rule weight multipliers for sensitivity analysis.
+        self.disabled_rules = set(disabled_rules or ())
+        self.weight_scale = dict(weight_scale or {})
         self._reset()
 
     def _reset(self):
@@ -485,10 +490,13 @@ class TwoStageEngine:
 
         # Cheap-leaning within category (median viewed price < 60% of the
         # category median). CENSORED upstream like every other feature.
-        cheap = 0 < g("price_rel_cat", 0.0) < 0.60
+        cheap = ("cheap_flavor" not in self.disabled_rules
+                 and 0 < g("price_rel_cat", 0.0) < 0.60)
         cheap_reason = "browsing the cheap end of categories (value tilt)"
 
-        if g("added_to_cart") and g("views_before_first_commercial", 99) <= 2:
+        if ("decisive_override" not in self.disabled_rules
+                and g("added_to_cart")
+                and g("views_before_first_commercial", 99) <= 2):
             return Inference("Decisive", 0.95, {"Decisive": 1.0}, {"Decisive": 1.0},
                              ["cart with almost no prior browsing"]
                              + ([cheap_reason] if cheap else []),
@@ -498,42 +506,47 @@ class TwoStageEngine:
         scores = {i: 0.0 for i in self.intents}
         reasons = {i: [] for i in self.intents}
 
-        def add(i, w, r):
-            if i in scores:
-                scores[i] += w
-                reasons[i].append((w, r))
+        def add(rid, i, w, r):
+            if rid in self.disabled_rules or i not in scores:
+                return
+            w *= self.weight_scale.get(rid, 1.0)
+            scores[i] += w
+            reasons[i].append((w, r))
 
         n_events, n_views = g("n_events"), g("n_views")
         rr, n_cats = g("revisit_ratio", 1.0), g("n_categories")
         focus, gap, dur = g("top_category_share"), g("median_gap_sec"), g("duration_sec")
 
         if n_events <= 2 or n_views < 2:
-            add("Low-intent", 2.5, f"micro-visit ({n_events:.0f} events)")
+            add("micro", "Low-intent", 2.5, f"micro-visit ({n_events:.0f} events)")
             if dur < 90:
-                add("Low-intent", 1.0, f"gone in {dur:.0f}s")
+                add("micro_short", "Low-intent", 1.0, f"gone in {dur:.0f}s")
             elif dur < 600:
-                add("Evaluator", 0.3, f"lingered {dur:.0f}s rather than bouncing")
+                add("micro_linger", "Evaluator", 0.3,
+                    f"lingered {dur:.0f}s rather than bouncing")
         else:
             if rr >= 1.8:
-                add("Evaluator", 3.0, f"re-viewed items {rr:.1f}x (comparison)")
+                add("revisit_core", "Evaluator", 3.0,
+                    f"re-viewed items {rr:.1f}x (comparison)")
                 if focus >= 0.75:
-                    add("Evaluator", 1.5, f"{focus:.0%} of views in one category")
+                    add("revisit_focus", "Evaluator", 1.5,
+                        f"{focus:.0%} of views in one category")
                 # Dwell credit widened to the measured band (60s reading
                 # threshold) and idle-capped at 600s (parked tab).
                 if 60 <= gap < 600:
-                    add("Evaluator", 0.5, "deliberate pace")
+                    add("revisit_pace", "Evaluator", 0.5, "deliberate pace")
             elif rr <= 1.1:
-                add("Explorer", 1.0, "almost never returned to an item")
+                add("no_revisit", "Explorer", 1.0, "almost never returned to an item")
             if n_cats >= 3:
-                add("Explorer", 3.0, f"touched {n_cats:.0f} categories")
+                add("broad_cats", "Explorer", 3.0, f"touched {n_cats:.0f} categories")
             if g("category_switch_rate") >= 0.5:
-                add("Explorer", 2.0, "switched category on half of view steps")
+                add("cat_switch", "Explorer", 2.0, "switched category on half of view steps")
             if focus >= 0.9 and rr < 1.4 and n_views >= 4:
-                add("Low-intent", 1.5, "category scan without item engagement")
+                add("scan_no_engage", "Low-intent", 1.5, "category scan without item engagement")
             if dur < 90 and rr < 1.8:
-                add("Low-intent", 2.0, "brief shallow visit")
+                add("brief_shallow", "Low-intent", 2.0, "brief shallow visit")
             if n_views <= 3 and rr < 1.8 and n_cats <= 2:
-                add("Low-intent", 1.0, "too few distinct signals")
+                add("few_signals", "Low-intent", 1.0, "too few distinct signals")
 
         probs = _softmax(scores, self.temperature)
         winner = max(probs, key=probs.get)
