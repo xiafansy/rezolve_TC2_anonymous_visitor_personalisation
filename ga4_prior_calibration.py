@@ -26,6 +26,10 @@ events) or the full Kaggle download -- place CSVs in archive_ga4/.
 Usage
 -----
   /usr/bin/python3 ga4_prior_calibration.py [--glob 'archive_ga4/*.csv']
+
+  # preferred: aggregate in BigQuery (ga4_context_export.sql), download the
+  # few-hundred-row cell table, then:
+  /usr/bin/python3 ga4_prior_calibration.py --cells archive_ga4/ga4_context_cells.csv
 """
 
 import argparse
@@ -136,6 +140,34 @@ def calibrate(s, dim):
         print(f"{str(level):<14} {n:>9,} {rate:>6.2%} {lift:>5.2f}x  {w:+.2f}")
 
 
+def calibrate_cells(path):
+    """BigQuery-aggregated mode: read the cell table produced by
+    ga4_context_export.sql (referrer, device, continent, hour_bucket,
+    sessions, purchases, carts) and print the same calibration tables."""
+    c = pd.read_csv(path)
+    total_sessions = c["sessions"].sum()
+    total_purchases = c["purchases"].sum()
+    base = total_purchases / total_sessions
+    print(f"cells: {len(c):,}  sessions: {total_sessions:,}  "
+          f"purchases: {total_purchases:,}  base rate: {base:.2%}")
+    for dim in ["referrer", "device", "continent", "hour_bucket"]:
+        g = c.groupby(dim, dropna=False)[["sessions", "purchases"]].sum()
+        print(f"\n-- prior calibration by {dim} (base purchase {base:.2%}) --")
+        print(f"{'level':<14} {'sessions':>9} {'buy%':>7} {'lift':>6}  suggested weight")
+        for level, row in g.sort_values("sessions", ascending=False).iterrows():
+            n = int(row["sessions"])
+            if n < MIN_SESSIONS:
+                print(f"{str(level):<14} {n:>9,} {'--':>7} {'--':>6}  "
+                      f"INSUFFICIENT (<{MIN_SESSIONS})")
+                continue
+            rate = row["purchases"] / n
+            lift = rate / base
+            w = float(np.clip(1.5 * (lift - 1), -1.5, 1.5))
+            print(f"{str(level):<14} {n:>9,} {rate:>6.2%} {lift:>5.2f}x  {w:+.2f}")
+    print("\nAdopt a weight only where the table shows one; everything else "
+          "stays at the hand-set default until real volume exists.")
+
+
 def main(pattern):
     ev = load(pattern)
     s = sessionize(ev)
@@ -153,5 +185,10 @@ def main(pattern):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--glob", default="archive_ga4/*.csv")
+    ap.add_argument("--cells", help="BigQuery-aggregated cell CSV "
+                                    "(from ga4_context_export.sql)")
     a = ap.parse_args()
-    main(a.glob)
+    if a.cells:
+        calibrate_cells(a.cells)
+    else:
+        main(a.glob)
