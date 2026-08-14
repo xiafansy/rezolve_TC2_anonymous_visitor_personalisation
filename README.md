@@ -146,6 +146,14 @@ evaluate_rees46.py           REES46 cross-dataset hold-out + price flavor
 smoke_test_real_pipeline.py  end-to-end test on fabricated data; asserts censoring
 demo.py -> demo.html         3 journeys, click-by-click homepage evolution
 personalisation_demo.html    interactive full-signal mockup (open directly)
+
+measure_dwell.py             dwell-band conversion measurement (weights come from here)
+evaluate_ablation.py         per-rule knockout + weight sensitivity
+evaluate_baselines.py        vs popularity / engagement-heuristic / random
+evaluate_learned.py          LR + GBDT headroom check on identical features
+
+reports/                     meeting-ready findings (dwell impact, ablation,
+                             baselines, business case, learned-weights headroom)
 legacy/                      v1/v2 + the retired numbers (see its README)
 ```
 
