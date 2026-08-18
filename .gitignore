@@ -1,6 +1,7 @@
 # Raw public datasets (RetailRocket ~900MB, REES46 ~4.3GB) -- see README for setup
 archive/
 archive_rees46/
+# (archive_ga4 handled below with a whitelist)
 
 # Large generated artifacts -- rebuild with the build_*_sessions.py scripts
 real_sessions.csv
@@ -14,6 +15,11 @@ synthetic_events.csv
 coe-project5a-v3/
 _smoke_archive/
 _smoke_sessions.csv
+
+# GA4: raw exports stay out, but the 344-row aggregated cell table is
+# committed so the prior-calibration report reproduces without BigQuery
+archive_ga4/*
+!archive_ga4/ga4_context_cells.csv
 
 .DS_Store
 __pycache__/

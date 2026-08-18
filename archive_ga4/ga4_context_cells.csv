@@ -1,0 +1,345 @@
+referrer,device,continent,hour_bucket,sessions,purchases,carts
+search,desktop,Americas,morning,9889,103,394
+search,desktop,Americas,evening,9881,102,386
+search,desktop,Americas,afternoon,9829,105,380
+search,desktop,Americas,night,9756,113,380
+search,mobile,Americas,evening,6882,88,285
+search,mobile,Americas,night,6806,90,279
+direct,desktop,Americas,evening,6795,87,282
+direct,desktop,Americas,afternoon,6763,85,271
+search,mobile,Americas,afternoon,6705,67,272
+direct,desktop,Americas,morning,6697,85,278
+direct,desktop,Americas,night,6659,90,333
+search,mobile,Americas,morning,6655,83,272
+other,desktop,Americas,evening,5988,98,292
+other,desktop,Americas,night,5976,104,279
+other,desktop,Americas,morning,5938,102,271
+other,desktop,Americas,afternoon,5869,95,236
+referral,desktop,Americas,evening,5160,75,239
+referral,desktop,Americas,night,5096,86,221
+referral,desktop,Americas,morning,5086,86,250
+referral,desktop,Americas,afternoon,5061,81,209
+direct,mobile,Americas,morning,4589,70,197
+direct,mobile,Americas,afternoon,4581,62,207
+direct,mobile,Americas,evening,4550,58,191
+direct,mobile,Americas,night,4540,58,178
+search,desktop,Asia,night,4218,40,163
+search,desktop,Asia,evening,4216,45,159
+other,mobile,Americas,night,4212,69,192
+other,mobile,Americas,morning,4185,65,206
+search,desktop,Asia,morning,4172,39,134
+search,desktop,Asia,afternoon,4148,48,161
+other,mobile,Americas,afternoon,4098,63,193
+other,mobile,Americas,evening,4058,71,193
+referral,mobile,Americas,afternoon,3535,63,162
+referral,mobile,Americas,evening,3520,61,175
+referral,mobile,Americas,morning,3508,54,171
+referral,mobile,Americas,night,3452,64,165
+search,desktop,Europe,evening,3366,43,138
+search,desktop,Europe,morning,3343,31,121
+search,desktop,Europe,afternoon,3310,19,111
+search,desktop,Europe,night,3306,38,111
+search,mobile,Asia,morning,3014,29,113
+search,mobile,Asia,night,3003,38,125
+search,mobile,Asia,afternoon,2938,37,104
+direct,desktop,Asia,night,2910,35,117
+search,mobile,Asia,evening,2900,24,94
+direct,desktop,Asia,afternoon,2896,34,132
+direct,desktop,Asia,morning,2896,27,128
+direct,desktop,Asia,evening,2862,34,117
+other,desktop,Asia,night,2645,39,113
+other,desktop,Asia,afternoon,2637,47,110
+other,desktop,Asia,evening,2601,40,133
+other,desktop,Asia,morning,2480,29,116
+direct,desktop,Europe,night,2409,32,99
+search,mobile,Europe,afternoon,2276,30,88
+search,mobile,Europe,evening,2267,30,83
+search,mobile,Europe,morning,2259,21,85
+search,mobile,Europe,night,2258,27,84
+direct,desktop,Europe,afternoon,2215,38,85
+direct,desktop,Europe,morning,2215,29,87
+direct,desktop,Europe,evening,2213,31,103
+referral,desktop,Asia,night,2192,38,104
+referral,desktop,Asia,afternoon,2189,37,100
+referral,desktop,Asia,morning,2184,40,96
+referral,desktop,Asia,evening,2127,34,94
+other,desktop,Europe,afternoon,2056,32,101
+other,desktop,Europe,morning,2037,25,115
+direct,mobile,Asia,morning,2026,17,70
+other,desktop,Europe,night,1990,33,101
+other,desktop,Europe,evening,1972,33,91
+direct,mobile,Asia,afternoon,1960,26,72
+direct,mobile,Asia,night,1949,26,84
+direct,mobile,Asia,evening,1936,29,75
+other,mobile,Asia,evening,1771,34,89
+other,mobile,Asia,afternoon,1749,26,72
+referral,desktop,Europe,evening,1748,32,74
+other,mobile,Asia,morning,1745,37,83
+referral,desktop,Europe,afternoon,1728,30,75
+other,mobile,Asia,night,1720,22,62
+referral,desktop,Europe,night,1705,20,75
+referral,desktop,Europe,morning,1674,23,84
+direct,mobile,Europe,morning,1635,24,75
+direct,mobile,Europe,night,1568,20,79
+referral,mobile,Asia,morning,1532,26,74
+referral,mobile,Asia,evening,1508,30,74
+referral,mobile,Asia,afternoon,1502,30,65
+direct,mobile,Europe,afternoon,1462,18,59
+direct,mobile,Europe,evening,1460,19,51
+other,mobile,Europe,evening,1426,26,70
+referral,mobile,Asia,night,1408,18,58
+other,mobile,Europe,afternoon,1391,23,73
+other,mobile,Europe,night,1356,24,62
+other,mobile,Europe,morning,1340,23,58
+ad,desktop,Americas,morning,1301,13,50
+ad,desktop,Americas,night,1292,16,52
+ad,desktop,Americas,afternoon,1270,12,46
+ad,desktop,Americas,evening,1248,13,55
+referral,mobile,Europe,evening,1223,24,53
+referral,mobile,Europe,night,1188,21,51
+referral,mobile,Europe,morning,1186,16,57
+referral,mobile,Europe,afternoon,1133,20,59
+ad,mobile,Americas,morning,863,12,43
+ad,mobile,Americas,night,823,8,30
+ad,mobile,Americas,evening,814,5,23
+ad,mobile,Americas,afternoon,809,9,27
+ad,desktop,Asia,morning,570,6,18
+ad,desktop,Asia,night,534,7,18
+ad,desktop,Asia,afternoon,515,7,16
+ad,desktop,Asia,evening,506,7,17
+ad,desktop,Europe,evening,448,2,14
+search,tablet,Americas,morning,411,2,15
+ad,desktop,Europe,afternoon,410,3,8
+ad,desktop,Europe,morning,407,8,19
+ad,desktop,Europe,night,403,3,11
+ad,mobile,Asia,night,397,3,14
+ad,mobile,Asia,afternoon,389,3,17
+search,tablet,Americas,night,384,2,20
+ad,mobile,Asia,morning,373,2,15
+search,tablet,Americas,afternoon,362,3,15
+ad,mobile,Asia,evening,356,2,9
+search,tablet,Americas,evening,335,3,15
+ad,mobile,Europe,morning,305,1,6
+ad,mobile,Europe,afternoon,295,2,13
+ad,mobile,Europe,evening,292,1,3
+ad,mobile,Europe,night,289,2,14
+direct,tablet,Americas,night,271,5,11
+other,tablet,Americas,afternoon,250,3,11
+direct,tablet,Americas,afternoon,247,2,6
+direct,tablet,Americas,evening,241,1,10
+direct,tablet,Americas,morning,238,3,8
+other,tablet,Americas,night,232,3,16
+other,tablet,Americas,evening,228,4,12
+other,tablet,Americas,morning,225,2,8
+search,desktop,Oceania,evening,209,3,12
+referral,tablet,Americas,afternoon,197,2,11
+referral,tablet,Americas,morning,195,7,11
+search,desktop,Africa,night,194,2,5
+search,desktop,Oceania,night,191,2,10
+search,desktop,Oceania,afternoon,190,2,5
+search,tablet,Asia,afternoon,182,2,5
+referral,tablet,Americas,night,179,3,8
+search,desktop,Africa,evening,174,1,7
+referral,tablet,Americas,evening,170,3,8
+search,desktop,Oceania,morning,170,2,7
+search,desktop,Africa,morning,168,4,7
+search,desktop,Africa,afternoon,165,1,4
+search,tablet,Asia,morning,164,3,5
+search,tablet,Asia,night,163,1,5
+search,tablet,Europe,afternoon,145,3,5
+other,desktop,Oceania,evening,143,1,5
+search,tablet,Asia,evening,142,2,8
+search,mobile,Africa,morning,139,0,8
+search,tablet,Europe,morning,136,0,1
+other,desktop,Oceania,night,136,3,10
+other,desktop,Africa,morning,134,3,5
+direct,desktop,Oceania,morning,132,0,6
+search,mobile,Africa,afternoon,130,1,6
+direct,desktop,Africa,afternoon,128,1,3
+search,mobile,Oceania,afternoon,128,2,5
+direct,desktop,Africa,morning,127,0,5
+direct,desktop,Oceania,afternoon,127,2,6
+search,mobile,Oceania,night,127,3,5
+search,mobile,Oceania,morning,127,0,5
+direct,desktop,Africa,night,126,1,9
+direct,desktop,Africa,evening,124,4,7
+direct,tablet,Asia,evening,123,4,8
+other,tablet,Asia,night,122,1,1
+direct,tablet,Asia,morning,122,3,3
+other,desktop,Oceania,morning,120,1,5
+direct,desktop,Oceania,evening,120,3,8
+other,desktop,Africa,afternoon,118,1,4
+search,tablet,Europe,evening,117,1,3
+search,tablet,Europe,night,116,1,4
+other,desktop,Africa,evening,116,3,7
+search,mobile,Oceania,evening,116,1,5
+other,desktop,Africa,night,115,1,7
+search,mobile,Africa,night,115,2,6
+referral,desktop,Oceania,night,112,2,3
+direct,desktop,Oceania,night,112,1,4
+direct,tablet,Europe,morning,109,3,6
+referral,desktop,Oceania,afternoon,108,4,9
+other,desktop,Oceania,afternoon,107,2,0
+direct,tablet,Asia,night,107,1,3
+search,mobile,Africa,evening,106,4,3
+referral,tablet,Asia,night,103,2,5
+referral,desktop,Oceania,evening,103,1,6
+other,tablet,Asia,afternoon,101,2,5
+referral,desktop,Africa,evening,99,0,2
+other,tablet,Asia,morning,99,6,6
+referral,desktop,Africa,night,96,1,3
+referral,desktop,Africa,morning,94,0,5
+referral,desktop,Oceania,morning,93,2,6
+direct,mobile,Africa,night,92,0,1
+other,tablet,Europe,afternoon,92,1,3
+referral,desktop,Africa,afternoon,91,2,6
+direct,tablet,Asia,afternoon,91,1,4
+other,tablet,Asia,evening,87,2,3
+direct,tablet,Europe,evening,86,1,1
+direct,mobile,Oceania,afternoon,86,1,2
+other,mobile,Oceania,evening,85,0,4
+referral,tablet,Asia,evening,84,0,2
+direct,mobile,Africa,morning,84,0,2
+direct,mobile,Africa,evening,84,1,3
+other,mobile,Africa,afternoon,82,1,1
+direct,mobile,Oceania,morning,82,0,4
+referral,mobile,Africa,evening,81,2,2
+direct,mobile,Oceania,night,81,1,3
+referral,tablet,Asia,afternoon,80,2,4
+direct,tablet,Europe,night,80,0,2
+other,mobile,Africa,night,80,2,5
+other,mobile,Oceania,afternoon,80,1,1
+referral,tablet,Asia,morning,79,0,5
+other,mobile,Africa,morning,79,0,4
+referral,tablet,Europe,morning,78,1,3
+referral,tablet,Europe,afternoon,76,2,2
+other,mobile,Africa,evening,74,0,2
+referral,tablet,Europe,evening,74,1,3
+other,tablet,Europe,night,74,2,4
+direct,tablet,Europe,afternoon,73,1,3
+other,mobile,Oceania,morning,73,0,0
+direct,mobile,Africa,afternoon,72,3,3
+other,mobile,Oceania,night,72,1,2
+referral,mobile,Africa,night,72,1,6
+other,tablet,Europe,morning,71,1,1
+referral,mobile,Oceania,evening,71,2,2
+referral,mobile,Africa,afternoon,69,0,2
+other,tablet,Europe,evening,66,2,4
+referral,mobile,Oceania,morning,66,4,5
+direct,mobile,Oceania,evening,64,0,0
+referral,mobile,Oceania,afternoon,63,0,3
+ad,tablet,Americas,evening,60,1,1
+referral,mobile,Oceania,night,60,1,3
+referral,mobile,Africa,morning,59,0,2
+referral,tablet,Europe,night,57,0,1
+ad,tablet,Americas,afternoon,52,0,1
+search,desktop,(not set),evening,48,0,1
+ad,tablet,Americas,morning,46,0,2
+search,desktop,(not set),night,46,0,1
+search,desktop,(not set),afternoon,43,0,1
+ad,tablet,Americas,night,40,0,2
+direct,desktop,(not set),morning,36,0,2
+search,desktop,(not set),morning,36,1,1
+ad,desktop,Africa,evening,32,0,0
+referral,desktop,(not set),night,31,0,3
+direct,desktop,(not set),night,31,0,2
+direct,desktop,(not set),afternoon,30,0,2
+ad,tablet,Asia,night,28,0,2
+search,mobile,(not set),evening,28,0,1
+ad,desktop,Africa,afternoon,28,0,0
+direct,desktop,(not set),evening,28,0,1
+ad,desktop,Oceania,afternoon,27,0,1
+other,desktop,(not set),evening,26,0,1
+ad,tablet,Asia,morning,26,0,0
+search,mobile,(not set),morning,26,0,3
+ad,tablet,Asia,afternoon,24,1,1
+search,mobile,(not set),night,24,0,1
+ad,desktop,Africa,morning,24,0,0
+ad,desktop,Oceania,morning,24,0,3
+referral,desktop,(not set),evening,24,1,2
+referral,desktop,(not set),morning,23,0,0
+ad,tablet,Europe,morning,22,1,4
+other,desktop,(not set),morning,22,0,1
+ad,desktop,Africa,night,22,0,0
+other,mobile,(not set),night,21,0,0
+search,mobile,(not set),afternoon,21,3,3
+ad,mobile,Oceania,evening,21,1,0
+ad,tablet,Asia,evening,20,0,1
+direct,mobile,(not set),afternoon,19,0,0
+other,desktop,(not set),night,19,0,2
+direct,mobile,(not set),morning,19,2,2
+other,desktop,(not set),afternoon,19,1,0
+referral,mobile,(not set),afternoon,18,1,1
+ad,mobile,Africa,morning,18,0,0
+ad,desktop,Oceania,evening,17,1,3
+other,mobile,(not set),morning,16,0,0
+ad,mobile,Oceania,afternoon,16,0,0
+referral,mobile,(not set),night,16,0,1
+ad,mobile,Africa,evening,16,0,1
+referral,desktop,(not set),afternoon,15,0,1
+ad,desktop,Oceania,night,15,0,0
+ad,mobile,Oceania,morning,15,1,1
+direct,mobile,(not set),night,15,0,0
+ad,tablet,Europe,afternoon,15,0,1
+other,mobile,(not set),afternoon,15,2,2
+direct,mobile,(not set),evening,14,0,1
+ad,tablet,Europe,night,14,0,0
+referral,mobile,(not set),morning,14,0,1
+ad,mobile,Oceania,night,13,0,0
+other,mobile,(not set),evening,12,0,0
+ad,mobile,Africa,night,11,0,0
+ad,tablet,Europe,evening,11,0,1
+direct,tablet,Oceania,night,10,0,0
+search,tablet,Oceania,afternoon,10,0,0
+ad,desktop,(not set),evening,9,0,0
+search,tablet,Africa,morning,9,0,0
+search,tablet,Oceania,morning,9,0,0
+ad,mobile,Africa,afternoon,9,0,0
+direct,tablet,Oceania,evening,9,0,0
+search,tablet,Oceania,evening,9,0,0
+search,tablet,Africa,night,8,0,0
+direct,tablet,Oceania,afternoon,7,0,0
+referral,mobile,(not set),evening,7,0,0
+other,tablet,Oceania,afternoon,7,0,1
+ad,desktop,(not set),morning,6,0,0
+direct,tablet,Africa,afternoon,6,0,0
+ad,desktop,(not set),afternoon,6,0,0
+referral,tablet,Oceania,morning,6,0,0
+ad,desktop,(not set),night,6,0,1
+other,tablet,Africa,evening,6,1,0
+other,tablet,Oceania,night,6,0,0
+search,tablet,Africa,evening,5,0,0
+referral,tablet,Oceania,night,5,0,0
+search,tablet,Africa,afternoon,5,0,0
+direct,tablet,Africa,morning,5,0,1
+search,tablet,Oceania,night,4,0,0
+ad,mobile,(not set),evening,4,0,1
+other,tablet,Oceania,evening,4,0,0
+direct,tablet,Oceania,morning,4,0,0
+direct,tablet,Africa,night,4,0,0
+other,tablet,Africa,morning,4,0,0
+other,tablet,Africa,afternoon,3,0,0
+ad,mobile,(not set),night,3,0,0
+referral,tablet,Africa,afternoon,3,0,0
+direct,tablet,Africa,evening,3,0,0
+other,tablet,(not set),evening,3,0,0
+search,tablet,(not set),afternoon,3,0,0
+ad,mobile,(not set),morning,3,0,0
+direct,tablet,(not set),morning,2,0,0
+referral,tablet,Africa,evening,2,0,0
+ad,mobile,(not set),afternoon,2,0,0
+referral,tablet,Oceania,evening,2,0,0
+referral,tablet,Africa,morning,2,0,0
+ad,tablet,Oceania,evening,2,0,0
+search,tablet,(not set),morning,2,0,0
+ad,tablet,Africa,afternoon,1,0,0
+referral,tablet,Africa,night,1,0,0
+other,tablet,(not set),morning,1,0,0
+direct,tablet,(not set),evening,1,0,0
+referral,tablet,Oceania,afternoon,1,0,0
+search,tablet,(not set),evening,1,0,0
+other,tablet,Oceania,morning,1,0,0
+other,tablet,Africa,night,1,0,0
+ad,tablet,Oceania,morning,1,0,0
+direct,tablet,(not set),night,1,0,0
+search,tablet,(not set),night,1,0,0
