@@ -9,7 +9,7 @@ top-X% of traffic under each policy's ranking.
 
 | policy | AUC | capture @5% | @10% | @20% |
 |---|---|---|---|---|
-| rule engine (intent tiers) | 0.830 | 68% | 73% | 75% |
+| rule engine (intent tiers) | 0.879 | 77% | 83% | 84% |
 | logistic regression | 0.939 | 84% | 86% | 93% |
 | gradient boosting | 0.957 | 91% | 93% | 94% |
 
@@ -19,7 +19,7 @@ LR standardized coefficients (|top 6|): `added_to_cart` +0.86, `duration_sec` +0
 
 | policy | AUC | capture @5% | @10% | @20% |
 |---|---|---|---|---|
-| rule engine (intent tiers) | 0.787 | 36% | 58% | 69% |
+| rule engine (intent tiers) | 0.793 | 36% | 59% | 70% |
 | logistic regression | 0.891 | 32% | 67% | 86% |
 | gradient boosting | 0.901 | 38% | 70% | 87% |
 
@@ -27,29 +27,23 @@ LR standardized coefficients (|top 6|): `added_to_cart` +0.77, `duration_sec` -0
 
 ## Reading
 
-1. **The headroom is real but specific.** Learned models add ~0.10–0.13 AUC.
-   Much of it is *ranking granularity*: the engine outputs 5 tiers and cannot
-   rank inside its huge Low-intent tier, while a GBDT scores every session
-   continuously. That matters for prioritising traffic (spend, CRM), not for
-   choosing one of five layouts — the homepage decision stays categorical.
-   At the very head the tiers hold their own: on REES46 the engine's top-5%
-   capture (36%) beats logistic regression (32%) because the Decisive
-   override is sharper than a learned top-slice.
+1. **The headroom is real but smaller than it looks — and shrinking.** On the
+   v3.1 engine the learned models add ~0.06–0.11 AUC (was ~0.10–0.13 before the
+   override fix). Much of it is *ranking granularity*: five tiers cannot rank
+   inside the huge Low-intent tier, a GBDT scores every session continuously.
+   That matters for prioritising traffic, not for choosing one of five
+   layouts. At the head the tiers hold their own: on REES46 the engine's
+   top-5% capture (36%) still beats logistic regression (32%).
 2. **The learned models agree with the rules about what matters.** Their
-   dominant feature is the commercial trigger (`added_to_cart`, +0.86/+0.77)
-   — our Stage-B — followed by the same browse-shape features our evidence
-   rules use (`revisit_ratio` positive on both sites). This is independent
-   confirmation of the evidence hierarchy, from a model that was free to
-   disagree.
+   dominant feature is the commercial trigger (`added_to_cart`) — our Stage-B
+   — followed by the same browse-shape features the evidence rules use.
+   Independent confirmation, from a model free to disagree.
 3. **The coefficients also show why a learned layer can't replace rules at
-   cold-start:** `duration_sec` flips sign between retailers (+0.11 vs
-   −0.50). A learned model must be retrained per site — precisely the data
-   dependency an anonymous-cold-start product can't assume — while the rule
-   engine transferred across sites unmodified, with reasons and an Unclear
-   gate the classifier doesn't have.
-4. **Recommended division of labour:** rules pick the layout (interpretable,
-   portable, gated); a learned scorer is the natural *within-tier* ranker
-   where continuous granularity pays (which sessions to prioritise, what to
-   rank inside the chosen layout); the production path to learned weighting
-   remains the contextual bandit, which learns from own-site feedback
-   instead of another retailer's labels.
+   cold start:** `duration_sec` flips sign between retailers (+0.11 vs −0.50).
+   A learned model must be retrained per site — precisely the data dependency
+   an anonymous-cold-start product can't assume — while the rule engine
+   transferred across sites unmodified, with reasons and an Unclear gate.
+4. **Division of labour:** rules pick the layout (interpretable, portable,
+   gated); a learned scorer is the natural within-tier ranker; the production
+   path to learned weighting is the contextual bandit, learning from own-site
+   feedback instead of another retailer's labels.
