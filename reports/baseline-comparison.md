@@ -9,7 +9,7 @@ the served module matches next behaviour (hit-rate).
 
 | policy | top 1% | 5% | 10% | 20% | 50% |
 |---|---|---|---|---|---|
-| intent tiers (engine) | 36% | 68% | 73% | 75% | 84% |
+| intent tiers (engine) | 31% | 77% | 83% | 84% | 89% |
 | engagement heuristic (n_events) | 6% | 16% | 25% | 38% | 55% |
 | random targeting | 1% | 5% | 10% | 19% | 50% |
 
@@ -17,7 +17,7 @@ the served module matches next behaviour (hit-rate).
 
 | policy | top 1% | 5% | 10% | 20% | 50% |
 |---|---|---|---|---|---|
-| intent tiers (engine) | 7% | 36% | 58% | 69% | 83% |
+| intent tiers (engine) | 7% | 36% | 59% | 70% | 83% |
 | engagement heuristic (n_events) | 1% | 4% | 8% | 16% | 43% |
 | random targeting | 1% | 5% | 10% | 20% | 50% |
 

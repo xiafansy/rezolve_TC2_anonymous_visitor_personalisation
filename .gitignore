@@ -23,3 +23,9 @@ archive_ga4/*
 
 .DS_Store
 __pycache__/
+
+# Fitted hyperparameters, written by evaluate_synthetic.py and read by demo.py
+engine_params.json
+
+# Test caches
+.pytest_cache/

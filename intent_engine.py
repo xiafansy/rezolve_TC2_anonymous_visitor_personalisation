@@ -326,6 +326,27 @@ class Inference:
                 f"-> serve {self.served}\n    probs: {rank}\n    because: {why}")
 
 
+def _num(value, default=0.0):
+    """Read a possibly-missing / possibly-NaN feature as a float.
+
+    Preserves legitimate zeros. The previous one-liner ended in `or default`,
+    so a real 0 collapsed to the default -- and because
+    `views_before_first_commercial` defaults to 99, a session that added to
+    cart with ZERO prior views (the most decisive visitor there is) failed the
+    `<= 2` test and was served the Low-intent page. Regression-tested in
+    tests/test_engine.py::test_override_fires_with_zero_prior_views.
+    """
+    if value is None:
+        return default
+    if isinstance(value, bool):
+        return 1.0 if value else 0.0
+    try:
+        x = float(value)
+    except (TypeError, ValueError):
+        return default
+    return default if x != x else x   # NaN -> default
+
+
 def _softmax(scores, temperature):
     mx = max(scores.values())
     exps = {k: math.exp((v - mx) / max(1e-6, temperature)) for k, v in scores.items()}
@@ -352,10 +373,20 @@ class TwoStageEngine:
                  cold_gate=None, decay=None, disabled_rules=None,
                  weight_scale=None):
         self.intents = list(intents or ALL_INTENTS)
-        self.temperature = temperature or self.DEFAULTS["temperature"]
-        self.gate = gate or self.DEFAULTS["gate"]
-        self.cold_gate = cold_gate or self.DEFAULTS["cold_gate"]
-        self.decay = decay or self.DEFAULTS["decay"]
+        # `is None`, NOT `or`: gate=0.0 ("never decline") and decay=0.0 ("no
+        # memory") are legitimate values a caller asks for on purpose. The old
+        # `gate or DEFAULTS["gate"]` silently swapped 0.0 for 0.45, which made
+        # evaluate_synthetic's "ungated" calibration pass secretly gated and
+        # biased every fitted gate. See tests/test_engine.py::test_explicit_zero_*.
+        d = self.DEFAULTS
+        self.temperature = d["temperature"] if temperature is None else float(temperature)
+        self.gate = d["gate"] if gate is None else float(gate)
+        self.cold_gate = d["cold_gate"] if cold_gate is None else float(cold_gate)
+        self.decay = d["decay"] if decay is None else float(decay)
+        if self.temperature <= 0:
+            raise ValueError("temperature must be > 0 (softmax divides by it)")
+        if not 0.0 <= self.decay <= 1.0:
+            raise ValueError("decay must lie in [0, 1]")
         # Ablation hooks (offline score_aggregates path): rule ids to silence
         # entirely, and per-rule weight multipliers for sensitivity analysis.
         self.disabled_rules = set(disabled_rules or ())
@@ -445,9 +476,9 @@ class TwoStageEngine:
         return self.current()
 
     # -- scoring ---------------------------------------------------------------
-    def _combined_scores(self):
+    def _combined_scores(self, state_ev=None):
         combined = {i: self.prior[i] + self.window[i] for i in self.intents}
-        for e in state_evidence(self.state):
+        for e in (state_evidence(self.state) if state_ev is None else state_ev):
             if e.intent in combined:
                 combined[e.intent] += e.weight
         return combined
@@ -456,25 +487,44 @@ class TwoStageEngine:
         if self.override is not None:
             return self.override
 
-        scores = self._combined_scores()
+        # state evidence is recomputed from scratch each step; compute it ONCE
+        # and share it with the reason list (it used to be built three times
+        # per decision, on every event of every session).
+        state_ev = state_evidence(self.state)
+        scores = self._combined_scores(state_ev)
         probs = _softmax(scores, self.temperature)
         winner = max(probs, key=probs.get)
         conf = probs[winner]
 
-        # collect state reasons fresh (they aren't stored)
-        state_rs = [(e.weight, e.reason) for e in state_evidence(self.state)
-                    if e.intent == winner]
+        state_rs = [(e.weight, e.reason) for e in state_ev if e.intent == winner]
         top = [r for _, r in sorted(self.reasons[winner] + state_rs, reverse=True)]
 
         cold = self.state.n_events == 0
         mode = "cold" if cold else "behavioural"
         gate = self.cold_gate if cold else self.gate
+        undecided = ["signals point in multiple directions -- decline to commit"]
+
+        if cold:
+            # "A prior may tilt; it may not commit" -- so `served` is a neutral
+            # page with an accent WHATEVER the confidence. It used to return
+            # served=winner once the cold gate was cleared, which at the fitted
+            # T=1.0 happens routinely: the engine told a caller to serve the
+            # full Low-intent page off arrival context alone. personalisation.
+            # render() ignored that and drew cold-accent anyway, so the two
+            # modules disagreed about what arrival means. They agree now.
+            # `intent` still carries the prior's argmax, so prefix-accuracy at
+            # checkpoint 0 still measures "was the prior right?".
+            accent = next((i for i in sorted(probs, key=probs.get, reverse=True)
+                           if i != "Low-intent"), winner)
+            served = f"Neutral (accent: {accent})"
+            if conf < gate:
+                return Inference("Unclear", conf, probs, scores,
+                                 undecided + top[:1], mode, served)
+            return Inference(winner, conf, probs, scores, top, mode, served)
 
         if conf < gate:
-            served = f"Neutral (accent: {winner})" if cold else "Neutral"
             return Inference("Unclear", conf, probs, scores,
-                             ["signals point in multiple directions -- decline to commit"]
-                             + top[:1], mode, served)
+                             undecided + top[:1], mode, "Neutral")
         return Inference(winner, conf, probs, scores, top, mode, served=winner)
 
     # -- offline adapter for the real-data track --------------------------------
@@ -486,7 +536,7 @@ class TwoStageEngine:
                 added_to_cart, views_before_first_commercial
                 (+ optional price_rel_cat -> price-conscious flavor, REES46)
         """
-        g = lambda k, d=0.0: (f.get(k) if f.get(k) == f.get(k) else d) or d  # NaN-safe
+        g = lambda k, d=0.0: _num(f.get(k), d)
 
         # Cheap-leaning within category (median viewed price < 60% of the
         # category median). CENSORED upstream like every other feature.
@@ -587,18 +637,22 @@ def fit_gate(confidences, correct, target_precision=0.85):
     Smallest threshold whose decided-set precision >= target.
     Returns (threshold, coverage, precision) on the fit split.
     """
-    pairs = sorted(zip(confidences, correct))
-    best = (0.99, 0.0, 1.0)
+    pairs = list(zip(confidences, correct))
+    if not pairs:
+        return 1.0, 0.0, float("nan")
+    best = None
     for t in [x / 100 for x in range(25, 96, 2)]:
-        dec = [(c, ok) for c, ok in pairs if c >= t]
+        dec = [ok for c, ok in pairs if c >= t]
         if not dec:
             continue
-        prec = sum(ok for _, ok in dec) / len(dec)
+        prec = sum(dec) / len(dec)
         cov = len(dec) / len(pairs)
         if prec >= target_precision:
             return t, cov, prec
         best = (t, cov, prec)
-    return best
+    # Target unreachable at any threshold: fall back to the strictest gate that
+    # still decides something (highest precision available), and say so.
+    return best if best is not None else (1.0, 0.0, float("nan"))
 
 
 def expected_calibration_error(confidences, correct, bins=10):

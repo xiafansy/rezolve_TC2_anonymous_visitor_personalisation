@@ -1,0 +1,47 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Unit tests
+        run: python -m pytest -q
+
+      # Proves the RetailRocket path end-to-end on fabricated data, including
+      # the censoring assertions -- no 900MB download in CI.
+      - name: Real-pipeline smoke test
+        run: python smoke_test_real_pipeline.py
+
+      # Fitting the gate and rebuilding the demo has to keep working too;
+      # both are seeded, so this is deterministic.
+      - name: Synthetic pipeline + demo
+        run: |
+          python make_event_dataset.py
+          python evaluate_synthetic.py
+          python demo.py
+
+      - name: Fitted params were published
+        run: python -c "import json; p=json.load(open('engine_params.json')); print(p); assert 0 < p['gate'] < 1 and p['temperature'] > 0"

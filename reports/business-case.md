@@ -14,16 +14,16 @@ and what to do for each segment** — without identity, history, or lookalikes.
 
 | dataset (held-out) | segment | traffic share | share of ALL purchases |
 |---|---|---|---|
-| REES46 (Nov) | Decisive | 7.7% | **55%** |
-| REES46 (Nov) | Decisive + Evaluator | 20.1% | **69%** |
-| RetailRocket (final month) | Decisive | 1.5% | **54%** |
-| RetailRocket (final month) | Decisive + Evaluator | 3.3% | 60% |
+| REES46 (Nov) | Decisive | 7.9% | **56%** |
+| REES46 (Nov) | Decisive + Evaluator | 20.3% | **70%** |
+| RetailRocket (final month) | Decisive | 2.1% | **64%** |
+| RetailRocket (final month) | Decisive + Evaluator | 3.9% | 70% |
 
 Two-thirds of purchases sit in a fifth of sessions — and the model finds them
 from browse-pattern signals alone, before checkout.
 
 Against the obvious rivals (`reports/baseline-comparison.md`): the engine's
-top-5% of RetailRocket traffic captures **68%** of purchases vs 16% for an
+top-5% of RetailRocket traffic captures **77%** of purchases vs 16% for an
 engagement-count heuristic and 5% for random targeting; on REES46 the
 engagement heuristic is actually *worse than random* (fast decisive buyers
 emit few events), which is exactly why a traffic heuristic can't substitute
@@ -35,12 +35,12 @@ popularity-for-everyone rail.
 
 | segment | action on the page | primary KPI (A/B) | guardrail |
 |---|---|---|---|
-| Decisive (buy rate 28–40%) | checkout support: sticky cart, one-tap pay, shipping reassurance; suppress discovery | checkout completion, time-to-purchase | refund/cancel rate |
+| Decisive (buy rate 25–40%) | checkout support: sticky cart, one-tap pay, shipping reassurance; suppress discovery | checkout completion, time-to-purchase | refund/cancel rate |
 | Evaluator (6%+, hottest browse segment) | comparison table, reviews up front, recently-viewed rail, clear CTA | add-to-cart rate | bounce |
 | Explorer | cross-category trending, curated collections, save-for-later | pages/session, saves, return-visit conversion | exit rate |
 | Low-intent (60–93% of traffic) | neutral-light: fast page, top categories, one promo | bounce no worse, page-weight budget | conversion no worse |
 | Unclear (gate) | neutral balanced page | — (safety valve; monitor its share) | — |
-| *price-conscious flavor* | value-first sorting, sale rail, budget picks | flagged-session conversion (offline: +0.3 to +4.5pp within every intent) | margin mix |
+| *price-conscious flavor* | value-first sorting, sale rail, budget picks | flagged-session conversion (offline: +0.4 to +4.4pp within every intent) | margin mix |
 
 ## What we are NOT claiming (and how to close the gap)
 

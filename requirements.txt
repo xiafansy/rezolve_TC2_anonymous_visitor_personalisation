@@ -1,0 +1,10 @@
+# Core pipeline: the engine itself is pure stdlib; everything around it is pandas.
+pandas>=2.0
+numpy>=1.24
+
+# Tests (tests/ + smoke_test_real_pipeline.py)
+pytest>=7.4
+
+# Only for evaluate_learned.py -- the "could a model beat the rules?" headroom
+# check. Nothing in the shipping path imports it.
+scikit-learn>=1.3

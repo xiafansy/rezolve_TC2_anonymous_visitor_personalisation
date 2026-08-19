@@ -19,7 +19,8 @@ Split: sessions are randomly assigned 40% fit / 60% test (seeded). The fit
 split is used ONLY for temperature + gate; all reported tables are test-only.
 """
 
-import random
+import hashlib
+import json
 import pandas as pd
 
 from intent_engine import (ALL_INTENTS, TwoStageEngine, fit_temperature,
@@ -29,6 +30,7 @@ SEED = 7
 FIT_FRACTION = 0.40
 TARGET_PRECISION = 0.85
 CHECKPOINTS = [0, 1, 2, 3, 5, "end"]
+PARAMS_OUT = "engine_params.json"   # fitted T + gate; demo.py reads this
 
 CTX_COLS = ["referrer", "device", "landing", "hour"]
 EVENT_COLS = ["type", "ts", "item", "category", "query", "sort_key", "filter_key"]
@@ -61,11 +63,21 @@ def run_session(engine, ctx, events, checkpoints):
     return out, engine._combined_scores() if engine.override is None else None
 
 
+def assign_split(session_id):
+    """Deterministic per-session split.
+
+    Was `random.random()` walked down the frame, which silently reshuffles
+    every session's split the moment the generator's size or row order
+    changes. Hashing the id keeps a session on the same side of the fence
+    forever, so fit and test can never trade places between regenerations.
+    """
+    h = hashlib.blake2b(f"{SEED}:{session_id}".encode(), digest_size=8).digest()
+    return "fit" if int.from_bytes(h, "big") / 2**64 < FIT_FRACTION else "test"
+
+
 def main():
-    random.seed(SEED)
     sessions, events_by_sid = load()
-    sessions["split"] = ["fit" if random.random() < FIT_FRACTION else "test"
-                         for _ in range(len(sessions))]
+    sessions["split"] = [assign_split(sid) for sid in sessions["session_id"]]
     fit_df = sessions[sessions.split == "fit"]
     test_df = sessions[sessions.split == "test"]
     print(f"fit sessions: {len(fit_df):,}   test sessions: {len(test_df):,}\n")
@@ -89,7 +101,12 @@ def main():
     T = fit_temperature(score_rows, labels)
     print(f"fitted temperature: {T}")
 
-    eng = TwoStageEngine(temperature=T, gate=0.0, cold_gate=0.0)  # ungated pass
+    # Genuinely ungated now: the engine used to coerce gate=0.0 back to its
+    # 0.45 default (falsy-`or` bug), so every "ungated" confidence below 0.45
+    # arrived pre-labelled Unclear and was scored as WRONG -- the gate was
+    # being fitted against its own output.
+    eng = TwoStageEngine(temperature=T, gate=0.0, cold_gate=0.0)
+    assert eng.gate == 0.0 and eng.cold_gate == 0.0, "ungated pass is gated"
     confs, corrects = [], []
     for _, row in fit_df.iterrows():
         ctx = {c: row[c] for c in CTX_COLS}
@@ -162,7 +179,6 @@ def main():
     # ---- calibration ----------------------------------------------------------
     ece = expected_calibration_error(
         beh_end.conf.tolist(), (beh_end.pred == beh_end.true).astype(int).tolist())
-    uncal = TwoStageEngine()  # default T=2.0 as the "before"
     print(f"\nCALIBRATION (test, end): ECE = {ece:.3f} at fitted T={T} "
           f"(gate-decided precision {(dec_end.pred == dec_end.true).mean():.1%})")
 
@@ -182,7 +198,17 @@ def main():
     print("\nSERVED PAGE MIX after 2 events (test):")
     print((k2.served.value_counts(normalize=True) * 100).round(1).to_string())
 
-    print("\nfitted params -> use in production engine: "
+    # Publish the fitted params so demo.py (and any other consumer) uses the
+    # numbers this run actually produced. They used to be hand-copied into
+    # demo.py, and had already drifted (demo said 0.43, the fit says 0.41).
+    params = dict(temperature=T, gate=round(gate, 4),
+                  cold_gate=round(max(gate, 0.55), 4),
+                  target_precision=TARGET_PRECISION, seed=SEED,
+                  fit_sessions=int(len(fit_df)), test_sessions=int(len(test_df)),
+                  ece=round(float(ece), 4))
+    with open(PARAMS_OUT, "w") as fh:
+        json.dump(params, fh, indent=2)
+    print(f"\nfitted params -> {PARAMS_OUT}: "
           f"TwoStageEngine(temperature={T}, gate={gate:.2f})")
 
 

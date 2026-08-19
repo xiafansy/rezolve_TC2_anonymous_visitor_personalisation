@@ -7,11 +7,36 @@ step-through you can open in a browser.
 """
 
 import json
+import os
 
 from intent_engine import TwoStageEngine
 from personalisation import render
 
-FITTED = dict(temperature=1.0, gate=0.43)  # from evaluate_synthetic.py
+PARAMS_FILE = "engine_params.json"
+FALLBACK = dict(temperature=1.0, gate=0.41)
+
+
+def fitted_params():
+    """Use the parameters evaluate_synthetic.py actually fitted.
+
+    These were hard-coded here and had drifted from the fit (0.43 vs 0.41), so
+    the demo was quietly showing a different engine than the one the results
+    tables describe. Run `python evaluate_synthetic.py` first; the fallback
+    keeps `python demo.py` working on a clean checkout.
+    """
+    if os.path.exists(PARAMS_FILE):
+        with open(PARAMS_FILE) as fh:
+            p = json.load(fh)
+        print(f"using fitted params from {PARAMS_FILE}: "
+              f"T={p['temperature']}, gate={p['gate']}")
+        return dict(temperature=p["temperature"], gate=p["gate"],
+                    cold_gate=p.get("cold_gate", max(p["gate"], 0.55)))
+    print(f"{PARAMS_FILE} not found -- falling back to {FALLBACK}; "
+          f"run evaluate_synthetic.py to refit")
+    return dict(FALLBACK)
+
+
+FITTED = fitted_params()
 
 JOURNEYS = [
     dict(
@@ -101,7 +126,10 @@ def main():
         export.append(dict(name=j["name"], ctx=j["ctx"], steps=steps))
         print()
 
-    html = TEMPLATE.replace("__DATA__", json.dumps(export))
+    subtitle = (f"fitted T={FITTED['temperature']}, "
+                f"gate={FITTED['gate']:.2f}")
+    html = (TEMPLATE.replace("__DATA__", json.dumps(export))
+                    .replace("__PARAMS__", subtitle))
     with open("demo.html", "w") as f:
         f.write(html)
     print("wrote demo.html -- open it in a browser and step through the journeys")
@@ -142,7 +170,7 @@ TEMPLATE = r"""<!DOCTYPE html>
   .nav{display:flex;gap:8px;margin-top:16px}
 </style></head><body>
 <h1>Two-stage intent &rarr; homepage, click by click</h1>
-<div class="sub">Stage 1: cold-start prior from arrival context &middot; Stage 2: incremental scoring of the last few actions &middot; fitted T=1.0, gate=0.43</div>
+<div class="sub">Stage 1: cold-start prior from arrival context &middot; Stage 2: incremental scoring of the last few actions &middot; __PARAMS__</div>
 <select id="j"></select>
 <div class="wrap">
   <div class="timeline" id="tl"></div>

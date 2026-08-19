@@ -13,7 +13,7 @@ business case banks on.
    than ~0.2pp or the purchase concentration by more than ~1pp — on either
    retailer. The exact weight values are not load-bearing; the *rules* are.
 2. **One rule is indispensable: the Decisive override.** Removing it drops
-   purchase concentration from 60%→6% (RetailRocket) and 69%→14% (REES46).
+   purchase concentration from 70%→6% (RetailRocket) and 70%→14% (REES46).
    The commercial trigger carries the business case; everything else refines
    who gets which *layout*.
 3. **Site-dependent tuning opportunities, not bugs:** removing `cat_switch`
@@ -24,71 +24,74 @@ business case banks on.
 4. **Rules showing zero delta here are not dead weight:** the micro rules
    decide Low-intent-vs-Unclear (both serve neutral pages, so conversion
    metrics can't see them), and `cheap_flavor` never moves intents by design —
-   its value is the within-intent lift (+0.3 to +4.5pp) in
+   its value is the within-intent lift (+0.4 to +4.4pp) in
    `evaluate_rees46.py`'s flavor table.
+
+*(Numbers reflect the v3.1 engine — cart-first sessions now reach the
+Decisive override, which is why top2 concentration reads ~70% on both sites.)*
 
 ### RetailRocket — final month (n=368,683)
 
-Baseline: Evaluator cov 1.8% buy 2.86% · Explorer buy 3.51% · Decisive+Evaluator capture 59.9% of purchases · mono FAIL
+Baseline: Evaluator cov 1.8% buy 2.86% · Explorer buy 3.51% · Decisive+Evaluator capture 70.4% of purchases · mono FAIL
 
 | removed rule | Eval cov% (Δ) | Eval buy% (Δ) | Expl buy% (Δ) | top2 purch share% (Δ) | mono |
 |---|---|---|---|---|---|
-| −micro | 1.8 (+0.0) | 2.86 (+0.00) | 3.51 (+0.00) | 59.9 (+0.0) | FAIL |
-| −micro_short | 1.8 (+0.0) | 2.86 (+0.00) | 3.51 (+0.00) | 59.9 (+0.0) | FAIL |
-| −micro_linger | 1.8 (+0.0) | 2.86 (+0.00) | 3.51 (+0.00) | 59.9 (+0.0) | FAIL |
-| −revisit_core | 1.5 (-0.2) | 2.86 (+0.00) | 3.43 (-0.08) | 59.1 (-0.8) | FAIL |
-| −revisit_focus | 1.8 (-0.0) | 2.86 (+0.00) | 3.51 (-0.00) | 59.9 (+0.0) | FAIL |
-| −revisit_pace | 1.8 (-0.0) | 2.81 (-0.05) | 3.51 (-0.00) | 59.8 (-0.1) | FAIL |
-| −no_revisit | 1.8 (+0.0) | 2.86 (+0.00) | 3.76 (+0.26) | 59.9 (+0.0) | FAIL |
-| −broad_cats | 1.8 (+0.0) | 2.88 (+0.02) | 3.42 (-0.09) | 60.0 (+0.1) | FAIL |
-| −cat_switch | 1.8 (+0.0) | 2.89 (+0.03) | 4.69 (+1.18) | 60.0 (+0.1) | FAIL |
-| −scan_no_engage | 1.8 (+0.0) | 2.86 (+0.00) | 3.11 (-0.39) | 59.9 (+0.0) | FAIL |
-| −brief_shallow | 1.8 (+0.0) | 2.86 (+0.00) | 3.31 (-0.20) | 59.9 (+0.0) | FAIL |
-| −few_signals | 1.8 (+0.0) | 2.86 (+0.00) | 2.79 (-0.72) | 59.9 (+0.0) | PASS |
-| −decisive_override | 1.8 (+0.0) | 2.86 (+0.00) | 3.51 (+0.00) | 6.2 (-53.7) | FAIL |
-| −cheap_flavor | 1.8 (+0.0) | 2.86 (+0.00) | 3.51 (+0.00) | 59.9 (+0.0) | FAIL |
+| −micro | 1.8 (+0.0) | 2.86 (+0.00) | 3.51 (+0.00) | 70.4 (+0.0) | FAIL |
+| −micro_short | 1.8 (+0.0) | 2.86 (+0.00) | 3.51 (+0.00) | 70.4 (+0.0) | FAIL |
+| −micro_linger | 1.8 (+0.0) | 2.86 (+0.00) | 3.51 (+0.00) | 70.4 (+0.0) | FAIL |
+| −revisit_core | 1.5 (-0.2) | 2.86 (+0.00) | 3.43 (-0.08) | 69.6 (-0.8) | FAIL |
+| −revisit_focus | 1.8 (-0.0) | 2.86 (+0.00) | 3.51 (-0.00) | 70.4 (+0.0) | FAIL |
+| −revisit_pace | 1.8 (-0.0) | 2.81 (-0.05) | 3.51 (-0.00) | 70.3 (-0.1) | FAIL |
+| −no_revisit | 1.8 (+0.0) | 2.86 (+0.00) | 3.76 (+0.26) | 70.4 (+0.0) | FAIL |
+| −broad_cats | 1.8 (+0.0) | 2.88 (+0.02) | 3.42 (-0.09) | 70.5 (+0.1) | FAIL |
+| −cat_switch | 1.8 (+0.0) | 2.89 (+0.03) | 4.69 (+1.18) | 70.5 (+0.1) | FAIL |
+| −scan_no_engage | 1.8 (+0.0) | 2.86 (+0.00) | 3.11 (-0.39) | 70.4 (+0.0) | FAIL |
+| −brief_shallow | 1.8 (+0.0) | 2.86 (+0.00) | 3.31 (-0.20) | 70.4 (+0.0) | FAIL |
+| −few_signals | 1.8 (+0.0) | 2.86 (+0.00) | 2.79 (-0.72) | 70.4 (+0.0) | PASS |
+| −decisive_override | 1.8 (+0.0) | 2.86 (+0.00) | 3.51 (+0.00) | 6.2 (-64.2) | FAIL |
+| −cheap_flavor | 1.8 (+0.0) | 2.86 (+0.00) | 3.51 (+0.00) | 70.4 (+0.0) | FAIL |
 
 **Weight sensitivity (x0.5 / x1.5):**
 
 | rule | Eval buy% @x0.5 | @x1.0 | @x1.5 | top2 share @x0.5 | @x1.0 | @x1.5 |
 |---|---|---|---|---|---|---|
-| micro | 2.86 | 2.86 | 2.86 | 59.9 | 59.9 | 59.9 |
-| revisit_core | 2.88 | 2.86 | 2.88 | 59.4 | 59.9 | 60.0 |
-| revisit_focus | 2.86 | 2.86 | 2.86 | 59.9 | 59.9 | 59.9 |
-| broad_cats | 2.88 | 2.86 | 2.81 | 60.0 | 59.9 | 59.8 |
-| cat_switch | 2.86 | 2.86 | 2.89 | 59.9 | 59.9 | 59.7 |
-| scan_no_engage | 2.86 | 2.86 | 2.86 | 59.9 | 59.9 | 59.9 |
-| brief_shallow | 2.86 | 2.86 | 2.86 | 59.9 | 59.9 | 59.9 |
+| micro | 2.86 | 2.86 | 2.86 | 70.4 | 70.4 | 70.4 |
+| revisit_core | 2.88 | 2.86 | 2.88 | 69.9 | 70.4 | 70.5 |
+| revisit_focus | 2.86 | 2.86 | 2.86 | 70.4 | 70.4 | 70.4 |
+| broad_cats | 2.88 | 2.86 | 2.81 | 70.5 | 70.4 | 70.3 |
+| cat_switch | 2.86 | 2.86 | 2.89 | 70.4 | 70.4 | 70.2 |
+| scan_no_engage | 2.86 | 2.86 | 2.86 | 70.4 | 70.4 | 70.4 |
+| brief_shallow | 2.86 | 2.86 | 2.86 | 70.4 | 70.4 | 70.4 |
 
 ### REES46 — November sample (n=500,000, Black Friday)
 
-Baseline: Evaluator cov 12.7% buy 6.13% · Explorer buy 2.27% · Decisive+Evaluator capture 68.9% of purchases · mono PASS
+Baseline: Evaluator cov 12.7% buy 6.13% · Explorer buy 2.27% · Decisive+Evaluator capture 70.0% of purchases · mono PASS
 
 | removed rule | Eval cov% (Δ) | Eval buy% (Δ) | Expl buy% (Δ) | top2 purch share% (Δ) | mono |
 |---|---|---|---|---|---|
-| −micro | 12.7 (+0.0) | 6.13 (+0.00) | 2.27 (+0.00) | 68.9 (+0.0) | PASS |
-| −micro_short | 12.7 (+0.0) | 6.13 (+0.00) | 2.27 (+0.00) | 68.9 (+0.0) | PASS |
-| −micro_linger | 12.7 (+0.0) | 6.13 (+0.00) | 2.27 (+0.00) | 68.9 (+0.0) | PASS |
-| −revisit_core | 11.7 (-1.1) | 6.34 (+0.21) | 2.41 (+0.14) | 68.2 (-0.7) | PASS |
-| −revisit_focus | 12.6 (-0.2) | 6.15 (+0.02) | 2.27 (-0.00) | 68.8 (-0.1) | PASS |
-| −revisit_pace | 12.6 (-0.1) | 6.15 (+0.02) | 2.27 (-0.00) | 68.9 (-0.0) | PASS |
-| −no_revisit | 12.7 (+0.0) | 6.13 (+0.00) | 2.35 (+0.08) | 68.9 (+0.0) | PASS |
-| −broad_cats | 13.4 (+0.6) | 6.00 (-0.12) | 2.12 (-0.15) | 69.3 (+0.4) | PASS |
-| −cat_switch | 12.7 (+0.0) | 6.13 (+0.00) | 2.05 (-0.22) | 68.9 (+0.0) | PASS |
-| −scan_no_engage | 12.7 (+0.0) | 6.13 (+0.00) | 2.44 (+0.17) | 68.9 (+0.0) | PASS |
-| −brief_shallow | 12.7 (+0.0) | 6.13 (+0.00) | 2.38 (+0.11) | 68.9 (+0.0) | PASS |
-| −few_signals | 12.7 (+0.0) | 6.13 (+0.00) | 2.49 (+0.22) | 68.9 (+0.0) | PASS |
-| −decisive_override | 12.7 (+0.0) | 6.13 (+0.00) | 2.27 (+0.00) | 13.8 (-55.1) | FAIL |
-| −cheap_flavor | 12.7 (+0.0) | 6.13 (+0.00) | 2.27 (+0.00) | 68.9 (+0.0) | PASS |
+| −micro | 12.7 (+0.0) | 6.13 (+0.00) | 2.27 (+0.00) | 70.0 (+0.0) | PASS |
+| −micro_short | 12.7 (+0.0) | 6.13 (+0.00) | 2.27 (+0.00) | 70.0 (+0.0) | PASS |
+| −micro_linger | 12.7 (+0.0) | 6.13 (+0.00) | 2.27 (+0.00) | 70.0 (+0.0) | PASS |
+| −revisit_core | 11.7 (-1.1) | 6.34 (+0.21) | 2.41 (+0.14) | 69.3 (-0.7) | PASS |
+| −revisit_focus | 12.6 (-0.2) | 6.15 (+0.02) | 2.27 (-0.00) | 69.9 (-0.1) | PASS |
+| −revisit_pace | 12.6 (-0.1) | 6.15 (+0.02) | 2.27 (-0.00) | 70.0 (-0.0) | PASS |
+| −no_revisit | 12.7 (+0.0) | 6.13 (+0.00) | 2.35 (+0.08) | 70.0 (+0.0) | PASS |
+| −broad_cats | 13.4 (+0.6) | 6.00 (-0.12) | 2.12 (-0.15) | 70.4 (+0.4) | PASS |
+| −cat_switch | 12.7 (+0.0) | 6.13 (+0.00) | 2.05 (-0.22) | 70.0 (+0.0) | PASS |
+| −scan_no_engage | 12.7 (+0.0) | 6.13 (+0.00) | 2.44 (+0.17) | 70.0 (+0.0) | PASS |
+| −brief_shallow | 12.7 (+0.0) | 6.13 (+0.00) | 2.38 (+0.11) | 70.0 (+0.0) | PASS |
+| −few_signals | 12.7 (+0.0) | 6.13 (+0.00) | 2.49 (+0.22) | 70.0 (+0.0) | PASS |
+| −decisive_override | 12.7 (+0.0) | 6.13 (+0.00) | 2.27 (+0.00) | 13.8 (-56.2) | FAIL |
+| −cheap_flavor | 12.7 (+0.0) | 6.13 (+0.00) | 2.27 (+0.00) | 70.0 (+0.0) | PASS |
 
 **Weight sensitivity (x0.5 / x1.5):**
 
 | rule | Eval buy% @x0.5 | @x1.0 | @x1.5 | top2 share @x0.5 | @x1.0 | @x1.5 |
 |---|---|---|---|---|---|---|
-| micro | 6.13 | 6.13 | 6.13 | 68.9 | 68.9 | 68.9 |
-| revisit_core | 6.19 | 6.13 | 6.02 | 68.7 | 68.9 | 69.3 |
-| revisit_focus | 6.13 | 6.13 | 6.13 | 68.9 | 68.9 | 68.9 |
-| broad_cats | 6.02 | 6.13 | 6.15 | 69.3 | 68.9 | 68.9 |
-| cat_switch | 6.13 | 6.13 | 6.14 | 68.9 | 68.9 | 68.9 |
-| scan_no_engage | 6.13 | 6.13 | 6.13 | 68.9 | 68.9 | 68.9 |
-| brief_shallow | 6.13 | 6.13 | 6.13 | 68.9 | 68.9 | 68.9 |
+| micro | 6.13 | 6.13 | 6.13 | 70.0 | 70.0 | 70.0 |
+| revisit_core | 6.19 | 6.13 | 6.02 | 69.8 | 70.0 | 70.4 |
+| revisit_focus | 6.13 | 6.13 | 6.13 | 70.0 | 70.0 | 70.0 |
+| broad_cats | 6.02 | 6.13 | 6.15 | 70.4 | 70.0 | 70.0 |
+| cat_switch | 6.13 | 6.13 | 6.14 | 70.0 | 70.0 | 70.0 |
+| scan_no_engage | 6.13 | 6.13 | 6.13 | 70.0 | 70.0 | 70.0 |
+| brief_shallow | 6.13 | 6.13 | 6.13 | 70.0 | 70.0 | 70.0 |
