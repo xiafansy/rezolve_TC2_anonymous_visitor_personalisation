@@ -440,7 +440,7 @@
 
   <footer>
     <strong>How it works.</strong> A transparent weighted-evidence scorer reads only observable session signals (never identity or lookalike cohorts), sums evidence toward each of four intents, and serves the matching layout. When the winning intent clears <code>&lt; 42%</code> confidence it falls back to a neutral home page — getting personalisation wrong is worse than not personalising. <br>
-    <strong>Caveat.</strong> Presets are real rows from a 1,000-session <em>synthetic</em> dataset; offline accuracy is 97.5% but optimistic. <code>Time_of_Day</code> is ignored (pure noise) and browsing-sequence signals aren't captured yet — both noted as next steps.
+    <strong>Caveat.</strong> This page runs the original v1 full-signal scorer on rows from a synthetic dataset — kept as an interactive illustration of the signal → intent → layout chain. The project's current engine (v3.1) scores incrementally per click with fitted calibration and leakage-censored validation: decision-time accuracy 81% after 3 clicks / 84.5% at session end on a deliberately noisy synthetic track; all real-data results live in the repo README. <code>Time_of_Day</code> is ignored here (pure noise by construction).
   </footer>
 </div>
 
